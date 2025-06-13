@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -16,48 +17,88 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white text-black">
-      <div className="max-w-4xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-6">Contact Me</h2>
+    <section
+      id="contact"
+      className="py-28 bg-gradient-to-b from-gray-50 to-white text-black scroll-mt-20"
+    >
+      <div className="max-w-3xl mx-auto px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold mb-10 text-center text-accent"
+        >
+          Get in Touch
+        </motion.h2>
+
         {submitted ? (
-          <p className="text-green-600">Thank you! I'll get back to you soon.</p>
-        ) : (
-          <form
-            onSubmit={handleSubmit}
-            className="grid grid-cols-1 gap-6 max-w-xl"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center text-green-600 text-lg font-semibold"
           >
-            <input
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              placeholder="Your Name"
-              className="border px-4 py-2 rounded"
-            />
-            <input
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              type="email"
-              placeholder="Your Email"
-              className="border px-4 py-2 rounded"
-            />
-            <textarea
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              required
-              placeholder="Your Message"
-              className="border px-4 py-2 rounded min-h-[120px]"
-            />
+            Thank you! I’ll get back to you shortly 🚀
+          </motion.div>
+        ) : (
+          <motion.form
+            onSubmit={handleSubmit}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg space-y-6"
+          >
+            {/* Name */}
+            <div className="relative">
+              <input
+                type="text"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                required
+                className="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent"
+              />
+              <label className="absolute left-4 top-2 text-sm text-gray-500 peer-focus:text-accent transition-all peer-focus:top-1 peer-focus:text-xs">
+                Your Name
+              </label>
+            </div>
+
+            {/* Email */}
+            <div className="relative">
+              <input
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                required
+                className="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent"
+              />
+              <label className="absolute left-4 top-2 text-sm text-gray-500 peer-focus:text-accent transition-all peer-focus:top-1 peer-focus:text-xs">
+                Your Email
+              </label>
+            </div>
+
+            {/* Message */}
+            <div className="relative">
+              <textarea
+                name="message"
+                value={form.message}
+                onChange={handleChange}
+                required
+                rows="5"
+                className="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent resize-none"
+              />
+              <label className="absolute left-4 top-2 text-sm text-gray-500 peer-focus:text-accent transition-all peer-focus:top-1 peer-focus:text-xs">
+                Your Message
+              </label>
+            </div>
+
             <button
               type="submit"
-              className="bg-black text-white px-6 py-2 rounded hover:bg-gray-800"
+              className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-accent hover:text-white transition-all duration-300"
             >
               Send Message
             </button>
-          </form>
+          </motion.form>
         )}
       </div>
     </section>
