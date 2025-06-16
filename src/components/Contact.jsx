@@ -5,8 +5,9 @@ export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,12 +22,12 @@ export default function Contact() {
       id="contact"
       className="py-28 bg-gradient-to-b from-gray-50 to-white text-black scroll-mt-20"
     >
-      <div className="max-w-3xl mx-auto px-6">
+      <div className="max-w-2xl mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl font-bold mb-10 text-center text-accent"
+          className="text-4xl font-bold text-center text-accent mb-10"
         >
           Get in Touch
         </motion.h2>
@@ -37,7 +38,7 @@ export default function Contact() {
             animate={{ opacity: 1 }}
             className="text-center text-green-600 text-lg font-semibold"
           >
-            Thank you! I’ll get back to you shortly 🚀
+            🎉 Thank you! I’ll get back to you shortly.
           </motion.div>
         ) : (
           <motion.form
@@ -45,52 +46,40 @@ export default function Contact() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg space-y-6"
+            className="bg-white/60 backdrop-blur-xl border border-gray-200 p-8 rounded-2xl shadow-xl space-y-6"
           >
-            {/* Name */}
-            <div className="relative">
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent"
-              />
-              <label className="absolute left-4 top-2 text-sm text-gray-500 peer-focus:text-accent transition-all peer-focus:top-1 peer-focus:text-xs">
-                Your Name
-              </label>
-            </div>
-
-            {/* Email */}
-            <div className="relative">
-              <input
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent"
-              />
-              <label className="absolute left-4 top-2 text-sm text-gray-500 peer-focus:text-accent transition-all peer-focus:top-1 peer-focus:text-xs">
-                Your Email
-              </label>
-            </div>
-
-            {/* Message */}
-            <div className="relative">
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                required
-                rows="5"
-                className="peer w-full px-4 pt-5 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent resize-none"
-              />
-              <label className="absolute left-4 top-2 text-sm text-gray-500 peer-focus:text-accent transition-all peer-focus:top-1 peer-focus:text-xs">
-                Your Message
-              </label>
-            </div>
+            {["name", "email", "message"].map((field) => (
+              <div key={field} className="relative">
+                {field === "message" ? (
+                  <textarea
+                    name={field}
+                    value={form[field]}
+                    onChange={handleChange}
+                    required
+                    rows="5"
+                    className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent resize-none"
+                  />
+                ) : (
+                  <input
+                    type={field === "email" ? "email" : "text"}
+                    name={field}
+                    value={form[field]}
+                    onChange={handleChange}
+                    required
+                    className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent"
+                  />
+                )}
+                <label
+                  className="absolute left-4 top-2.5 text-sm text-gray-500 peer-focus:text-accent transition-all peer-focus:top-1 peer-focus:text-xs peer-valid:top-1 peer-valid:text-xs"
+                >
+                  {field === "name"
+                    ? "Your Name"
+                    : field === "email"
+                    ? "Your Email"
+                    : "Your Message"}
+                </label>
+              </div>
+            ))}
 
             <button
               type="submit"
