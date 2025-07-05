@@ -9,7 +9,7 @@ const projects = [
     tech: ["React", "Node.js", "Express", "MongoDB"],
     image: 'emergency',
     github: "https://github.com/Suryab02/PranarakshaSeva",
-    live: "#",
+    live: "https://pranaraksha-seva-qc15.vercel.app/",
     description:
       "Real-time emergency coordination platform with geolocation tracking for ambulances and doctors, secured with JWT and optimized APIs."
   },
