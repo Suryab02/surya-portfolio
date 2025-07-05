@@ -15,7 +15,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="py-24 px-4 bg-gradient-to-b from-white to-gray-50 text-black scroll-mt-20"
+      className="py-24 px-4 bg-gradient-to-b from-white to-gray-50 text-black scroll-mt-2"
     >
       <div className="max-w-5xl mx-auto text-center mb-16">
         <h2 className="text-4xl font-extrabold text-accent">Projects</h2>

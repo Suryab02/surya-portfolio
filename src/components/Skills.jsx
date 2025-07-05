@@ -6,7 +6,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="scroll-mt-20 py-24 bg-white text-black transition-all duration-300"
+      className="scroll-mt-2 py-24 bg-white text-black transition-all duration-300"
     >
       <div className="max-w-6xl mx-auto px-4">
         <motion.h2

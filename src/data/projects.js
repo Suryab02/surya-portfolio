@@ -1,57 +1,37 @@
+import realestate from "../assets/realestate.png";
+import adoptme from "../assets/adoptme.png";
+//import emergency from "../assets/emergency.png"; // Replace with actual import if you have one
+
 const projects = [
   {
     id: 1,
-    title: "Real Estate Explorer",
-    tech: ["HTML", "CSS", "JS", "Firebase"],
-    image: "/gifs/realestate.gif",
-    github: "https://github.com/Suryab02/real-estate",
+    title: "Emergency Services Platform",
+    tech: ["React", "Node.js", "Express", "MongoDB"],
+    image: 'emergency',
+    github: "https://github.com/Suryab02/PranarakshaSeva",
     live: "#",
-    description: "A modern platform to browse, filter, and manage real estate listings with Firebase backend and clean UI."
+    description:
+      "Real-time emergency coordination platform with geolocation tracking for ambulances and doctors, secured with JWT and optimized APIs."
   },
   {
     id: 2,
     title: "Pet Adoption Portal",
-    tech: ["React"],
-    image: "/gifs/petadoption.gif",
-    github: "https://github.com/Suryab02/pet-adoption",
-    live: "#",
-    description: "React-based SPA that helps users find and adopt pets from nearby shelters with a friendly user interface."
+    tech: ["React", "HTML", "CSS"],
+    image: adoptme,
+    github: "https://github.com/Suryab02/Pet-Adoption",
+    live: "https://react-pet-adoption.netlify.app/",
+    description:
+      "Responsive React SPA that helps users browse, search, and adopt pets via a clean UI and REST-based filtering."
   },
   {
     id: 3,
-    title: "911 Response System",
-    tech: ["Node.js", "MongoDB"],
-    image: "/gifs/emergency.gif",
-    github: "https://github.com/Suryab02/emergency-services",
-    live: "#",
-    description: "A backend infrastructure built with Node.js and MongoDB for managing emergency response and coordination services."
-  },
-  {
-    id: 4,
-    title: "Property Listing UI Test",
-    tech: ["HTML", "CSS", "Firebase"],
-    image: "/gifs/realestate.gif",
-    github: "https://github.com/Suryab02/real-estate",
-    live: "#",
-    description: "UI scroll test variant of the real estate app to ensure smooth horizontal rendering with extended card sets."
-  },
-  {
-    id: 5,
-    title: "Pet SPA Scroll Test",
-    tech: ["React"],
-    image: "/gifs/petadoption.gif",
-    github: "https://github.com/Suryab02/pet-adoption",
-    live: "#",
-    description: "A scroll-test version of the pet adoption portal to evaluate layout performance and visual balance across cards."
-  },
-  {
-    id: 6,
-    title: "Emergency Dashboard UI",
-    tech: ["Node.js", "MongoDB"],
-    image: "/gifs/emergency.gif",
-    github: "https://github.com/Suryab02/emergency-services",
-    live: "#",
-    description: "A duplicate of the emergency service platform used to validate final project card visibility and scroll snapping."
+    title: "Real Estate Explorer",
+    tech: ["HTML", "CSS", "JavaScript", "Firebase"],
+    image: realestate,
+    github: "https://github.com/Suryab02/au-aspire-site",
+    live: "https://au-aspire-site.vercel.app/",
+    description:
+      "Lead-gen website for real estate using Firebase backend, Firestore DB, and WhatsApp integration for conversions."
   }
 ];
 

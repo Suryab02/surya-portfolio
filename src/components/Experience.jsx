@@ -6,7 +6,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="py-24 bg-gradient-to-b from-white to-gray-50 text-black scroll-mt-20"
+      className="py-24 bg-gradient-to-b from-white to-gray-50 text-black scroll-mt-2"
     >
       <div className="max-w-5xl mx-auto px-4">
         <h2 className="text-4xl font-bold mb-14 text-center text-accent">
@@ -40,7 +40,7 @@ export default function Experience() {
                   <img
                     src={exp.logo}
                     alt={exp.company}
-                    className="w-6 h-6 object-contain mb-2"
+                    className="w-12 h-12 object-contain mb-2"
                   />
                 )}
 

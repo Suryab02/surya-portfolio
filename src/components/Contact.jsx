@@ -20,7 +20,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-28 bg-gradient-to-b from-gray-50 to-white text-black scroll-mt-20"
+      className="py-28 bg-gradient-to-b from-gray-50 to-white text-black scroll-mt-32"
     >
       <div className="max-w-2xl mx-auto px-6">
         <motion.h2
@@ -36,9 +36,18 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center text-green-600 text-lg font-semibold"
+            className="text-center text-green-600 text-xl font-semibold"
           >
             🎉 Thank you! I’ll get back to you shortly.
+            <p className="mt-3 text-gray-600 text-sm">
+              Or email me directly at{" "}
+              <a
+                href="mailto:bsprabhas2002@gmail.com"
+                className="text-accent underline hover:text-black"
+              >
+                bsprabhas2002@gmail.com
+              </a>
+            </p>
           </motion.div>
         ) : (
           <motion.form
@@ -46,7 +55,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-white/60 backdrop-blur-xl border border-gray-200 p-8 rounded-2xl shadow-xl space-y-6"
+            className="bg-white/60 backdrop-blur-xl border border-gray-200 p-8 rounded-3xl shadow-2xl space-y-6"
           >
             {["name", "email", "message"].map((field) => (
               <div key={field} className="relative">
@@ -57,7 +66,8 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     rows="5"
-                    className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent resize-none"
+                    className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent bg-transparent resize-none placeholder-transparent"
+                    placeholder="Your message..."
                   />
                 ) : (
                   <input
@@ -66,11 +76,12 @@ export default function Contact() {
                     value={form[field]}
                     onChange={handleChange}
                     required
-                    className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent bg-transparent"
+                    className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent bg-transparent placeholder-transparent"
+                    placeholder={field === "email" ? "Your email" : "Your name"}
                   />
                 )}
                 <label
-                  className="absolute left-4 top-2.5 text-sm text-gray-500 peer-focus:text-accent transition-all peer-focus:top-1 peer-focus:text-xs peer-valid:top-1 peer-valid:text-xs"
+                  className="absolute left-4 top-2.5 text-sm text-gray-500 peer-placeholder-shown:top-5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2.5 peer-focus:text-sm peer-focus:text-accent transition-all"
                 >
                   {field === "name"
                     ? "Your Name"
@@ -83,10 +94,20 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full bg-black text-white py-3 rounded-lg font-semibold hover:bg-accent hover:text-white transition-all duration-300"
+              className="w-full bg-black text-white py-3 rounded-xl font-semibold hover:bg-accent hover:text-white transition-all duration-300"
             >
-              Send Message
+              ✉️ Send Message
             </button>
+
+            <p className="text-center text-sm text-gray-600">
+              Or email me directly at{" "}
+              <a
+                href="mailto:bsprabhas2002@gmail.com"
+                className="text-accent font-medium underline hover:text-black"
+              >
+                bsprabhas2002@gmail.com
+              </a>
+            </p>
           </motion.form>
         )}
       </div>

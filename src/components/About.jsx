@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="scroll-mt-20 py-24 bg-white text-black transition-all duration-300"
+      className="scroll-mt-2 py-24 bg-white text-black transition-all duration-300"
     >
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 items-center gap-12">
         {/* 📄 Text */}
@@ -18,13 +18,16 @@ export default function About() {
             About <span className="text-accent">Me</span>
           </h2>
           <p className="text-gray-700 mb-4">
-            I’m a <strong>Full-Stack Developer</strong> with 2+ years of experience
-            building high-performance applications. I specialize in modern tech stacks
-            like <strong>React</strong>, <strong>Node.js</strong>, and scalable cloud infrastructure.
+            I’m <strong>Surya Prabhas</strong>, a passionate Full-Stack Developer with a background in Computer Science and over 2 years of hands-on experience building robust web applications and scalable backend systems.
+          </p>
+          <p className="text-gray-700 mb-4">
+            My curiosity for technology started early—I’ve always questioned how things work: how code becomes 0s and 1s, how Wi-Fi connects us to websites, how massive movies stream instantly to our personal devices. I’m fascinated by the evolution of the internet and how data moves behind the scenes.
+          </p>
+          <p className="text-gray-700 mb-4">
+            This curiosity drives me to explore and build. I love frontend just a bit more than backend—there’s something magical about bringing ideas to life visually. But it’s the constant “how,” “when,” and “why” that keeps me learning and growing.
           </p>
           <p className="text-gray-700">
-            I enjoy crafting elegant user experiences, optimizing backend logic, and solving complex
-            engineering problems with clean, scalable code.
+            I’m currently exploring ideas to build meaningful products in the tech space, combining creative UI with logical problem solving. I believe good software solves problems elegantly—and that’s what I strive to do every day.
           </p>
         </motion.div>
 
