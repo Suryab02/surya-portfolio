@@ -46,9 +46,22 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  // Close mobile menu when clicking a link
-  const handleNavClick = () => {
+  // Handle navigation with smooth scroll
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
     setMobileMenuOpen(false);
+    
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navbarHeight = 64; // Height of navbar (h-16 = 64px)
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
   };
 
   return (
@@ -67,6 +80,7 @@ export default function Navbar() {
           {/* Logo */}
           <motion.a
             href="#hero"
+            onClick={(e) => handleNavClick(e, "hero")}
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold tracking-wide uppercase bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent hover:from-accent hover:to-blue-600 transition-all"
           >
@@ -79,6 +93,7 @@ export default function Navbar() {
               <a
                 key={section.id}
                 href={`#${section.id}`}
+                onClick={(e) => handleNavClick(e, section.id)}
                 className={`relative text-sm font-medium transition-colors duration-200 group ${
                   active === section.id
                     ? "text-blue-600 font-semibold"
@@ -127,7 +142,7 @@ export default function Navbar() {
             <a
               key={section.id}
               href={`#${section.id}`}
-              onClick={handleNavClick}
+              onClick={(e) => handleNavClick(e, section.id)}
               className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 active === section.id
                   ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md"
