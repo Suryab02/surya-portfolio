@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, Linkedin, Github, MessageCircle } from "lucide-react";
+import Contact3D from "./Contact3D";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -25,37 +26,10 @@ export default function Contact() {
     }
   };
 
-  const contactMethods = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "bsprabhas2002@gmail.com",
-      link: "mailto:bsprabhas2002@gmail.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+91 8317647595",
-      link: "tel:+918317647595",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "Connect with me",
-      link: "https://linkedin.com/in/bsuryaprabhas",
-    },
-    {
-      icon: Github,
-      label: "GitHub",
-      value: "Check my projects",
-      link: "https://github.com/Suryab02",
-    },
-  ];
-
   return (
     <section
       id="contact"
-      className="py-20 bg-white text-gray-900 scroll-mt-2"
+      className="py-20 bg-gray-50 dark:bg-[#050505] text-gray-900 dark:text-white scroll-mt-2 overflow-hidden"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -66,102 +40,76 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-3">Let's Connect</h2>
-          <div className="w-20 h-1 bg-accent mx-auto rounded-full mb-4"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <div className="w-20 h-1 bg-purple-600 dark:bg-purple-500 mx-auto rounded-full mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Have a project in mind or want to discuss opportunities? I'd love to hear from you. Reach out via email, call, or connect on social media.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Methods - Left Column */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* 3D Globe - Left Column */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-1 space-y-4"
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center w-full"
           >
-            <h3 className="text-xl font-bold mb-6">Quick Contact</h3>
+            <div className="w-full h-[300px] lg:h-[400px] mb-8 relative">
+              {/* Fallback/Background for Light Mode contrast */}
+              <div className="absolute inset-0 bg-purple-100 dark:bg-purple-900/10 rounded-full blur-[80px] -z-10"></div>
+              <Contact3D />
+            </div>
 
-            {contactMethods.map((method, idx) => {
-              const Icon = method.icon;
-              return (
-                <motion.a
-                  key={idx}
-                  href={method.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ x: 10 }}
-                  className="flex items-start gap-4 p-4 bg-gray-50 hover:bg-accent hover:bg-opacity-10 rounded-lg transition-all duration-300 group cursor-pointer"
-                >
-                  <div className="w-12 h-12 bg-accent bg-opacity-10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-opacity-20 transition-all">
-                    <Icon size={20} className="text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 group-hover:text-accent transition-colors">
-                      {method.label}
-                    </p>
-                    <p className="text-sm text-gray-600 group-hover:text-accent group-hover:text-opacity-70 transition-colors">
-                      {method.value}
-                    </p>
-                  </div>
-                </motion.a>
-              );
-            })}
-
-            {/* Social Links */}
-            <div className="pt-4 border-t border-gray-200">
-              <p className="text-sm font-semibold text-gray-700 mb-3">
-                Follow Me
-              </p>
-              <div className="flex gap-3">
-                {[
-                  {
-                    icon: Github,
-                    link: "https://github.com/Suryab02",
-                    label: "GitHub",
-                  },
-                  {
-                    icon: Linkedin,
-                    link: "https://linkedin.com/in/yourprofile",
-                    label: "LinkedIn",
-                  },
-                  {
-                    icon: Mail,
-                    link: "mailto:bsprabhas2002@gmail.com",
-                    label: "Email",
-                  },
-                ].map((social, idx) => {
-                  const Icon = social.icon;
-                  return (
-                    <motion.a
-                      key={idx}
-                      href={social.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.1, y: -5 }}
-                      className="w-10 h-10 bg-accent bg-opacity-10 rounded-lg flex items-center justify-center text-accent hover:bg-accent hover:text-white transition-all"
-                      title={social.label}
-                    >
-                      <Icon size={18} />
-                    </motion.a>
-                  );
-                })}
-              </div>
+            {/* Social Links Row */}
+            <div className="flex gap-4">
+              {[
+                {
+                  icon: Github,
+                  link: "https://github.com/Suryab02",
+                  label: "GitHub",
+                },
+                {
+                  icon: Linkedin,
+                  link: "https://linkedin.com/in/yourprofile",
+                  label: "LinkedIn",
+                },
+                {
+                  icon: Mail,
+                  link: "mailto:bsprabhas2002@gmail.com",
+                  label: "Email",
+                },
+              ].map((social, idx) => {
+                const Icon = social.icon;
+                return (
+                  <motion.a
+                    key={idx}
+                    href={social.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    className="w-12 h-12 bg-white dark:bg-white/10 border border-gray-200 dark:border-white/20 rounded-full flex items-center justify-center text-gray-700 dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 shadow-sm"
+                    title={social.label}
+                  >
+                    <Icon size={20} />
+                  </motion.a>
+                );
+              })}
             </div>
           </motion.div>
 
-          {/* Contact Form - Right Columns */}
+          {/* Contact Form - Right Column */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-2"
+            className="w-full"
           >
             {submitted ? (
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="h-full flex flex-col items-center justify-center text-center bg-accent bg-opacity-5 border border-accent border-opacity-20 rounded-2xl p-12"
+                className="h-full flex flex-col items-center justify-center text-center bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-2xl p-12 shadow-lg dark:shadow-none"
               >
                 <motion.div
                   initial={{ scale: 0 }}
@@ -171,17 +119,17 @@ export default function Contact() {
                 >
                   🎉
                 </motion.div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                   Thank You!
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
                   Your message has been sent successfully. I'll get back to you
                   shortly!
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   onClick={() => setSubmitted(false)}
-                  className="mt-6 px-6 py-2 bg-accent text-white rounded-lg font-semibold hover:bg-accent hover:bg-opacity-90 transition-all"
+                  className="mt-6 px-6 py-2 bg-purple-600 text-white rounded-lg font-semibold hover:bg-purple-700 transition-all"
                 >
                   Send Another Message
                 </motion.button>
@@ -189,57 +137,53 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="bg-gradient-to-br from-gray-50 to-white border border-gray-200 p-8 rounded-2xl shadow-lg space-y-6"
+                className="bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-8 rounded-2xl shadow-xl dark:shadow-none space-y-6"
               >
-                {/* Name & Email Row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  Send me a message
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Name Field */}
-                  <div className="relative group">
+                  <div className="flex flex-col gap-1">
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
                     <input
                       type="text"
                       name="name"
                       value={form.name}
                       onChange={handleChange}
                       required
-                      placeholder=" "
-                      className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all placeholder-transparent"
+                      placeholder="John Doe"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all placeholder-gray-400 dark:placeholder-gray-600 text-gray-900 dark:text-white"
                     />
-                    <label className="absolute left-4 top-2 text-sm text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-accent peer-focus:font-semibold transition-all pointer-events-none">
-                      Your Name
-                    </label>
                   </div>
 
                   {/* Email Field */}
-                  <div className="relative group">
+                  <div className="flex flex-col gap-1">
+                    <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
                     <input
                       type="email"
                       name="email"
                       value={form.email}
                       onChange={handleChange}
                       required
-                      placeholder=" "
-                      className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all placeholder-transparent"
+                      placeholder="john@example.com"
+                      className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all placeholder-gray-400 dark:placeholder-gray-600 text-gray-900 dark:text-white"
                     />
-                    <label className="absolute left-4 top-2 text-sm text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-accent peer-focus:font-semibold transition-all pointer-events-none">
-                      Your Email
-                    </label>
                   </div>
                 </div>
 
                 {/* Message Field */}
-                <div className="relative group">
+                <div className="flex flex-col gap-1">
+                  <label className="text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
                   <textarea
                     name="message"
                     value={form.message}
                     onChange={handleChange}
                     required
-                    rows="5"
-                    placeholder=" "
-                    className="peer w-full px-4 pt-6 pb-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent bg-white transition-all resize-none placeholder-transparent"
+                    rows="4"
+                    placeholder="Describe your project or inquiry..."
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-black/20 border border-gray-200 dark:border-white/10 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none transition-all resize-none placeholder-gray-400 dark:placeholder-gray-600 text-gray-900 dark:text-white"
                   />
-                  <label className="absolute left-4 top-2 text-sm text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-2 peer-focus:text-sm peer-focus:text-accent peer-focus:font-semibold transition-all pointer-events-none">
-                    Your Message
-                  </label>
                 </div>
 
                 {/* Submit Button */}
@@ -248,7 +192,7 @@ export default function Contact() {
                   disabled={loading}
                   whileHover={!loading ? { scale: 1.02 } : {}}
                   whileTap={!loading ? { scale: 0.98 } : {}}
-                  className="w-full bg-black text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-accent transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-purple-600 text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-purple-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
                   {loading ? (
                     <>
@@ -270,40 +214,12 @@ export default function Contact() {
                     </>
                   )}
                 </motion.button>
-
-                {/* Character Count */}
-                <p className="text-xs text-gray-500 text-center">
-                  We respect your privacy. We'll only use your information to respond to your inquiry.
-                </p>
               </form>
             )}
           </motion.div>
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-gray-600">
-            Prefer a quick call?{" "}
-            <a
-              href="tel:+918317647595"
-              className="text-accent font-semibold hover:underline"
-            >
-              Schedule a meeting
-            </a>
-            {" "}or check out my{" "}
-            <a
-              href="https://github.com/Suryab02"
-              className="text-accent font-semibold hover:underline"
-            >
-              latest projects
-            </a>
-          </p>
-        </motion.div>
+
       </div>
     </section>
   );

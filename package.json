@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
     "@tailwindcss/cli": "^4.1.10",
     "@tailwindcss/vite": "^4.1.10",
     "@vercel/analytics": "^1.6.1",
@@ -20,7 +22,8 @@
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
     "react-parallax-tilt": "^1.7.298",
-    "react-scrollspy": "^3.4.3"
+    "react-scrollspy": "^3.4.3",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

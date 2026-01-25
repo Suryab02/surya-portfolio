@@ -3,7 +3,7 @@ const experience = [
     company: "Infor",
     role: "Associate Software Engineer",
     year: "Mar 2024 – Present",
-    logo: "https://imgs.search.brave.com/YVq3_uMD5l8o5yD6lIitUbA2O5aOsOpq9IHAQVDW-wg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy90/aHVtYi9hL2EyL0lu/Zm9yLWxvZ29fMjAx/My0zMDB4MjgwLmpw/Zy8yNTBweC1JbmZv/ci1sb2dvXzIwMTMt/MzAweDI4MC5qcGc",
+    logo: "https://cdn.brandfetch.io/idsRd-6zJL/idjZxRCr3i.svg?c=1bxid64Mup7aczewSAYMX&t=1646244642836",
     details: [
       "Migrated an internal regression testing tool from ASP.NET to Angular, developing a modern web client for remote machine control and workflow automation across multiple instances and test scripts.",
       "Worked on R&D development team for OPTIVA, an Infor product for process lifecycle management that handles product lifecycles from formulation to labeling.",

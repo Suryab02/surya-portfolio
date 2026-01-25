@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
+import ThemeToggle from "./ThemeToggle";
 
 const sections = [
   { id: "hero", label: "Home" },
@@ -50,7 +51,7 @@ export default function Navbar() {
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
     setMobileMenuOpen(false);
-    
+
     const element = document.getElementById(sectionId);
     if (element) {
       const navbarHeight = 64; // Height of navbar (h-16 = 64px)
@@ -69,11 +70,10 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-gradient-to-r from-blue-50 to-white/95 backdrop-blur-lg shadow-lg"
-          : "bg-gradient-to-r from-blue-50/80 to-white/70 backdrop-blur-md shadow-sm"
-      }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
+        ? "bg-white/80 dark:bg-[#050505]/80 backdrop-blur-sm border-b border-gray-200 dark:border-white/10"
+        : "bg-transparent"
+        }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -82,7 +82,7 @@ export default function Navbar() {
             href="#hero"
             onClick={(e) => handleNavClick(e, "hero")}
             whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold tracking-wide uppercase bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent hover:from-accent hover:to-blue-600 transition-all"
+            className="text-2xl font-bold tracking-wide uppercase bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-500 bg-clip-text text-transparent hover:opacity-80 transition-all"
           >
             Surya
           </motion.a>
@@ -94,36 +94,40 @@ export default function Navbar() {
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={(e) => handleNavClick(e, section.id)}
-                className={`relative text-sm font-medium transition-colors duration-200 group ${
-                  active === section.id
-                    ? "text-blue-600 font-semibold"
-                    : "text-gray-700 hover:text-blue-600"
-                }`}
+                className={`relative text-sm font-medium transition-colors duration-200 group ${active === section.id
+                  ? "text-purple-600 dark:text-white font-semibold"
+                  : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                  }`}
               >
                 {section.label}
-                
+
                 {/* Animated underline */}
                 <span
-                  className={`absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-blue-500 to-blue-700 transition-all duration-300 ${
-                    active === section.id ? "w-full" : "w-0 group-hover:w-full"
-                  }`}
+                  className={`absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-300 ${active === section.id ? "w-full" : "w-0 group-hover:w-full"
+                    }`}
                 />
               </a>
             ))}
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-blue-100 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <HiX className="w-6 h-6 text-blue-600" />
-            ) : (
-              <HiMenu className="w-6 h-6 text-blue-600" />
-            )}
-          </button>
+          {/* Mobile Menu Button & Toggle (Toggle visible on mobile header) */}
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <HiX className="w-6 h-6 text-gray-900 dark:text-white" />
+              ) : (
+                <HiMenu className="w-6 h-6 text-gray-900 dark:text-white" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -135,7 +139,7 @@ export default function Navbar() {
           height: mobileMenuOpen ? "auto" : 0,
         }}
         transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden bg-gradient-to-b from-blue-50 to-white border-t border-blue-100"
+        className="md:hidden overflow-hidden bg-white dark:bg-[#0a0a0a] border-t border-gray-200 dark:border-white/10"
       >
         <div className="px-4 py-4 space-y-3">
           {sections.map((section) => (
@@ -143,11 +147,10 @@ export default function Navbar() {
               key={section.id}
               href={`#${section.id}`}
               onClick={(e) => handleNavClick(e, section.id)}
-              className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                active === section.id
-                  ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md"
-                  : "text-gray-700 hover:bg-blue-50"
-              }`}
+              className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${active === section.id
+                ? "bg-purple-100 dark:bg-purple-600 text-purple-700 dark:text-white"
+                : "text-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/10"
+                }`}
             >
               {section.label}
             </a>

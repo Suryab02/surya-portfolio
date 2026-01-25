@@ -1,4 +1,29 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  width: 100%;
+  @apply bg-white dark:bg-[#050505] text-gray-900 dark:text-white transition-colors duration-300;
+}
+
+#root {
+  width: 100%;
+}
 
 html {
   scroll-behavior: smooth;
@@ -7,10 +32,13 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 html {
-  scroll-padding-top: 0.1rem; /* or 112px */
+  scroll-padding-top: 0.1rem;
+  /* or 112px */
 }
