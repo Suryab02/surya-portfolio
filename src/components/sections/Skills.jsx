@@ -5,68 +5,64 @@ import skills from "../../data/skills";
 
 export default function Skills() {
   const ref = useRef();
-  const inView = useInView(ref, { once: true });
+  const inView = useInView(ref, { once: true, margin: "-50px" });
 
-  // Group skills by category for the static list
   const categories = {
     Frontend: skills.filter(s => s.category === "Frontend"),
     Backend: skills.filter(s => s.category === "Backend"),
-    Tools: skills.filter(s => s.category !== "Frontend" && s.category !== "Backend")
+    "Cloud & Tools": skills.filter(s => s.category !== "Frontend" && s.category !== "Backend")
   };
 
   return (
-    <section
-      id="skills"
-      className="py-32 min-h-[90vh] flex items-center bg-white dark:bg-[#050505] text-gray-900 dark:text-white scroll-mt-2 overflow-hidden"
-      ref={ref}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <section id="skills" className="py-24 bg-slate-50" ref={ref}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Background Elements */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-4xl bg-blue-500/5 blur-[120px] rounded-full pointer-events-none"></div>
-
-        {/* Section Header */}
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight text-gray-900 dark:text-white">Skills</h2>
-          <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto font-medium">
-            My technical stack and the tools I use to bring ideas to life.
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+            Technical Arsenal
+          </h2>
+          <div className="w-12 h-1 bg-blue-600 mt-4 rounded-full"></div>
+          <p className="mt-4 text-slate-500 max-w-2xl font-medium">
+            A comprehensive overview of the languages, frameworks, and tools I use to build scalable software.
           </p>
         </motion.div>
 
-        {/* Minimalist Skill List */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+        {/* Skills Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
           {Object.entries(categories).map(([category, items], idx) => (
             <motion.div
               key={category}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + (idx * 0.1) }}
-              className="p-8 bg-gray-50/50 dark:bg-white/5 border border-gray-100 dark:border-white/5 rounded-2xl backdrop-blur-sm"
+              transition={{ duration: 0.6, delay: 0.1 * idx, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-slate-200 transition-all duration-300"
             >
-              <h3 className="text-xl font-bold text-blue-600 dark:text-blue-400 mb-6 flex items-center gap-2">
-                <span className="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+              <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-3">
+                <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
                 {category}
               </h3>
-              <div className="grid grid-cols-1 gap-4">
+
+              <div className="flex flex-wrap gap-2.5">
                 {items.map((skill) => (
                   <div
                     key={skill.id}
-                    className="flex items-center gap-3 p-3 bg-white dark:bg-white/5 border border-gray-200/50 dark:border-white/5 rounded-xl hover:border-blue-300 dark:hover:border-blue-500/50 transition-all group lg:hover:translate-x-2"
+                    className="inline-flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-100 rounded-lg hover:bg-slate-100 hover:border-slate-200 transition-colors group"
                   >
-                    <span className="text-2xl text-gray-400 group-hover:text-blue-500 transition-colors">{skill.icon}</span>
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">{skill.name}</span>
+                    <span className="text-lg grayscale group-hover:grayscale-0 transition-all duration-300">{skill.icon}</span>
+                    <span className="text-sm font-semibold text-slate-700">{skill.name}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -1,238 +1,133 @@
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useInView } from "framer-motion";
-import { Github, ExternalLink, ChevronDown } from "lucide-react";
+import { Github, ArrowUpRight } from "lucide-react";
 import projects from "../../data/projects";
 
-function ProjectCard({ project, idx, expandedId, setExpandedId }) {
+function ProjectCard({ project, idx }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-  const isExpanded = expandedId === project.id;
+  const inView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: idx * 0.15 }}
-      className="border border-gray-200 dark:border-white/10 rounded-2xl overflow-hidden hover:shadow-xl dark:hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] transition-all duration-300 bg-white dark:bg-[#0a0a0a]"
+      transition={{ duration: 0.5, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="group bg-white rounded-2xl border border-slate-200 hover:border-slate-300 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full"
     >
-      {/* Project Image */}
-      <div className="relative overflow-hidden bg-gray-100 dark:bg-gray-900 h-48 sm:h-56 group">
-        {project.image && (
+      {/* Image Container */}
+      <div className="relative h-44 sm:h-48 overflow-hidden bg-slate-50 border-b border-slate-100 flex items-center justify-center p-0">
+        {project.image ? (
           <motion.img
             src={project.image}
             alt={project.title}
-            className="w-full h-full object-cover opacity-90 dark:opacity-80 group-hover:opacity-100 transition-opacity"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
           />
+        ) : (
+          <div className="text-slate-300 font-medium text-sm">No Image Available</div>
         )}
-        {/* Badge */}
-        <div className="absolute top-3 left-3 bg-white/90 dark:bg-blue-600/90 text-gray-900 dark:text-white px-3 py-1 rounded-full text-xs font-bold backdrop-blur-sm shadow-md">
-          {project.shortTitle}
-        </div>
       </div>
 
-      {/* Project Info - Header */}
-      <button
-        onClick={() => setExpandedId(isExpanded ? null : project.id)}
-        className="w-full p-6 bg-white dark:bg-white/5 backdrop-blur-md hover:bg-gray-50 dark:hover:bg-white/10 transition-colors text-left"
-      >
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex-1">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {project.title}
+      {/* Content */}
+      <div className="p-6 flex flex-col flex-grow">
+        <div className="flex justify-between items-start gap-3 mb-2">
+          <div>
+            <h3 className="text-lg font-bold text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors line-clamp-1">
+              {project.shortTitle || project.title}
             </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-              {project.description}
-            </p>
-
-            {/* Tech Stack */}
-            <div className="flex flex-wrap gap-2">
-              {project.tech.slice(0, 3).map((tech, i) => (
-                <span
-                  key={i}
-                  className="text-xs font-medium bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 px-2.5 py-1 rounded-full border border-blue-100 dark:border-blue-500/20"
-                >
-                  {tech}
-                </span>
-              ))}
-              {project.tech.length > 3 && (
-                <span className="text-xs font-medium bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 px-2.5 py-1 rounded-full">
-                  +{project.tech.length - 3}
-                </span>
-              )}
-            </div>
+            <p className="text-slate-500 font-medium text-[13px] mt-0.5 line-clamp-1">{project.title}</p>
           </div>
-
-          {/* Chevron */}
-          <motion.div
-            animate={{ rotate: isExpanded ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-blue-600 dark:text-blue-500 flex-shrink-0 mt-1"
-          >
-            <ChevronDown size={22} />
-          </motion.div>
-        </div>
-      </button>
-
-      {/* Expandable Content */}
-      <motion.div
-        initial={{ opacity: 0, height: 0 }}
-        animate={
-          isExpanded
-            ? { opacity: 1, height: "auto" }
-            : { opacity: 0, height: 0 }
-        }
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden"
-      >
-        <div className="px-6 py-6 bg-gray-50 dark:bg-white/5 border-t border-gray-100 dark:border-white/5 space-y-4">
-          {/* All Tech Stack */}
-          <div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 font-semibold mb-2">
-              TECHNOLOGIES
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {project.tech.map((tech, i) => (
-                <span
-                  key={i}
-                  className="text-xs font-medium bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-300 px-3 py-1 rounded-full border border-blue-100 dark:border-blue-500/20"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Highlights */}
-          <div>
-            <p className="text-xs text-gray-500 dark:text-gray-400 font-semibold mb-2">
-              KEY HIGHLIGHTS
-            </p>
-            <ul className="space-y-1.5">
-              {project.highlights.map((highlight, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={isExpanded ? { opacity: 1, x: 0 } : {}}
-                  transition={{
-                    duration: 0.3,
-                    delay: i * 0.05,
-                  }}
-                  className="flex gap-2 text-sm text-gray-600 dark:text-gray-300"
-                >
-                  <span className="text-blue-600 dark:text-blue-500 font-bold flex-shrink-0">
-                    ✓
-                  </span>
-                  <span>{highlight}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-white/10">
+          <div className="flex gap-1.5 flex-shrink-0">
             {project.github && (
-              <motion.a
+              <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex-1 flex items-center justify-center gap-2 bg-gray-900 dark:bg-white text-white dark:text-black py-2.5 rounded-lg font-semibold border border-transparent hover:bg-gray-800 dark:hover:bg-gray-100 transition-all shadow-sm"
+                className="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-colors"
+                aria-label="GitHub Repository"
               >
-                <Github size={16} />
-                GitHub
-              </motion.a>
+                <Github size={14} />
+              </a>
             )}
             {project.live && (
-              <motion.a
+              <a
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="flex-1 flex items-center justify-center gap-2 bg-blue-600 text-white py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-all shadow-md"
+                className="w-8 h-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-colors"
+                aria-label="Live Demo"
               >
-                <ExternalLink size={16} />
-                Live Demo
-              </motion.a>
+                <ArrowUpRight size={16} />
+              </a>
             )}
           </div>
         </div>
-      </motion.div>
+
+        <p className="text-slate-600 leading-relaxed text-[14px] mb-6 flex-grow line-clamp-3">
+          {project.description}
+        </p>
+
+        {/* Tech Badges */}
+        <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-slate-100">
+          {project.tech.slice(0, 4).map((t, i) => (
+            <span
+              key={i}
+              className="px-2 py-1 bg-slate-50 text-slate-600 text-[11px] font-semibold rounded-md border border-slate-200"
+            >
+              {t}
+            </span>
+          ))}
+          {project.tech.length > 4 && (
+            <span className="px-2 py-1 bg-slate-50 text-slate-500 text-[11px] font-semibold rounded-md border border-slate-200">
+              +{project.tech.length - 4}
+            </span>
+          )}
+        </div>
+      </div>
     </motion.div>
   );
 }
 
 export default function Projects() {
-  const [expandedId, setExpandedId] = useState(null);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-50px" });
 
   return (
-    <section
-      id="projects"
-      className="py-32 min-h-[90vh] bg-white dark:bg-[#050505] text-gray-900 dark:text-white scroll-mt-2"
-    >
+    <section id="projects" className="py-24 bg-white" ref={ref}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">Projects</h2>
-          <div className="w-16 h-1 bg-blue-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A curated collection of projects I've built, exploring different technologies and solving real-world problems.
-          </p>
-        </motion.div>
 
-        {/* Projects Stack */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto auto-rows-max">
-          {projects.map((project, idx) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              idx={idx}
-              expandedId={expandedId}
-              setExpandedId={setExpandedId}
-            />
-          ))}
-        </div>
-
-        {/* View More CTA */}
+        {/* Header */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-20"
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Intrigued by more of my work?{" "}
-            <a
-              href="https://github.com/Suryab02"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 dark:text-blue-400 font-semibold hover:underline"
-            >
-              Check my GitHub repository
-            </a>
-          </p>
-          <motion.a
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+              Featured <span className="text-slate-400">Work</span>
+            </h2>
+            <div className="w-12 h-1 bg-blue-600 mt-4 rounded-full"></div>
+          </div>
+          <a
             href="https://github.com/Suryab02"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-white dark:bg-white/5 text-gray-900 dark:text-white border border-gray-200 dark:border-white/10 rounded-lg font-semibold hover:bg-gray-50 dark:hover:bg-white/10 transition-all backdrop-blur-sm shadow-sm dark:shadow-none"
+            className="inline-flex items-center gap-2 text-sm text-slate-500 font-semibold hover:text-blue-600 transition-colors group"
           >
-            <Github size={18} />
-            Explore All Repositories
-          </motion.a>
+            <span>View all on GitHub</span>
+            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          </a>
         </motion.div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project, idx) => (
+            <ProjectCard key={project.id} project={project} idx={idx} />
+          ))}
+        </div>
+
       </div>
     </section>
   );

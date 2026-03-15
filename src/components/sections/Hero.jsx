@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaArrowDown, FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 
 // Framer Motion Variants
@@ -7,165 +7,103 @@ const container = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.15,
     },
   },
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
 };
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] bg-white dark:bg-[#050505] text-gray-900 dark:text-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-[95vh] bg-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20"
     >
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="z-10 max-w-4xl mx-auto text-center mt-12"
+        className="z-10 max-w-4xl mx-auto text-center w-full"
       >
-        {/* Logo Mark */}
-        <motion.div variants={fadeUp} className="flex justify-center mb-10">
-          <img
-            src="/logo.png"
-            alt="Logo"
-            className="w-16 h-16 sm:w-20 sm:h-20 object-contain drop-shadow-xl dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-          />
-        </motion.div>
-
-        {/* Greeting Badge */}
+        {/* Availability Badge */}
         <motion.div
           variants={fadeUp}
-          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/50 dark:bg-white/5 backdrop-blur-sm border border-blue-100 dark:border-white/10 rounded-full text-sm text-blue-600 dark:text-gray-300 mb-8 shadow-sm dark:shadow-none"
+          className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 border border-blue-100/80 rounded-full text-xs font-semibold text-blue-700 tracking-wide mb-8"
         >
-          <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+          <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
           Available for new opportunities
         </motion.div>
 
         {/* Main Heading */}
         <motion.h1
           variants={fadeUp}
-          className="text-5xl sm:text-6xl md:text-8xl font-bold tracking-tight leading-tight mb-6 text-gray-900 dark:text-white"
+          className="text-5xl sm:text-6xl md:text-[5.5rem] font-bold tracking-tight leading-[1.1] text-slate-900 mb-6"
         >
-          Hi, I'm{" "}
-          <span className="bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-600 dark:from-white dark:via-white dark:to-gray-400 bg-clip-text text-transparent">
-            Surya Prabhas
-          </span>
+          Building scalable <br className="hidden sm:block" />
+          <span className="text-slate-400">backend systems</span>
         </motion.h1>
 
-        {/* Role */}
-        <motion.h2
-          variants={fadeUp}
-          className="mt-4 text-2xl sm:text-3xl font-light text-blue-600 dark:text-blue-300 tracking-wide"
-        >
-          Full-Stack Developer
-        </motion.h2>
-
-        {/* Description */}
+        {/* Short Bio */}
         <motion.p
           variants={fadeUp}
-          className="mt-8 text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed"
+          className="mt-6 text-lg sm:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium"
         >
-          I build beautiful, scalable web applications and solve real-world problems.
-          Passionate about clean code, elegant design, and meaningful user experiences.
+          I'm Surya Prabhas Bandaru, a Full-Stack Backend Engineer working at Infor.
+          I design elegant APIs and robust architectures that scale natively.
         </motion.p>
 
-        {/* CTA Button */}
+        {/* CTA Buttons */}
         <motion.div
           variants={fadeUp}
-          className="mt-10 flex items-center justify-center"
+          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <motion.a
+          <a
             href="#projects"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-2 px-10 py-4 bg-gray-900 text-white dark:bg-white dark:text-black rounded-lg font-bold hover:bg-gray-700 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg dark:shadow-none"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 hover:shadow-[0_8px_20px_-6px_rgba(37,99,235,0.4)] transition-all duration-300"
           >
-            View Work
-            <FaArrowRight />
-          </motion.a>
+            View Projects
+            <FaArrowRight className="text-sm" />
+          </a>
+          <a
+            href="mailto:bsprabhas2002@gmail.com"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-slate-700 border border-slate-200 rounded-full font-semibold hover:border-slate-300 hover:bg-slate-50 transition-all duration-300"
+          >
+            Contact Me
+          </a>
         </motion.div>
 
         {/* Social Links */}
         <motion.div
           variants={fadeUp}
-          className="mt-12 flex items-center justify-center gap-6"
+          className="mt-14 flex items-center justify-center gap-8"
         >
-          <motion.a
+          <a
             href="https://github.com/Suryab02"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.1, y: -2 }}
-            className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white transition-colors"
+            className="text-slate-400 hover:text-slate-900 transition-colors duration-200"
+            aria-label="GitHub"
           >
-            <FaGithub size={24} />
-          </motion.a>
-
-          <motion.a
-            href="https://linkedin.com/in/yourprofile"
+            <FaGithub size={22} />
+          </a>
+          <a
+            href="https://linkedin.com/in/bsuryaprabhas"
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.1, y: -2 }}
-            className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white transition-colors"
+            className="text-slate-400 hover:text-[#0A66C2] transition-colors duration-200"
+            aria-label="LinkedIn"
           >
-            <FaLinkedin size={24} />
-          </motion.a>
-
-          <motion.a
-            href="mailto:bsprabhas2002@gmail.com"
-            whileHover={{ scale: 1.1, y: -2 }}
-            className="text-gray-500 hover:text-blue-500 dark:text-gray-400 dark:hover:text-white transition-colors"
-          >
-            <HiMail size={26} />
-          </motion.a>
-        </motion.div>
-
-        {/* Stats */}
-        <motion.div
-          variants={fadeUp}
-          className="mt-12 grid grid-cols-3 gap-6 max-w-lg mx-auto"
-        >
-          <div className="text-center">
-            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">2+</div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">Years Experience</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">10+</div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">Projects Built</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-500">25+</div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">Technologies</div>
-          </div>
+            <FaLinkedin size={22} />
+          </a>
         </motion.div>
       </motion.div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          delay: 1.5,
-          repeat: Infinity,
-          repeatType: "reverse",
-          duration: 1.5,
-        }}
-        className="absolute bottom-8 text-gray-400 dark:text-gray-500"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs uppercase tracking-wider">Scroll</span>
-          <FaArrowDown className="text-xl" />
-        </div>
-      </motion.div>
-
-      {/* Decorative Background Elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-[120px] -z-10"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-500/5 dark:bg-indigo-600/10 rounded-full blur-[120px] -z-10"></div>
+      {/* Decorative Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10" />
     </section>
   );
 }

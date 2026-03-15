@@ -1,5 +1,4 @@
 export default {
-  darkMode: 'class', // ✅ THIS IS REQUIRED
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,7 +6,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: "#cc0000",
+        accent: "#2563eb",
+      },
+      fontFamily: {
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
     },
   },
