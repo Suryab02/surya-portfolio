@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function ThemeToggle() {
     const { theme, toggleTheme } = useTheme();
@@ -11,8 +11,8 @@ export default function ThemeToggle() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             className={`p-2 rounded-full transition-colors ${theme === "dark"
-                    ? "bg-white/10 text-yellow-400 hover:bg-white/20"
-                    : "bg-gray-100 text-purple-600 hover:bg-gray-200"
+                ? "bg-white/10 text-yellow-400 hover:bg-white/20"
+                : "bg-gray-100 text-blue-600 hover:bg-gray-200"
                 }`}
             aria-label="Toggle Theme"
         >

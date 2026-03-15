@@ -8,8 +8,7 @@ const sections = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
-  { id: "contact", label: "Contact" }
+  { id: "experience", label: "Experience" }
 ];
 
 export default function Navbar() {
@@ -28,15 +27,20 @@ export default function Navbar() {
 
   // Track active section
   useEffect(() => {
+    const observerOptions = {
+      rootMargin: "-20% 0px -70% 0px",
+      threshold: 0
+    };
+
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting);
-        if (visible) setActive(visible.target.id);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
       },
-      {
-        rootMargin: "-50% 0px -50% 0px",
-        threshold: 0.3,
-      }
+      observerOptions
     );
 
     sections.forEach((section) => {
@@ -54,7 +58,7 @@ export default function Navbar() {
 
     const element = document.getElementById(sectionId);
     if (element) {
-      const navbarHeight = 64; // Height of navbar (h-16 = 64px)
+      const navbarHeight = 64;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
@@ -71,7 +75,7 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled
-        ? "bg-white/80 dark:bg-[#050505]/80 backdrop-blur-sm border-b border-gray-200 dark:border-white/10"
+        ? "bg-white/95 dark:bg-[#050505]/95 backdrop-blur-md border-b border-gray-100 dark:border-white/5 shadow-sm"
         : "bg-transparent"
         }`}
     >
@@ -81,50 +85,52 @@ export default function Navbar() {
           <motion.a
             href="#hero"
             onClick={(e) => handleNavClick(e, "hero")}
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold tracking-wide uppercase bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-400 dark:to-indigo-500 bg-clip-text text-transparent hover:opacity-80 transition-all"
+            whileHover={{ scale: 1.02 }}
+            className="text-2xl font-black tracking-tighter bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-white dark:to-gray-400 bg-clip-text text-transparent transition-all"
           >
-            Surya
+            SURYA
           </motion.a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {sections.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={(e) => handleNavClick(e, section.id)}
-                className={`relative text-sm font-medium transition-colors duration-200 group ${active === section.id
-                  ? "text-purple-600 dark:text-white font-semibold"
-                  : "text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white"
+                className={`relative text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 group ${active === section.id
+                  ? "text-blue-600 dark:text-white"
+                  : "text-gray-400 dark:text-gray-500 hover:text-gray-900 dark:hover:text-gray-300"
                   }`}
               >
                 {section.label}
 
                 {/* Animated underline */}
                 <span
-                  className={`absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-300 ${active === section.id ? "w-full" : "w-0 group-hover:w-full"
+                  className={`absolute left-0 -bottom-1.5 h-1 bg-blue-600 rounded-full transition-all duration-500 ${active === section.id ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-50"
                     }`}
                 />
               </a>
             ))}
 
             {/* Theme Toggle */}
-            <ThemeToggle />
+            <div className="pl-4 border-l border-gray-100 dark:border-white/10">
+              <ThemeToggle />
+            </div>
           </div>
 
-          {/* Mobile Menu Button & Toggle (Toggle visible on mobile header) */}
+          {/* Mobile Menu Button & Toggle */}
           <div className="flex items-center gap-4 md:hidden">
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+              className="p-2 rounded-xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
-                <HiX className="w-6 h-6 text-gray-900 dark:text-white" />
+                <HiX className="w-5 h-5 text-gray-900 dark:text-white" />
               ) : (
-                <HiMenu className="w-6 h-6 text-gray-900 dark:text-white" />
+                <HiMenu className="w-5 h-5 text-gray-900 dark:text-white" />
               )}
             </button>
           </div>
@@ -139,17 +145,17 @@ export default function Navbar() {
           height: mobileMenuOpen ? "auto" : 0,
         }}
         transition={{ duration: 0.3 }}
-        className="md:hidden overflow-hidden bg-white dark:bg-[#0a0a0a] border-t border-gray-200 dark:border-white/10"
+        className="md:hidden overflow-hidden bg-white dark:bg-[#070707] border-t border-gray-100 dark:border-white/5 shadow-2xl"
       >
-        <div className="px-4 py-4 space-y-3">
+        <div className="px-6 py-8 space-y-6">
           {sections.map((section) => (
             <a
               key={section.id}
               href={`#${section.id}`}
               onClick={(e) => handleNavClick(e, section.id)}
-              className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${active === section.id
-                ? "bg-purple-100 dark:bg-purple-600 text-purple-700 dark:text-white"
-                : "text-gray-700 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/10"
+              className={`block text-sm font-bold uppercase tracking-[0.2em] transition-all ${active === section.id
+                ? "text-blue-600 dark:text-white"
+                : "text-gray-400 dark:text-gray-500"
                 }`}
             >
               {section.label}

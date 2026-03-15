@@ -1,11 +1,34 @@
 import realestate from "../assets/realestate.png";
 import adoptme from "../assets/adoptme.png";
 import emergency from "../assets/PSEVA.png";
-import cityinsights from "../assets/cityinsights.png"
+import cityinsights from "../assets/cityinsights.png";
+import huntdesk from "../assets/huntdesk.png";
 
 const projects = [
-   {
+  {
     id: 1,
+    title: "HuntDesk - AI Job Application Tracker",
+    shortTitle: "HuntDesk",
+    tech: ["React", "FastAPI", "Python", "PostgreSQL", "Google Gemini AI", "JWT"],
+    image: huntdesk,
+    github: "https://github.com/Suryab02/huntdesk",
+    live: "https://huntdesk.vercel.app/",
+    description: "Full-stack AI-powered job application tracker. Upload your resume and Gemini AI auto-extracts your skills. Every job application gets an AI match score. Track applications on a kanban board with hunt analytics.",
+    highlights: [
+      "AI resume parsing with Google Gemini",
+      "AI match scoring for every job application",
+      "Drag and drop kanban board",
+      "Hunt analytics with response rate tracking",
+      "Skill gap analysis across applications",
+      "JWT-based secure authentication",
+      "3-step AI onboarding flow",
+      "FastAPI backend deployed on Railway",
+      "PostgreSQL database on Railway",
+      "React frontend deployed on Vercel"
+    ]
+  },
+  {
+    id: 2,
     title: "CityEatsInsight - AI Food City Explorer",
     shortTitle: "CityEatsInsight",
     tech: ["React", "Google Gemini AI", "FastAPI", "Python", "TailwindCSS"],
@@ -27,7 +50,7 @@ const projects = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     title: "Emergency Services Platform",
     shortTitle: "PranarakshaSeva",
     tech: ["React", "Node.js", "Express", "MongoDB", "JWT", "Geolocation"],
@@ -44,7 +67,7 @@ const projects = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     title: "Pet Adoption Portal",
     shortTitle: "AdoptMe",
     tech: ["React", "Tailwind CSS", "REST APIs", "Responsive Design"],
@@ -61,7 +84,7 @@ const projects = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     title: "Real Estate Explorer",
     shortTitle: "AU Aspire",
     tech: ["HTML5", "CSS3", "JavaScript", "Firebase", "Firestore", "WhatsApp API"],
