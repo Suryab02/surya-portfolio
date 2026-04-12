@@ -1,109 +1,95 @@
 import { motion } from "framer-motion";
-import { FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa";
-import { HiMail } from "react-icons/hi";
+import { FaArrowRight } from "react-icons/fa";
 
-// Framer Motion Variants
 const container = {
-  hidden: {},
+  hidden: { opacity: 0 },
   show: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-    },
-  },
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
 };
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
 };
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[95vh] bg-white flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20"
+      className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 bg-white"
     >
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="z-10 max-w-4xl mx-auto text-center w-full"
+        className="z-10 max-w-6xl mx-auto text-center w-full"
       >
-        {/* Availability Badge */}
+        {/* Modern Indicator */}
         <motion.div
           variants={fadeUp}
-          className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 border border-blue-100/80 rounded-full text-xs font-semibold text-blue-700 tracking-wide mb-8"
+          className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-slate-200 bg-white shadow-sm mb-12"
         >
-          <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(59,130,246,0.8)]"></span>
-          Available for new opportunities
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-500">
+             Software Engineer @ Infor
+          </span>
         </motion.div>
 
-        {/* Main Heading */}
+        {/* Master Headline */}
         <motion.h1
           variants={fadeUp}
-          className="text-5xl sm:text-6xl md:text-[5.5rem] font-bold tracking-tight leading-[1.1] text-slate-900 mb-6"
+          className="text-7xl sm:text-9xl md:text-[11rem] font-black tracking-tighter leading-[0.85] text-slate-950 mb-10"
         >
-          Building scalable <br className="hidden sm:block" />
-          <span className="text-slate-400">backend systems</span>
+          SURYA <br className="hidden sm:block" />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-blue-900/40 to-slate-900">PRABHAS</span>
         </motion.h1>
 
-        {/* Short Bio */}
+        {/* Professional Presence */}
         <motion.p
           variants={fadeUp}
-          className="mt-6 text-lg sm:text-xl text-slate-500 max-w-2xl mx-auto leading-relaxed font-medium"
+          className="text-lg sm:text-2xl text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium mb-16 tracking-tight"
         >
-          I'm Surya Prabhas Bandaru, a Full-Stack Backend Engineer working at Infor.
-          I design elegant APIs and robust architectures that scale natively.
+          Engineering robust backend architectures and enterprise SaaS ecosystems.
+          Solving complex technical challenges with precision and scale.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* Cinematic Interactions */}
         <motion.div
           variants={fadeUp}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <a
             href="#projects"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 hover:shadow-[0_8px_20px_-6px_rgba(37,99,235,0.4)] transition-all duration-300"
+            className="group relative px-12 py-5 bg-slate-950 text-white rounded-full font-bold text-lg hover:shadow-[0_20px_40px_rgba(0,0,0,0.15)] hover:scale-[1.02] transition-all duration-300"
           >
-            View Projects
-            <FaArrowRight className="text-sm" />
+            <span className="relative z-10 flex items-center gap-3">
+              Explore Projects
+              <FaArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
+            </span>
           </a>
           <a
             href="mailto:bsprabhas2002@gmail.com"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-slate-700 border border-slate-200 rounded-full font-semibold hover:border-slate-300 hover:bg-slate-50 transition-all duration-300"
+            className="px-12 py-5 bg-white border border-slate-200 text-slate-950 rounded-full font-bold text-lg hover:bg-slate-50 hover:border-slate-300 transition-all duration-300 shadow-sm"
           >
-            Contact Me
-          </a>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div
-          variants={fadeUp}
-          className="mt-14 flex items-center justify-center gap-8"
-        >
-          <a
-            href="https://github.com/Suryab02"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-slate-400 hover:text-slate-900 transition-colors duration-200"
-            aria-label="GitHub"
-          >
-            <FaGithub size={22} />
-          </a>
-          <a
-            href="https://linkedin.com/in/bsuryaprabhas"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-slate-400 hover:text-[#0A66C2] transition-colors duration-200"
-            aria-label="LinkedIn"
-          >
-            <FaLinkedin size={22} />
+            Get in Touch
           </a>
         </motion.div>
       </motion.div>
 
-      {/* Decorative Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10" />
+      {/* Modern Atmosphere */}
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/pinstriped-suit.png')] opacity-[0.03] pointer-events-none" />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3">
+        <div className="w-px h-16 bg-gradient-to-b from-slate-200 to-transparent" />
+        <span className="text-[9px] uppercase tracking-[0.4em] font-black text-slate-400">Scroll to Dive</span>
+      </div>
     </section>
   );
 }

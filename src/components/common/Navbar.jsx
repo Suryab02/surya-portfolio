@@ -74,7 +74,7 @@ export default function Navbar() {
       className={clsx(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         scrolled
-          ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.03)]"
+          ? "bg-slate-900/40 backdrop-blur-xl border-b border-white/5 shadow-2xl"
           : "bg-transparent"
       )}
     >
@@ -84,9 +84,12 @@ export default function Navbar() {
             href="#hero"
             onClick={(e) => handleNavClick(e, "hero")}
             whileHover={{ scale: 1.02 }}
-            className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2"
+            className={clsx(
+              "text-xl font-bold tracking-tight flex items-center gap-2",
+              scrolled ? "text-white" : "text-slate-900"
+            )}
           >
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm">
+            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-blue-500/20">
               SP
             </div>
             Surya Prabhas
@@ -99,10 +102,10 @@ export default function Navbar() {
                 href={`#${section.id}`}
                 onClick={(e) => handleNavClick(e, section.id)}
                 className={clsx(
-                  "relative text-[13px] font-semibold tracking-wide transition-colors duration-200",
+                  "relative text-[13px] font-bold tracking-wider transition-colors duration-200 uppercase",
                   active === section.id
-                    ? "text-blue-600"
-                    : "text-slate-500 hover:text-slate-900"
+                    ? "text-blue-400"
+                    : scrolled ? "text-slate-300 hover:text-white" : "text-slate-500 hover:text-slate-900"
                 )}
               >
                 {section.label}
@@ -113,11 +116,17 @@ export default function Navbar() {
               href="mailto:bsprabhas2002@gmail.com"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="ml-4 px-5 py-2.5 text-[13px] font-semibold text-white bg-slate-900 rounded-full hover:bg-slate-800 transition-colors shadow-sm"
+              className={clsx(
+                "ml-4 px-6 py-2.5 text-[11px] font-black uppercase tracking-widest rounded-full transition-all shadow-lg",
+                scrolled
+                  ? "bg-white text-slate-950 hover:bg-slate-200"
+                  : "bg-slate-950 text-white hover:bg-blue-600"
+              )}
             >
               Contact Me
             </motion.a>
           </div>
+
 
           <div className="flex items-center md:hidden">
             <button

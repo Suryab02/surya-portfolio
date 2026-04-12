@@ -13,7 +13,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-24 bg-white" ref={ref}>
+    <section id="about" className="py-24 bg-transparent" ref={ref}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -23,10 +23,10 @@ export default function About() {
           animate={inView ? "visible" : "hidden"}
           className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
             About Me
           </h2>
-          <div className="w-12 h-1 bg-blue-600 mt-4 rounded-full"></div>
+          <div className="w-16 h-1 bg-blue-500 mt-4 rounded-full"></div>
         </motion.div>
 
         {/* Content */}
@@ -35,16 +35,16 @@ export default function About() {
             variants={fadeUpVariant}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="space-y-6 text-slate-600 leading-relaxed text-[15px]"
+            className="space-y-6 text-slate-200 leading-relaxed text-lg"
           >
             <p>
-              I am a dedicated <strong className="text-slate-900 font-semibold">Software Engineer</strong> currently at Infor, specializing in building high-performance <strong className="text-slate-900 font-semibold">enterprise SaaS applications</strong>. I thrive on architecting scalable backend systems and streamlining complex multi-tenant workflows.
+              I am a <strong className="text-white font-bold">Software Engineer</strong> at Infor, architecting high-performance <strong className="text-white font-bold">enterprise SaaS applications</strong>. I focus on building scalable backend systems and streamlining complex multi-tenant workflows.
             </p>
             <p>
-              My expertise spans across the <strong className="text-slate-900 font-semibold">.NET ecosystem (ASP.NET Core, C#, SQL Server)</strong> and <strong className="text-slate-900 font-semibold">Java (Spring Boot)</strong>, with a strong focus on building resilient RESTful APIs and optimizing data-heavy infrastructures. I am passionate about infrastructure, clean architecture, and integrating AI to solve real-world engineering challenges.
+              My expertise covers the <strong className="text-white font-bold">.NET ecosystem</strong> and <strong className="text-white font-bold">Java (Spring Boot)</strong>, with a heavy emphasis on building resilient RESTful APIs and optimizing data infrastructures.
             </p>
             <p>
-              With experience at both Infor and Tech Mahindra, I've developed a robust foundation in full-stack development—from migrating legacy systems to modern <strong className="text-slate-900 font-semibold">Angular</strong> frontends to designing real-time emergency platforms. I'm a builder who values long-term maintainability and system resilience.
+              With a foundation in full-stack development, I value long-term maintainability and system resilience. I'm a builder who loves solving real-world engineering challenges at scale.
             </p>
           </motion.div>
 
@@ -58,25 +58,25 @@ export default function About() {
             className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-4"
           >
             {[
-              { icon: <Database className="w-5 h-5 text-blue-600" />, title: "Backend Architecture", desc: "Building resilient microservices and fast monolithic APIs." },
-              { icon: <Layers className="w-5 h-5 text-blue-600" />, title: "Full-Stack Integrations", desc: "Connecting rich, interactive UIs with data-heavy backend resources." },
-              { icon: <Code2 className="w-5 h-5 text-blue-600" />, title: "Clean Code", desc: "Writing legible, testable, and maintainable software implementations." },
+              { icon: <Database className="w-5 h-5 text-blue-400" />, title: "Backend Architecture", desc: "Building resilient microservices and fast monolithic APIs." },
+              { icon: <Layers className="w-5 h-5 text-blue-400" />, title: "Full-Stack Tech", desc: "Connecting rich, interactive UIs with data-heavy backend resources." },
+              { icon: <Code2 className="w-5 h-5 text-blue-400" />, title: "Clean Code", desc: "Writing legible, testable, and maintainable software implementations." },
               {
-                icon: <div className="text-xs font-bold text-blue-600">B.Tech</div>,
+                icon: <div className="text-xs font-bold text-blue-400">B.Tech</div>,
                 title: "Education",
-                desc: "Computer Science & Engineering, Presidency University (CGPA: 8.5/10)"
+                desc: "Computer Science & Engineering, Presidency University (8.5/10)"
               }
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="p-5 border border-slate-100 rounded-2xl bg-slate-50/50 hover:bg-white hover:border-slate-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 flex gap-4 items-start"
+                className="p-6 border border-white/10 rounded-3xl bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 transition-all duration-500 flex gap-5 items-start"
               >
-                <div className="mt-1 flex-shrink-0 w-10 h-10 bg-blue-100/50 rounded-xl flex items-center justify-center">
+                <div className="mt-1 flex-shrink-0 w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className="text-slate-900 font-semibold mb-1">{item.title}</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 className="text-white font-bold text-lg mb-1">{item.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -85,6 +85,8 @@ export default function About() {
 
       </div>
     </section>
+
+
 
   );
 }

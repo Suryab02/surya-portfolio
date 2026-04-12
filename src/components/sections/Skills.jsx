@@ -14,7 +14,7 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-24 bg-slate-50" ref={ref}>
+    <section id="skills" className="py-24 bg-transparent" ref={ref}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
@@ -24,11 +24,11 @@ export default function Skills() {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
             Technical Arsenal
           </h2>
-          <div className="w-12 h-1 bg-blue-600 mt-4 rounded-full"></div>
-          <p className="mt-4 text-slate-500 max-w-2xl font-medium">
+          <div className="w-16 h-1 bg-blue-500 mt-4 rounded-full"></div>
+          <p className="mt-6 text-slate-400 max-w-2xl font-medium text-lg">
             A comprehensive overview of the languages, frameworks, and tools I use to build scalable software.
           </p>
         </motion.div>
@@ -41,10 +41,10 @@ export default function Skills() {
               initial={{ opacity: 0, y: 40 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 * idx, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-white rounded-3xl p-8 border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:border-slate-200 transition-all duration-300"
+              className="bg-white/5 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl hover:border-blue-500/50 transition-all duration-500"
             >
-              <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+              <h3 className="text-xl font-black text-white mb-8 flex items-center gap-3">
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                 {category}
               </h3>
 
@@ -52,10 +52,10 @@ export default function Skills() {
                 {items.map((skill) => (
                   <div
                     key={skill.id}
-                    className="inline-flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-100 rounded-lg hover:bg-slate-100 hover:border-slate-200 transition-colors group"
+                    className="inline-flex items-center gap-2 px-3 py-2 bg-white/5 border border-white/10 rounded-xl hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300 group cursor-default"
                   >
-                    <span className="text-lg grayscale group-hover:grayscale-0 transition-all duration-300">{skill.icon}</span>
-                    <span className="text-sm font-semibold text-slate-700">{skill.name}</span>
+                    <span className="text-lg opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all">{skill.icon}</span>
+                    <span className="text-sm font-bold text-slate-300 group-hover:text-white">{skill.name}</span>
                   </div>
                 ))}
               </div>
@@ -65,5 +65,6 @@ export default function Skills() {
 
       </div>
     </section>
+
   );
 }
