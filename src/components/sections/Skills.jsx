@@ -8,9 +8,9 @@ export default function Skills() {
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
   const categories = {
-    Frontend: skills.filter(s => s.category === "Frontend"),
-    Backend: skills.filter(s => s.category === "Backend"),
-    "Cloud & Tools": skills.filter(s => s.category !== "Frontend" && s.category !== "Backend")
+    "Languages & Backend": skills.filter(s => s.category === "Languages" || s.category === "Backend"),
+    "Frontend & Database": skills.filter(s => s.category === "Frontend" || s.category === "Database"),
+    "Cloud, DevOps & Tools": skills.filter(s => s.category === "Cloud & DevOps" || s.category === "Tools")
   };
 
   return (

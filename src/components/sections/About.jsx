@@ -38,13 +38,13 @@ export default function About() {
             className="space-y-6 text-slate-600 leading-relaxed text-[15px]"
           >
             <p>
-              I am a dedicated <strong className="text-slate-900 font-semibold">Full-Stack Backend Engineer</strong> currently working at Infor. I thrive on architecting high-performance server-side solutions and streamlining complex enterprise systems.
+              I am a dedicated <strong className="text-slate-900 font-semibold">Software Engineer</strong> currently at Infor, specializing in building high-performance <strong className="text-slate-900 font-semibold">enterprise SaaS applications</strong>. I thrive on architecting scalable backend systems and streamlining complex multi-tenant workflows.
             </p>
             <p>
-              My journey into software development is driven by a deep fascination with infrastructure and architecture. Whether it's crafting scalable RESTful APIs, optimizing heavy database queries, or integrating cutting-edge AI features, I always focus on long-term maintainability and system resilience.
+              My expertise spans across the <strong className="text-slate-900 font-semibold">.NET ecosystem (ASP.NET Core, C#, SQL Server)</strong> and <strong className="text-slate-900 font-semibold">Java (Spring Boot)</strong>, with a strong focus on building resilient RESTful APIs and optimizing data-heavy infrastructures. I am passionate about infrastructure, clean architecture, and integrating AI to solve real-world engineering challenges.
             </p>
             <p>
-              Prior to Infor, I engineered robust platforms at Tech Mahindra, cementing a foundation in C#, Python, React, and various database ecosystems (PostgreSQL, MongoDB). I am a builder at heart—constantly iterating and learning.
+              With experience at both Infor and Tech Mahindra, I've developed a robust foundation in full-stack development—from migrating legacy systems to modern <strong className="text-slate-900 font-semibold">Angular</strong> frontends to designing real-time emergency platforms. I'm a builder who values long-term maintainability and system resilience.
             </p>
           </motion.div>
 
@@ -60,7 +60,12 @@ export default function About() {
             {[
               { icon: <Database className="w-5 h-5 text-blue-600" />, title: "Backend Architecture", desc: "Building resilient microservices and fast monolithic APIs." },
               { icon: <Layers className="w-5 h-5 text-blue-600" />, title: "Full-Stack Integrations", desc: "Connecting rich, interactive UIs with data-heavy backend resources." },
-              { icon: <Code2 className="w-5 h-5 text-blue-600" />, title: "Clean Code", desc: "Writing legible, testable, and maintainable software implementations." }
+              { icon: <Code2 className="w-5 h-5 text-blue-600" />, title: "Clean Code", desc: "Writing legible, testable, and maintainable software implementations." },
+              {
+                icon: <div className="text-xs font-bold text-blue-600">B.Tech</div>,
+                title: "Education",
+                desc: "Computer Science & Engineering, Presidency University (CGPA: 8.5/10)"
+              }
             ].map((item, idx) => (
               <div
                 key={idx}
@@ -80,5 +85,6 @@ export default function About() {
 
       </div>
     </section>
+
   );
 }

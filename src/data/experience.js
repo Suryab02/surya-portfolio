@@ -1,29 +1,43 @@
 const experience = [
   {
     company: "Infor",
-    role: "Associate Software Engineer",
+    role: "Software Engineer",
     year: "Mar 2024 – Present",
     logo: "https://cdn.brandfetch.io/idsRd-6zJL/idjZxRCr3i.svg?c=1bxid64Mup7aczewSAYMX&t=1646244642836",
     details: [
-      "Migrated an internal regression testing tool from ASP.NET to Angular, developing a modern web client for remote machine control and workflow automation across multiple instances and test scripts.",
-      "Worked on R&D development team for OPTIVA, an Infor product for process lifecycle management that handles product lifecycles from formulation to labeling.",
-      "Enhanced product performance and usability by resolving critical, major, and blocker-level bugs and implementing improvements. Developed widgets that provide simplified information access to increase user productivity.",
-      "Worked on full-stack solutions C# for backend , ASP.NET for frontend and Angular for widget development. Optimized database queries to improve response times and provide users with faster data access.",
-      "Managed 50+ ServiceNow incidents monthly across On-Premise, ST, and MT environments. Prioritized critical issues to minimize business disruption and ensure rapid user support.",
-      "Collaborated closely with the R&D team to implement robust features, maintain platform reliability, and deliver production-ready solutions."
+      "Developed backend features using C# and .NET Core for an enterprise SaaS application with multi-tenant support.",
+      "Designed and implemented RESTful APIs with pagination, filtering, validation, and structured error handling.",
+      "Engineered a bulk data upload system to process 10,000+ records from Excel/XML files with validation and failure handling.",
+      "Developed file processing workflows for Excel, XML, and PDF parsing; integrated GenAI for intelligent extraction.",
+      "Optimized complex SQL and Oracle queries using joins, indexing, and execution plan analysis, improving performance.",
+      "Implemented JWT-based authentication and role-based access control (RBAC) for secure access across modules.",
+      "Configured logging and monitoring using trace logs and Event Viewer for production debugging and analysis.",
+      "Migrated a legacy ASP.NET (ASPX) QA regression tool to a modern Angular frontend, improving maintainability."
     ],
   },
   {
-    company: "TechMahindra",
+    company: "Tech Mahindra",
     role: "Associate Software Engineer",
-    year: "Sept 2023 – Feb 2024",
+    year: "Feb 2023 – Feb 2024",
     logo: "https://www.opentext.com/assets/images/partners/tech-mahindra-logo-416x278.png",
     details: [
-      "Assisted in building REST APIs using Spring Boot and integrated backend business logic with frontend services.",
-      "Designed dynamic UI using JSP with form validation and established connectivity to Java-based backend services.",
-      "Participated actively in Agile ceremonies and collaborated with team members to align development initiatives with business requirements.",
-      "Debugged and improved legacy enterprise Java applications for better performance and maintainability.",
-      "PranRakshakSeva Project: Designed and developed a prototype application for blood bank availability, doctor scheduling, and ambulance tracking. The project won 1st place in the TechMahindra innovation drive and was published in Novyi Mir Research Journal (2023)."
+      "Developed backend APIs using Java Spring Boot for notification and booking management modules.",
+      "Worked on bug fixes, performance optimizations, and feature enhancements in production applications.",
+      "Collaborated with team members on debugging, unit testing, and deployment activities.",
+      "Gained experience in REST API design, database integration, and backend system architecture."
+    ],
+  },
+  {
+    company: "Tech Mahindra",
+    role: "Software Engineer Intern",
+    year: "Aug 2022 – Feb 2023",
+    logo: "https://www.opentext.com/assets/images/partners/tech-mahindra-logo-416x278.png",
+    details: [
+      "Developed PranarakshaSeva, a real-time emergency response platform using React, Node.js, Express, and MongoDB.",
+      "Built REST APIs for authentication, user management, and real-time GPS location tracking.",
+      "Implemented JWT-based authentication and secure API access.",
+      "Designed MongoDB database schema for real-time data storage.",
+      "Project won 1st place in Tech Mahindra Innovation Competition and research paper was published."
     ],
   }
 ];

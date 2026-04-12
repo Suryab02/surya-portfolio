@@ -1,215 +1,217 @@
-// Skills Data - Organized into 5 Main Categories
-
+// Skills Data - Organized into categories
 const skills = [
-  // Frontend Development
+  // Languages
   {
     id: 1,
-    name: "HTML5",
-    icon: "🌐",
-    category: "Frontend",
+    name: "C#",
+    icon: "🎯",
+    category: "Languages",
     proficiency: "Advanced",
-    description: "Semantic markup, accessibility, SEO optimization"
+    description: "Enterprise backend development, .NET Core, LINQ"
   },
   {
     id: 2,
-    name: "CSS3",
-    icon: "🎨",
-    category: "Frontend",
+    name: "JavaScript",
+    icon: "⚡",
+    category: "Languages",
     proficiency: "Advanced",
-    description: "Flexbox, Grid, Animations, Responsive Design"
+    description: "ES6+, Async/Await, DOM Manipulation, Node.js"
   },
   {
     id: 3,
-    name: "JavaScript",
-    icon: "⚡",
-    category: "Frontend",
+    name: "SQL",
+    icon: "📊",
+    category: "Languages",
     proficiency: "Advanced",
-    description: "ES6+, Async/Await, DOM Manipulation, Event Handling"
+    description: "Query Optimization, Complex Joins, Procedural SQL"
   },
   {
     id: 4,
-    name: "TypeScript",
-    icon: "📘",
-    category: "Frontend",
+    name: "Python",
+    icon: "🐍",
+    category: "Languages",
     proficiency: "Intermediate",
-    description: "Type Safety, Interfaces, Generics, OOP Concepts"
-  },
-  {
-    id: 5,
-    name: "React",
-    icon: "⚛️",
-    category: "Frontend",
-    proficiency: "Advanced",
-    description: "Hooks, Context API, State Management, Component Design"
-  },
-  {
-    id: 6,
-    name: "Angular",
-    icon: "🅰️",
-    category: "Frontend",
-    proficiency: "Intermediate",
-    description: "TypeScript, RxJS, Dependency Injection, Services"
-  },
-  {
-    id: 7,
-    name: "Tailwind CSS",
-    icon: "💨",
-    category: "Frontend",
-    proficiency: "Advanced",
-    description: "Utility-first CSS, Custom Configuration, Responsive Design"
-  },
-  {
-    id: 8,
-    name: "Bootstrap",
-    icon: "📦",
-    category: "Frontend",
-    proficiency: "Intermediate",
-    description: "Grid System, Components, Responsive Framework"
+    description: "Scripting, FastAPI, AI Integration (Basics)"
   },
 
   // Backend Development
   {
-    id: 9,
-    name: "Node.js",
-    icon: "🌲",
-    category: "Backend",
-    proficiency: "Advanced",
-    description: "Express.js, Server Architecture, Middleware, REST APIs"
-  },
-  {
-    id: 10,
-    name: ".NET Core",
+    id: 5,
+    name: "ASP.NET Core",
     icon: "🧩",
     category: "Backend",
     proficiency: "Advanced",
-    description: "C#, ASP.NET, Entity Framework, MVC Architecture"
+    description: "Web API, Dependency Injection, Middleware, Microservices"
   },
   {
-    id: 11,
-    name: "Spring Boot",
+    id: 6,
+    name: "ASP.NET MVC",
+    icon: "🏗️",
+    category: "Backend",
+    proficiency: "Advanced",
+    description: "Pattern-based development, Razor, Area management"
+  },
+  {
+    id: 7,
+    name: "Entity Framework",
+    icon: "🏛️",
+    category: "Backend",
+    proficiency: "Advanced",
+    description: "ORM, Code-First, Migrations, Performance Tuning"
+  },
+  {
+    id: 8,
+    name: "Microservices",
+    icon: "☁️",
+    category: "Backend",
+    proficiency: "Intermediate",
+    description: "Distributed systems, Event-driven architecture"
+  },
+  {
+    id: 9,
+    name: "Java Spring Boot",
     icon: "🌱",
     category: "Backend",
     proficiency: "Intermediate",
-    description: "Java, REST APIs, Dependency Injection, Security"
+    description: "REST APIs, Spring Security, Dependency Injection"
+  },
+
+  // Frontend Development
+  {
+    id: 10,
+    name: "Angular",
+    icon: "🅰️",
+    category: "Frontend",
+    proficiency: "Intermediate",
+    description: "TypeScript, RxJS, Components, Services"
+  },
+  {
+    id: 11,
+    name: "React",
+    icon: "⚛️",
+    category: "Frontend",
+    proficiency: "Advanced",
+    description: "Hooks, Redux Toolkit, Context API, Tailwind"
   },
   {
     id: 12,
-    name: "FastAPI",
-    icon: "⚙️",
-    category: "Backend",
-    proficiency: "Intermediate",
-    description: "Python, Async APIs, Type Validation, Auto Documentation"
+    name: "Tailwind CSS",
+    icon: "💨",
+    category: "Frontend",
+    proficiency: "Advanced",
+    description: "Utility-first design, Responsive interfaces"
   },
   {
     id: 13,
-    name: "Python",
-    icon: "🐍",
-    category: "Backend",
-    proficiency: "Intermediate",
-    description: "Data Processing, Scripting, API Development"
+    name: "HTML/CSS/jQuery",
+    icon: "🌐",
+    category: "Frontend",
+    proficiency: "Advanced",
+    description: "Semantic UI, AJAX, DOM Manipulation"
   },
+
+  // Databases
   {
     id: 14,
-    name: "Express.js",
-    icon: "📱",
-    category: "Backend",
+    name: "SQL Server",
+    icon: "💾",
+    category: "Database",
     proficiency: "Advanced",
-    description: "Middleware, Routing, Error Handling, Authentication"
+    description: "Stored Procedures, Indexing, Query Tuning"
   },
   {
     id: 15,
-    name: "JSP",
-    icon: "📝",
-    category: "Backend",
+    name: "Oracle",
+    icon: "🏮",
+    category: "Database",
     proficiency: "Intermediate",
-    description: "Java Server Pages, Dynamic Web Content, MVC"
+    description: "Relational database management, PL/SQL"
   },
-
-  // Database
   {
     id: 16,
-    name: "MongoDB",
-    icon: "🍃",
-    category: "Database",
-    proficiency: "Advanced",
-    description: "NoSQL, CRUD Operations, Aggregation, Indexing"
-  },
-  {
-    id: 17,
     name: "MySQL",
     icon: "🐬",
     category: "Database",
     proficiency: "Advanced",
-    description: "SQL, Query Optimization, Normalization, Joins"
+    description: "Schema design, Query optimization"
   },
   {
-    id: 18,
-    name: "Firebase",
-    icon: "🔥",
+    id: 17,
+    name: "MongoDB",
+    icon: "🍃",
     category: "Database",
     proficiency: "Intermediate",
-    description: "Firestore, Real-time Database, Authentication, Hosting"
+    description: "NoSQL, Document-based storage, Aggregation"
   },
 
   // Cloud & DevOps
   {
-    id: 19,
+    id: 18,
     name: "AWS",
     icon: "☁️",
     category: "Cloud & DevOps",
     proficiency: "Intermediate",
-    description: "EC2, S3, Lambda, RDS, CloudFormation, IAM"
+    description: "EC2, S3, RDS, Lambda, Basic Infrastructure"
   },
   {
-    id: 21,
+    id: 19,
     name: "Docker",
     icon: "🐳",
     category: "Cloud & DevOps",
     proficiency: "Intermediate",
-    description: "Containerization, Docker Compose, Image Management"
+    description: "Containerization, Image management"
   },
   {
-    id: 22,
-    name: "Vercel",
-    icon: "⬜",
+    id: 20,
+    name: "CI/CD",
+    icon: "🚀",
     category: "Cloud & DevOps",
-    proficiency: "Advanced",
-    description: "Deployment, CI/CD, Edge Functions, Environment Variables"
+    proficiency: "Intermediate",
+    description: "Automated pipelines, GitHub Actions"
   },
   {
-    id: 23,
+    id: 21,
     name: "Git",
     icon: "🔧",
     category: "Cloud & DevOps",
     proficiency: "Advanced",
-    description: "Version Control, Branching, Merging, GitHub/GitLab"
+    description: "Version control, Branching strategies"
   },
 
-  // Tools & Libraries
+  // Tools
+  {
+    id: 22,
+    name: "Postman/Bruno",
+    icon: "📡",
+    category: "Tools",
+    proficiency: "Advanced",
+    description: "API Testing, Automated documentation"
+  },
+  {
+    id: 23,
+    name: "SSIS/SSRS",
+    icon: "📈",
+    category: "Tools",
+    proficiency: "Intermediate",
+    description: "ETL Processes, Data reporting, Analytics"
+  },
   {
     id: 24,
-    name: "Hibernate",
-    icon: "🏛️",
-    category: "Tools & Libraries",
+    name: "GenAI/Gemini",
+    icon: "✨",
+    category: "Tools",
     proficiency: "Intermediate",
-    description: "ORM, Mapping, Query Language, Lazy Loading"
+    description: "Intelligent data extraction, AI integration"
   },
   {
     id: 25,
-    name: "Axios",
-    icon: "📡",
-    category: "Tools & Libraries",
+    name: "Jira/GitHub",
+    icon: "📋",
+    category: "Tools",
     proficiency: "Advanced",
-    description: "HTTP Client, Interceptors, Error Handling, Promises"
-  },
-  {
-    id: 26,
-    name: "Framer Motion",
-    icon: "✨",
-    category: "Tools & Libraries",
-    proficiency: "Intermediate",
-    description: "Animations, Gestures, Transitions, Interactive UI"
-  },
+    description: "Agile management, Issue tracking, Collaboration"
+  }
 ];
 
 export default skills;
+
