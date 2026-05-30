@@ -8,65 +8,72 @@ export const personalInfo = {
   github: "https://github.com/Suryab02",
   linkedin: "https://linkedin.com/in/suryaprabhas",
   tagline:
-    "Building enterprise-grade backend services, RESTful APIs, and AI-powered workflows.",
+    "Engineering scalable backend services, robust APIs, and intelligent AI-driven workflows.",
   summary: [
-    "Full-Stack Software Engineer with 2+ years of full-time experience building enterprise-grade backend services, RESTful APIs, and AI-powered workflows using C#, ASP.NET Core, Angular, and Microsoft SQL Server.",
-    "Proven track record delivering scalable features for multi-tenant SaaS platforms serving thousands of enterprise users, with hands-on experience in JWT/RBAC security, SQL performance tuning, and GenAI integrations.",
-    "Experienced in Agile/Scrum delivery, code reviews, technical design documentation, and direct collaboration with US-based partner teams.",
+    "I am a Full-Stack Software Engineer with over 2 years of experience architecting and delivering enterprise-grade backend services, RESTful APIs, and AI-integrated workflows. My technical foundation spans C#, ASP.NET Core, Angular, and Microsoft SQL Server.",
+    "My focus is on driving measurable impact. I have a proven track record of shipping highly scalable features for multi-tenant SaaS platforms that serve thousands of enterprise users. My deep expertise spans JWT/RBAC security architectures, advanced SQL performance tuning, and integrating cutting-edge Generative AI pipelines.",
+    "Thriving in fast-paced Agile environments, I collaborate closely with global partner teams to ensure rigorous code quality, comprehensive technical design, and seamless CI/CD deployments.",
   ],
 };
 
 export const skills = [
   {
     category: "Languages",
+    icon: "code",
     items: ["C#", "JavaScript", "Java", "SQL"],
   },
   {
     category: "Backend",
+    icon: "server",
     items: [
       "ASP.NET Core",
       "Web API",
-      "Entity Framework Core",
+      "Entity Framework",
       "Microservices",
-      "REST & SOAP",
+      "REST/SOAP",
     ],
   },
   {
     category: "Frontend",
+    icon: "layout",
     items: ["Angular", "React", "TypeScript", "RxJS", "Tailwind CSS"],
   },
   {
     category: "Databases",
+    icon: "database",
     items: ["SQL Server", "MySQL", "Stored Procedures", "Query Optimization"],
   },
   {
     category: "Testing",
+    icon: "shield-check",
     items: ["TDD", "xUnit", "Selenium", "Playwright", "JWT/RBAC"],
   },
   {
-    category: "AI",
-    items: ["Claude", "Amazon Q", "Kiro", "Gemini AI"],
+    category: "AI & Data",
+    icon: "sparkles",
+    items: ["Claude", "Amazon Q", "Gemini AI", "Prompt Engineering"],
   },
   {
-    category: "Tools",
-    items: ["Git", "AWS", "CI/CD", "Jira", "Postman"],
+    category: "DevOps",
+    icon: "terminal",
+    items: ["Git", "AWS", "CI/CD", "Docker", "Postman"],
   },
 ];
 
 export const experience = [
   {
     role: "Software Engineer",
-    company: "Infor India Pvt. Ltd.",
+    company: "Infor",
     location: "Hyderabad",
     project: "Infor Optiva",
     period: "Mar 2024 – Present",
     highlights: [
-      "Developed enterprise backend services using C#, ASP.NET Core Web API, and Entity Framework Core for a multi-tenant SaaS ERP platform.",
-      "Designed RESTful APIs with pagination, filtering, and schema validation; implemented JWT authentication and RBAC across backend modules.",
-      "Optimized SQL Server queries using execution plan analysis and indexing — improving performance by 40% across critical reporting modules.",
-      "Engineered a bulk data upload pipeline processing 10,000+ records with row-level validation and failure recovery.",
-      "Built an enterprise GenAI prompt management service with context injection and live prompt testing via AWS Bedrock.",
-      "Migrated a legacy ASP.NET QA regression tool to Angular, cutting setup time by 50% for the QA team.",
+      "Engineered enterprise backend services utilizing C#, ASP.NET Core Web API, and Entity Framework Core for a high-traffic, multi-tenant SaaS ERP platform.",
+      "Architected secure, paginated RESTful APIs with strict schema validation, robust JWT authentication, and comprehensive Role-Based Access Control (RBAC).",
+      "Accelerated critical reporting modules by 40% through deep SQL Server execution plan analysis, strategic indexing, and stored procedure optimization.",
+      "Designed a resilient bulk data ingestion pipeline capable of processing 10,000+ records simultaneously, featuring strict row-level validation and automated failure recovery.",
+      "Pioneered an enterprise GenAI prompt management service, leveraging AWS Bedrock for context injection and dynamic intelligence extraction.",
+      "Modernized a legacy ASP.NET QA regression tool by migrating it to Angular, significantly improving UX and reducing setup time by 50%.",
     ],
   },
   {
@@ -75,18 +82,18 @@ export const experience = [
     location: "Hyderabad",
     period: "Sept 2023 – Feb 2024",
     highlights: [
-      "Built and maintained Java Spring Boot RESTful APIs for notification and booking modules serving production users.",
-      "Wrote unit tests and resolved production bugs across Agile sprint cycles with adherence to secure coding practices.",
+      "Developed and maintained mission-critical Java Spring Boot RESTful APIs for high-volume notification and booking modules.",
+      "Ensured platform stability by rapidly resolving production defects and implementing rigorous unit tests within tight Agile sprint cycles.",
     ],
   },
   {
     role: "Java Full Stack Trainee",
     company: "Tech Mahindra",
-    location: "College-Integrated Training",
+    location: "Bengaluru",
     period: "Jan 2023 – Jun 2023",
     highlights: [
-      "Completed full-stack Java training; built RESTful APIs using Java + Spring Boot with MySQL.",
-      "Performed API testing in Postman and worked in Agile/Scrum using Git and Jira.",
+      "Built and deployed end-to-end RESTful architectures utilizing Java, Spring Boot, and MySQL during an intensive college-integrated program.",
+      "Executed comprehensive API lifecycle management via Postman, adhering strictly to Agile/Scrum methodologies using Git and Jira.",
     ],
   },
 ];
@@ -96,8 +103,8 @@ export const projects = [
     name: "HuntDesk",
     subtitle: "AI-Powered Job Tracker",
     description:
-      "End-to-end job application tracker with a Gemini AI pipeline that auto-extracts resume skills and scores job-fit — reducing manual screening effort by 70%.",
-    achievement: "Won internal hackathon: Best Gemini AI Productivity Tool",
+      "An end-to-end job application tracker featuring a custom Gemini AI pipeline. The system automatically extracts resume skills and computes job-fit scores, drastically reducing manual screening effort by 70%.",
+    achievement: "Winner: Best Gemini AI Productivity Tool (Internal Hackathon)",
     tech: ["React", "FastAPI", "PostgreSQL", "Gemini AI"],
     link: "https://huntdesk.vercel.app",
   },
@@ -105,7 +112,7 @@ export const projects = [
     name: "CityEatsInsight",
     subtitle: "Food Sentiment Intelligence",
     description:
-      "Automated NLP sentiment pipeline that aggregates restaurant trends from Reddit using Gemini AI — zero manual labeling. Reduced API calls by 60% via caching and request batching.",
+      "A fully automated NLP sentiment pipeline that aggregates and analyzes restaurant trends from Reddit. By leveraging Gemini AI and intelligent request caching, it achieved zero manual labeling while reducing API overhead by 60%.",
     tech: ["React", "FastAPI", "Gemini AI", "Reddit API"],
     link: "https://city-eats-insight.vercel.app",
   },
@@ -113,8 +120,8 @@ export const projects = [
     name: "PranarakshaSeva",
     subtitle: "Real-Time Emergency Response",
     description:
-      "GPS-based real-time emergency response platform with live location tracking. Research published in Novyi Mir Journal (2023).",
-    achievement: "1st Place, Tech Mahindra Internal Innovation Competition",
+      "A GPS-based emergency response platform featuring live location tracking and real-time dispatch capabilities. This research was successfully published in the Novyi Mir Journal (2023).",
+    achievement: "1st Place: Tech Mahindra Internal Innovation Competition",
     tech: ["React", "Node.js", "Express.js", "MongoDB"],
     link: null,
   },
@@ -122,7 +129,7 @@ export const projects = [
 
 export const education = {
   degree: "B.Tech – Computer Science and Engineering",
-  school: "Presidency University, Bengaluru",
+  school: "Presidency University",
   period: "Aug 2019 – Jun 2023",
   gpa: "8.5 / 10",
 };
