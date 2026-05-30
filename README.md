@@ -1,12 +1,49 @@
-# React + Vite
+# Surya Prabhas | Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist, editorial-style personal portfolio showcasing my experience as a Full-Stack Software Engineer building enterprise-grade backend services and AI-powered workflows.
 
-Currently, two official plugins are available:
+## 🎨 Design Philosophy
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This portfolio is designed with a **warm, calm, and editorial aesthetic** inspired by Claude and Anthropic's design language:
+- **Warm Canvas:** Replaced stark whites with a comfortable cream background (`#faf9f5`) to reduce eye strain and feel more like physical paper.
+- **Typography-First:** Pairs the elegant **Instrument Serif** for headings with the highly readable **Inter** for body text. 
+- **Purposeful Simplicity:** No navbar, no heavy card shadows, and no flashy elements. Just a single-column flow with generous whitespace and subtle fade-in animations that let the content speak for itself.
+- **Restrained Color:** Primarily monochrome ink/cream with intentional terracotta accents for interactive elements.
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Framework:** React + Vite
+- **Styling:** Tailwind CSS v4 (Custom theme configuration)
+- **Animations:** Framer Motion (Subtle scroll reveals)
+- **Deployment:** Vercel / Netlify ready
+
+## 📂 Project Structure
+
+The project is structured to make updating content as easy as possible without touching React components:
+
+- `src/data/data.js` - **Edit this file to update all portfolio content!** (Skills, experience, projects, etc.)
+- `src/components/sections/` - Individual UI sections (Hero, About, Projects, etc.)
+- `src/index.css` - Global design tokens and base styles
+
+## 🛠️ Local Development
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+
+## 📬 Connect
+
+- [LinkedIn](https://linkedin.com/in/suryaprabhas)
+- [GitHub](https://github.com/Suryab02)
+- bsprabhas2002@gmail.com
