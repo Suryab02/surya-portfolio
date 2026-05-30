@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
@@ -34,6 +35,7 @@ function App() {
           </motion.section>
         ))}
       </main>
+      <Analytics />
     </div>
   );
 }
