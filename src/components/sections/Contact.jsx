@@ -52,24 +52,24 @@ export default function Contact() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="flex items-center gap-6 mt-12"
+        className="flex items-center gap-4 mt-12"
       >
         <a
           href={personalInfo.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-sm font-medium text-muted hover:text-ink transition-colors duration-300"
+          className="flex items-center gap-2.5 px-5 py-2.5 text-sm font-medium text-muted border border-rule rounded-full hover:text-ink hover:border-ink/30 transition-all duration-300"
         >
-          <Github size={18} />
+          <Github size={16} />
           GitHub
         </a>
         <a
           href={personalInfo.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 text-sm font-medium text-muted hover:text-ink transition-colors duration-300"
+          className="flex items-center gap-2.5 px-5 py-2.5 text-sm font-medium text-muted border border-rule rounded-full hover:text-ink hover:border-ink/30 transition-all duration-300"
         >
-          <Linkedin size={18} />
+          <Linkedin size={16} />
           LinkedIn
         </a>
       </motion.div>
@@ -85,7 +85,7 @@ export default function Contact() {
         <p className="text-xs font-medium text-faded uppercase tracking-widest">
           © {year} {personalInfo.name}
         </p>
-        <p className="text-xs text-rule/80 font-serif italic">
+        <p className="text-xs text-muted font-serif italic">
           Crafted with care.
         </p>
       </motion.div>
