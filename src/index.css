@@ -13,8 +13,8 @@
   --color-terracotta-hover: #c4664a;
   --color-sage: #788c5d;
 
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
 }
 
 /* ── Base ─────────────────────────────────────────────── */
@@ -35,7 +35,7 @@ body {
   min-height: 100vh;
   background-color: #faf9f5;
   color: #1a1a17;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }

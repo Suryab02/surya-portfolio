@@ -29,7 +29,7 @@ export default function Projects() {
               {/* Title Row */}
               <div className="flex justify-between items-start gap-4">
                 <div>
-                  <h3 className="font-semibold text-xl text-ink tracking-tight group-hover:text-terracotta transition-colors duration-300">
+                  <h3 className="font-serif text-2xl text-ink group-hover:text-terracotta transition-colors duration-300">
                     {project.name}
                   </h3>
                   <p className="font-sans text-sm text-muted font-medium mt-1">

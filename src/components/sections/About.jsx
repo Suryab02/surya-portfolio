@@ -58,7 +58,7 @@ export default function About() {
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-faded mb-3">
           Education
         </p>
-        <p className="font-semibold text-ink text-base tracking-tight">{education.degree}</p>
+        <p className="font-serif text-ink text-lg">{education.degree}</p>
         <p className="text-sm text-muted mt-1">
           {education.school}
           <span className="text-faded"> · {education.period} · CGPA: {education.gpa}</span>
