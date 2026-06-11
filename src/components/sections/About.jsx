@@ -14,6 +14,24 @@ export default function About() {
         About
       </motion.p>
 
+      {/* Quick stats */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="flex flex-wrap gap-2 mb-8"
+      >
+        {["2+ Years Experience", "Full-Stack Engineer", "Hyderabad, India"].map((stat) => (
+          <span
+            key={stat}
+            className="text-xs font-medium uppercase tracking-wider text-faded border border-rule/80 bg-white/50 rounded-full px-3 py-1"
+          >
+            {stat}
+          </span>
+        ))}
+      </motion.div>
+
       <div className="space-y-5">
         {personalInfo.summary.map((paragraph, i) => (
           <motion.p
