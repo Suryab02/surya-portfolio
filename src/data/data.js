@@ -1,6 +1,6 @@
 export const personalInfo = {
-  name: "Sudheer Bandaru",
-  firstName: "Sudheer",
+  name: "Surya Prabhas Bandaru",
+  firstName: "Surya Prabhas",
   lastName: "Bandaru",
   title: "Full-Stack Software Engineer",
   email: "bsprabhas2002@gmail.com",
