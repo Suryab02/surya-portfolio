@@ -24,8 +24,9 @@ export default function Contact() {
         transition={{ duration: 0.6 }}
         className="text-muted leading-[1.8] mb-10 max-w-lg text-lg"
       >
-        Looking for a role where I can build high-performance distributed
-        systems and enterprise-grade software. Let's connect.
+        Actively interviewing — available to start soon. I build scalable
+        backend systems, enterprise APIs, and AI-integrated products. If your
+        team values both craft and impact, let's talk.
       </motion.p>
 
       {/* Email */}

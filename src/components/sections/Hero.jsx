@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { Github, Linkedin, MapPin, FileText } from "lucide-react";
 import { personalInfo } from "../../data/data";
 
 export default function Hero() {
@@ -19,7 +19,7 @@ export default function Hero() {
         />
       </motion.div>
 
-      {/* Main content — centered in remaining space */}
+      {/* Main content */}
       <div className="flex-1 flex flex-col justify-center">
         {/* Name */}
         <motion.h1
@@ -34,15 +34,21 @@ export default function Hero() {
           <span className="text-muted">{personalInfo.lastName}</span>
         </motion.h1>
 
-        {/* Title */}
-        <motion.p
+        {/* Title + Location */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="text-lg text-muted tracking-[-0.01em]"
+          className="flex flex-wrap items-center gap-x-4 gap-y-1"
         >
-          {personalInfo.title}
-        </motion.p>
+          <p className="text-lg text-muted tracking-[-0.01em]">
+            {personalInfo.title}
+          </p>
+          <span className="flex items-center gap-1 text-sm text-faded">
+            <MapPin size={13} />
+            {personalInfo.location}
+          </span>
+        </motion.div>
 
         {/* Tagline */}
         <motion.p
@@ -54,24 +60,36 @@ export default function Hero() {
           {personalInfo.tagline}
         </motion.p>
 
-        {/* Available Badge */}
+        {/* Available badge + Resume button */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-10 flex items-center gap-2.5"
+          className="mt-10 flex items-center justify-between gap-4"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-sage" />
-          </span>
-          <span className="text-xs font-medium uppercase tracking-[0.15em] text-faded">
-            Available for opportunities
-          </span>
+          <div className="flex items-center gap-2.5">
+            <span className="relative flex h-2 w-2 shrink-0">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-sage" />
+            </span>
+            <span className="text-xs font-medium uppercase tracking-[0.15em] text-faded">
+              {personalInfo.availability}
+            </span>
+          </div>
+
+          <a
+            href={personalInfo.resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2 text-xs font-medium uppercase tracking-[0.1em] text-muted border border-rule rounded-full hover:text-ink hover:border-ink/30 transition-all duration-300 shrink-0"
+          >
+            <FileText size={13} />
+            Resume
+          </a>
         </motion.div>
       </div>
 
-      {/* Bottom anchor — fills dead zone, quick social access */}
+      {/* Bottom anchor */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
