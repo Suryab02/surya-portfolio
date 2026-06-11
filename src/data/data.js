@@ -6,7 +6,7 @@ export const personalInfo = {
   email: "bsprabhas2002@gmail.com",
   phone: "+91 8317647595",
   github: "https://github.com/Suryab02",
-  linkedin: "https://linkedin.com/in/suryaprabhas",
+  linkedin: "https://www.linkedin.com/in/bsuryaprabhas/",
   tagline:
     "Engineering scalable backend services, robust APIs, and intelligent AI-driven workflows.",
   summary: [
