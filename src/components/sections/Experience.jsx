@@ -28,7 +28,7 @@ export default function Experience() {
             {/* Header: Role and Company */}
             <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-4">
               <div>
-                <h3 className="font-serif text-2xl text-ink">{job.role}</h3>
+                <h3 className="font-semibold text-xl text-ink tracking-tight">{job.role}</h3>
                 <div className="flex items-center gap-2 mt-1 text-terracotta font-medium">
                   {job.company}
                   {job.project && (
