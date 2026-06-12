@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Analytics } from "@vercel/analytics/react";
 import Nav from "./components/Nav";
+import DotGrid from "./components/DotGrid";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Projects from "./components/sections/Projects";
@@ -27,8 +28,14 @@ function Portfolio() {
   return (
     <main className="max-w-[860px] mx-auto px-6 sm:px-9">
       <Hero />
-      <section id="about" className="py-12 sm:py-14 border-t border-line">
-        <About />
+      <section
+        id="about"
+        className="relative py-12 sm:py-14 border-t border-line"
+      >
+        <DotGrid />
+        <div className="relative">
+          <About />
+        </div>
       </section>
       <section id="projects" className="py-12 sm:py-14 border-t border-line">
         <Projects />

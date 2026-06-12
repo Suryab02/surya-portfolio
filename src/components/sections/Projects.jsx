@@ -1,9 +1,31 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { projects } from "../../data/data";
+
+function useTilt() {
+  const ref = useRef(null);
+
+  const onMouseMove = (e) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width - 0.5;
+    const py = (e.clientY - rect.top) / rect.height - 0.5;
+    el.style.transform = `perspective(600px) rotateX(${-py * 5}deg) rotateY(${px * 5}deg)`;
+  };
+
+  const onMouseLeave = () => {
+    const el = ref.current;
+    if (el) el.style.transform = "perspective(600px) rotateX(0deg) rotateY(0deg)";
+  };
+
+  return { ref, onMouseMove, onMouseLeave };
+}
 
 function Card({ project, index }) {
   const num = String(index + 1).padStart(3, "0");
   const accentHref = project.accent?.href ?? project.repo;
+  const tilt = useTilt();
 
   const body = (
     <>
@@ -32,18 +54,25 @@ function Card({ project, index }) {
       transition={{ duration: 0.55, delay: index * 0.08 }}
       className="border-line border-b last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
     >
-      {accentHref ? (
-        <a
-          href={accentHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block p-6 sm:p-7 no-underline hover:bg-card transition-colors duration-300 h-full"
-        >
-          {body}
-        </a>
-      ) : (
-        <div className="p-6 sm:p-7 h-full">{body}</div>
-      )}
+      <div
+        ref={tilt.ref}
+        onMouseMove={tilt.onMouseMove}
+        onMouseLeave={tilt.onMouseLeave}
+        className="h-full transition-transform duration-200 ease-out will-change-transform"
+      >
+        {accentHref ? (
+          <a
+            href={accentHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block p-6 sm:p-7 no-underline hover:bg-card transition-colors duration-300 h-full"
+          >
+            {body}
+          </a>
+        ) : (
+          <div className="p-6 sm:p-7 h-full">{body}</div>
+        )}
+      </div>
     </motion.div>
   );
 }
