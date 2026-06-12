@@ -136,3 +136,27 @@ export const education = {
   period: "Aug 2019 – Jun 2023",
   gpa: "8.5 / 10",
 };
+
+export const blogPosts = [
+  {
+    title: "Building an Enterprise GenAI Prompt Service on AWS Bedrock",
+    excerpt:
+      "How I designed a context-aware prompt injection system at scale — architecture decisions, AWS integrations, and lessons from shipping it to production.",
+    tag: "AI / Backend",
+    link: null,
+  },
+  {
+    title: "SQL Server Performance Tuning: From Seconds to Milliseconds",
+    excerpt:
+      "A deep dive into execution plans, strategic indexing, and stored procedure optimization that cut our reporting pipeline by 40%.",
+    tag: "Backend",
+    link: null,
+  },
+  {
+    title: "Getting Started with Arduino: Building My First IoT Sensor",
+    excerpt:
+      "My first step into electronics — building a temperature and humidity monitor with an Arduino Uno and pushing readings over MQTT.",
+    tag: "Electronics",
+    link: null,
+  },
+];
