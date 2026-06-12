@@ -22,7 +22,7 @@ export default function Writing() {
         transition={{ duration: 0.5, delay: 0.05 }}
         className="text-sm text-faded mb-10"
       >
-        Thoughts on software engineering, AI systems, and electronics.
+        System design, industry analysis, and what's actually happening in tech.
       </motion.p>
 
       <div className="space-y-4">

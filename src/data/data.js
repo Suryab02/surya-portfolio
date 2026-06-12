@@ -139,24 +139,24 @@ export const education = {
 
 export const blogPosts = [
   {
-    title: "Building an Enterprise GenAI Prompt Service on AWS Bedrock",
+    title: "System Design: How Uber Matches Millions of Rides in Real Time",
     excerpt:
-      "How I designed a context-aware prompt injection system at scale — architecture decisions, AWS integrations, and lessons from shipping it to production.",
-    tag: "AI / Backend",
+      "Breaking down the distributed systems and algorithms behind real-time matching at scale — geospatial indexing, event-driven architecture, and how consistency is handled under pressure.",
+    tag: "System Design",
     link: null,
   },
   {
-    title: "SQL Server Performance Tuning: From Seconds to Milliseconds",
+    title: "NVIDIA's Blackwell GPU: What It Actually Means for AI Engineers",
     excerpt:
-      "A deep dive into execution plans, strategic indexing, and stored procedure optimization that cut our reporting pipeline by 40%.",
-    tag: "Backend",
+      "Beyond the marketing — a developer's read on Blackwell's architecture, what changes for inference workloads, and whether it shifts anything for teams building on AWS Bedrock or Azure.",
+    tag: "AI / Industry",
     link: null,
   },
   {
-    title: "Getting Started with Arduino: Building My First IoT Sensor",
+    title: "Apple WWDC 2025: The Announcements That Actually Matter for Developers",
     excerpt:
-      "My first step into electronics — building a temperature and humidity monitor with an Arduino Uno and pushing readings over MQTT.",
-    tag: "Electronics",
+      "Cutting through the keynote hype — which APIs, frameworks, and platform changes are worth your attention and what they signal about where Apple's developer ecosystem is heading.",
+    tag: "Industry",
     link: null,
   },
 ];
