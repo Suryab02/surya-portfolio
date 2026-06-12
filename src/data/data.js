@@ -159,4 +159,11 @@ export const blogPosts = [
     tag: "Industry",
     link: null,
   },
+  {
+    title: "Thinking in Products: What Engineering Taught Me About Building Things People Actually Use",
+    excerpt:
+      "Two years of shipping enterprise SaaS gave me a front-row seat to how product decisions get made — and where engineers and PMs talk past each other. Here's what I wish both sides knew.",
+    tag: "Product",
+    link: null,
+  },
 ];
