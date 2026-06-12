@@ -38,7 +38,7 @@ export default function Contact() {
       >
         <a
           href={`mailto:${personalInfo.email}`}
-          className="group inline-flex items-center gap-3 font-serif text-3xl text-ink hover:text-terracotta transition-colors duration-300"
+          className="group flex items-center gap-3 min-w-0 font-serif text-xl sm:text-3xl text-ink hover:text-terracotta transition-colors duration-300"
         >
           {personalInfo.email}
           <div className="bg-terracotta/10 rounded-full p-2 group-hover:bg-terracotta/20 transition-colors">
