@@ -1,6 +1,52 @@
 import { motion } from "framer-motion";
 import { projects } from "../../data/data";
-import { ArrowUpRight, Trophy } from "lucide-react";
+
+function Card({ project, index }) {
+  const num = String(index + 1).padStart(3, "0");
+  const accentHref = project.accent?.href ?? project.repo;
+
+  const body = (
+    <>
+      <div className="flex items-baseline justify-between font-mono text-[11px]">
+        <span className="text-accent">{num}</span>
+        <span className="text-ghost">{project.year}</span>
+      </div>
+      <p className="mt-3 text-[15px] font-medium text-bright">
+        {project.name}
+      </p>
+      <p className="mt-1.5 text-xs text-dim leading-[1.6]">{project.blurb}</p>
+      {project.accent?.label && (
+        <p className="mt-3 font-mono text-[10px] text-accent">
+          {project.accent.label}
+          {accentHref ? " ↗" : ""}
+        </p>
+      )}
+    </>
+  );
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.55, delay: index * 0.08 }}
+      className="border-line border-b last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
+    >
+      {accentHref ? (
+        <a
+          href={accentHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block p-6 sm:p-7 no-underline hover:bg-card transition-colors duration-300 h-full"
+        >
+          {body}
+        </a>
+      ) : (
+        <div className="p-6 sm:p-7 h-full">{body}</div>
+      )}
+    </motion.div>
+  );
+}
 
 export default function Projects() {
   return (
@@ -10,80 +56,14 @@ export default function Projects() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-xs font-medium uppercase tracking-[0.2em] text-faded mb-10"
+        className="font-mono text-[11px] text-faint mb-5"
       >
-        Projects
+        THINGS_I_BUILT ({projects.length})
       </motion.p>
-
-      <div className="space-y-6">
-        {projects.map((project, i) => {
-          const content = (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="group relative p-6 -mx-6 rounded-2xl hover:bg-cream-dark/40 transition-colors duration-300"
-            >
-              {/* Title Row */}
-              <div className="flex justify-between items-start gap-4">
-                <div>
-                  <h3 className="font-serif text-2xl text-ink group-hover:text-terracotta transition-colors duration-300">
-                    {project.name}
-                  </h3>
-                  <p className="font-sans text-sm text-muted font-medium mt-1">
-                    {project.subtitle}
-                  </p>
-                </div>
-                {project.link && (
-                  <div className="text-faded group-hover:text-terracotta transition-colors duration-300 p-1">
-                    <ArrowUpRight size={20} className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-300" />
-                  </div>
-                )}
-              </div>
-
-              {/* Description */}
-              <p className="text-sm text-muted leading-[1.7] mt-4 max-w-2xl">
-                {project.description}
-              </p>
-
-              {/* Achievement */}
-              {project.achievement && (
-                <div className="flex items-center gap-2 mt-4 text-xs font-medium text-sage bg-sage/10 w-fit px-3 py-1.5 rounded-full">
-                  <Trophy size={12} />
-                  <span>{project.achievement}</span>
-                </div>
-              )}
-
-              {/* Tech stack */}
-              <div className="flex flex-wrap items-center gap-2 mt-5">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[11px] font-medium uppercase tracking-wider text-faded border border-rule/80 bg-white/50 rounded-full px-3 py-1"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          );
-
-          return project.link ? (
-            <a
-              key={i}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block no-underline"
-            >
-              {content}
-            </a>
-          ) : (
-            <div key={i}>{content}</div>
-          );
-        })}
+      <div className="grid sm:grid-cols-3 border border-line">
+        {projects.map((p, i) => (
+          <Card key={p.name} project={p} index={i} />
+        ))}
       </div>
     </div>
   );

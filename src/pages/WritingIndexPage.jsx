@@ -1,108 +1,97 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowUpRight } from "lucide-react";
-import { posts, allTags, formatDate } from "../lib/posts";
+import { posts, allTags } from "../lib/posts";
+
+function isoDate(d) {
+  const date = new Date(d);
+  if (isNaN(date)) return d;
+  return date.toISOString().slice(0, 10);
+}
 
 export default function WritingIndexPage() {
   const [activeTag, setActiveTag] = useState(null);
   const shown = activeTag ? posts.filter((p) => p.tag === activeTag) : posts;
 
   return (
-    <div className="bg-cream min-h-screen text-ink">
-      <div className="max-w-[680px] mx-auto px-6 sm:px-8 pt-24 pb-16">
-        <Link
-          to="/#writing"
-          className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-faded hover:text-ink transition-colors duration-300 mb-12"
+    <div className="max-w-[860px] mx-auto px-6 sm:px-9 pt-28 pb-16">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <h1 className="font-display font-medium uppercase text-bright text-3xl sm:text-4xl tracking-[-0.02em]">
+          The log<span className="text-accent">_</span>
+        </h1>
+        <p className="text-xs text-dim mt-3">
+          Notes on software, systems, the tech industry, and electronics.
+        </p>
+      </motion.div>
+
+      <div className="flex flex-wrap gap-2 mt-7 mb-4 font-mono text-[10px]">
+        <button
+          onClick={() => setActiveTag(null)}
+          className={`px-3 py-1 rounded-[3px] transition-colors ${
+            activeTag === null
+              ? "bg-accent text-base"
+              : "border border-line-strong text-dim hover:text-bright"
+          }`}
         >
-          <ArrowLeft size={14} />
-          Home
-        </Link>
+          all
+        </button>
+        {allTags.map((tag) => (
+          <button
+            key={tag}
+            onClick={() => setActiveTag(tag === activeTag ? null : tag)}
+            className={`px-3 py-1 rounded-[3px] transition-colors ${
+              activeTag === tag
+                ? "bg-accent text-base"
+                : "border border-line-strong text-dim hover:text-bright"
+            }`}
+          >
+            {tag.toLowerCase()}
+          </button>
+        ))}
+      </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h1 className="font-serif text-ink text-3xl sm:text-4xl mb-3">
-            Writing
-          </h1>
-          <p className="text-sm text-faded mb-8">
-            Notes on software, systems, and how things work.
-          </p>
-        </motion.div>
-
-        {allTags.length > 1 && (
-          <div className="flex flex-wrap gap-2 mb-10">
-            <button
-              onClick={() => setActiveTag(null)}
-              className={`text-[11px] font-medium uppercase tracking-wider rounded-full px-3 py-1 border transition-colors duration-300 ${
-                activeTag === null
-                  ? "border-ink text-ink"
-                  : "border-rule text-faded hover:text-ink"
-              }`}
+      <div>
+        {shown.map((post, i) => (
+          <Link
+            key={post.slug}
+            to={`/writing/${post.slug}`}
+            className="block no-underline"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              className="group flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-5 py-5 border-b border-line"
             >
-              All
-            </button>
-            {allTags.map((tag) => (
-              <button
-                key={tag}
-                onClick={() => setActiveTag(tag === activeTag ? null : tag)}
-                className={`text-[11px] font-medium uppercase tracking-wider rounded-full px-3 py-1 border transition-colors duration-300 ${
-                  activeTag === tag
-                    ? "border-terracotta text-terracotta"
-                    : "border-rule text-faded hover:text-ink"
-                }`}
-              >
-                {tag}
-              </button>
-            ))}
-          </div>
-        )}
-
-        <div>
-          {shown.map((post, i) => (
-            <Link
-              key={post.slug}
-              to={`/writing/${post.slug}`}
-              className="block no-underline"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="group py-6 border-t border-rule"
-              >
-                <div className="flex items-start justify-between gap-4">
-                  <p className="font-medium text-ink text-base leading-snug group-hover:text-terracotta transition-colors duration-300">
-                    {post.title}
-                  </p>
-                  <span className="text-xs text-faded whitespace-nowrap shrink-0 mt-0.5">
-                    {formatDate(post.date)} · {post.minutes} min
-                  </span>
-                </div>
+              <span className="font-mono text-[11px] text-accent sm:min-w-[88px] shrink-0">
+                {isoDate(post.date)}
+              </span>
+              <div className="flex-1 min-w-0">
+                <p className="text-[15px] font-medium text-bright group-hover:text-accent transition-colors duration-300">
+                  {post.title}
+                </p>
                 {post.excerpt && (
-                  <p className="text-sm text-faded mt-1.5 leading-relaxed">
+                  <p className="text-xs text-faint mt-1 leading-relaxed">
                     {post.excerpt}
                   </p>
                 )}
-                <span className="inline-flex items-center gap-1 text-[10px] font-medium uppercase tracking-[0.12em] text-terracotta/80 mt-2">
-                  {post.tag}
-                  <ArrowUpRight
-                    size={12}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  />
-                </span>
-              </motion.div>
-            </Link>
-          ))}
+              </div>
+              <span className="font-mono text-[10px] text-ghost shrink-0">
+                {post.tag.toLowerCase()}
+              </span>
+            </motion.div>
+          </Link>
+        ))}
 
-          {shown.length === 0 && (
-            <p className="text-sm text-faded border-t border-rule pt-6">
-              Nothing here yet.
-            </p>
-          )}
-        </div>
+        {shown.length === 0 && (
+          <p className="font-mono text-xs text-faint pt-6">
+            // nothing logged here yet
+          </p>
+        )}
       </div>
     </div>
   );
