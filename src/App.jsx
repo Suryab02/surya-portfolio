@@ -1,3 +1,4 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
 import Nav from "./components/Nav";
@@ -8,6 +9,7 @@ import Experience from "./components/sections/Experience";
 import Projects from "./components/sections/Projects";
 import Writing from "./components/sections/Writing";
 import Contact from "./components/sections/Contact";
+import BlogPostPage from "./pages/BlogPostPage";
 
 const sections = [
   { id: "about", Component: About },
@@ -18,13 +20,12 @@ const sections = [
   { id: "contact", Component: Contact },
 ];
 
-function App() {
+function Portfolio() {
   return (
     <div className="bg-cream min-h-screen text-ink">
       <Nav />
       <main className="max-w-[680px] mx-auto px-6 sm:px-8">
         <Hero />
-
         {sections.map(({ id, Component }) => (
           <motion.section
             key={id}
@@ -41,6 +42,17 @@ function App() {
       </main>
       <Analytics />
     </div>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Portfolio />} />
+        <Route path="/writing/:slug" element={<BlogPostPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

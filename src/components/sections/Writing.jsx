@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { blogPosts } from "../../data/data";
 import { ArrowUpRight, PenLine } from "lucide-react";
 
@@ -35,19 +36,22 @@ export default function Writing() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
               className={`group flex items-start justify-between gap-4 p-5 -mx-5 rounded-xl transition-colors duration-300 ${
-                post.link ? "hover:bg-cream-dark/40 cursor-pointer" : "opacity-70"
+                post.published ? "hover:bg-cream-dark/40 cursor-pointer" : "opacity-60"
               }`}
             >
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="text-[11px] font-medium uppercase tracking-wider text-terracotta/80 bg-terracotta/8 border border-terracotta/20 rounded-full px-2.5 py-0.5">
+                  <span className="text-[11px] font-medium uppercase tracking-wider text-terracotta/80 border border-terracotta/20 rounded-full px-2.5 py-0.5">
                     {post.tag}
                   </span>
-                  {!post.link && (
+                  {!post.published && (
                     <span className="text-[11px] font-medium uppercase tracking-wider text-faded bg-cream-dark rounded-full px-2.5 py-0.5 flex items-center gap-1">
                       <PenLine size={9} />
                       Drafting
                     </span>
+                  )}
+                  {post.published && post.date && (
+                    <span className="text-xs text-faded">{post.date}</span>
                   )}
                 </div>
                 <p className="font-medium text-ink text-base leading-snug group-hover:text-terracotta transition-colors duration-300">
@@ -57,7 +61,7 @@ export default function Writing() {
                   {post.excerpt}
                 </p>
               </div>
-              {post.link && (
+              {post.published && (
                 <ArrowUpRight
                   size={18}
                   className="text-faded group-hover:text-terracotta shrink-0 mt-1 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300"
@@ -66,10 +70,10 @@ export default function Writing() {
             </motion.div>
           );
 
-          return post.link ? (
-            <a key={i} href={post.link} target="_blank" rel="noopener noreferrer" className="block no-underline">
+          return post.published ? (
+            <Link key={i} to={`/writing/${post.slug}`} className="block no-underline">
               {card}
-            </a>
+            </Link>
           ) : (
             <div key={i}>{card}</div>
           );
