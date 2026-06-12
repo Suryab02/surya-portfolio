@@ -1,0 +1,44 @@
+# System Design: How Uber Matches Millions of Rides in Real Time
+
+Every time you request an Uber, a system decides — in under a second — which driver to assign you out of thousands nearby. Here's how that actually works.
+
+## The Problem
+
+At peak hours, Uber handles millions of concurrent ride requests across hundreds of cities. The matching system has to:
+
+- Find nearby available drivers (geospatial query)
+- Rank them by distance, rating, and estimated arrival
+- Assign the best match and lock that driver atomically (no double-booking)
+- Do all of this in under 300ms
+
+## Geospatial Indexing: How "Nearby" Gets Computed Fast
+
+Uber uses **S2 geometry** — a library from Google that maps the Earth's surface to a hierarchy of square cells. Each driver's location is indexed into one or more S2 cells.
+
+When you request a ride, the system queries drivers in your S2 cell and its neighbours. This turns a radius search into a hash lookup — O(1) instead of scanning every driver.
+
+## The Dispatch Architecture
+
+The core of matching is a **supply-demand matching service** that runs regionally:
+
+1. **Supply service** — tracks driver locations via continuous GPS pings (every 4 seconds)
+2. **Demand service** — holds active ride requests
+3. **Matching engine** — pulls from both, runs the assignment algorithm, writes the result
+
+To prevent race conditions (two passengers getting the same driver), Uber uses **distributed locking** — when a driver is selected for a passenger, a short-lived lock is placed on that driver ID. If the lock fails, the system picks the next best driver.
+
+## Consistency vs. Availability
+
+This is where it gets interesting. Uber prioritises **availability** over strong consistency. If a driver's location update is 4 seconds stale, that's acceptable. What's not acceptable is the app going down.
+
+They use an **eventually consistent** model for location data, but **strong consistency** for the actual booking transaction — the write that assigns a driver to a passenger goes through a single strongly-consistent store.
+
+## What I'd Design Differently Today
+
+With modern tooling, I'd explore using **Redis Geo** for the geospatial index (it natively supports radius queries and is extremely fast), and **Kafka** for the real-time location stream — decoupling ingestion from the matching engine cleanly.
+
+The S2-based approach Uber uses is battle-tested at scale, but for a greenfield system Redis Geo + Kafka is a simpler starting point that scales to millions of drivers.
+
+---
+
+*What part of this would you design differently? I'd love to hear your take.*

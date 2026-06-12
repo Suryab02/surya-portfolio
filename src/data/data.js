@@ -136,3 +136,42 @@ export const education = {
   period: "Aug 2019 – Jun 2023",
   gpa: "8.5 / 10",
 };
+
+export const blogPosts = [
+  {
+    slug: "system-design-uber-matching",
+    title: "System Design: How Uber Matches Millions of Rides in Real Time",
+    excerpt:
+      "Breaking down the distributed systems and algorithms behind real-time matching at scale — geospatial indexing, event-driven architecture, and how consistency is handled under pressure.",
+    tag: "System Design",
+    date: "Jun 2026",
+    published: true,
+  },
+  {
+    slug: "nvidia-blackwell-gpu",
+    title: "NVIDIA's Blackwell GPU: What It Actually Means for AI Engineers",
+    excerpt:
+      "Beyond the marketing — a developer's read on Blackwell's architecture, what changes for inference workloads, and whether it shifts anything for teams building on AWS Bedrock or Azure.",
+    tag: "AI / Industry",
+    date: "",
+    published: false,
+  },
+  {
+    slug: "apple-wwdc-2025",
+    title: "Apple WWDC 2025: The Announcements That Actually Matter for Developers",
+    excerpt:
+      "Cutting through the keynote hype — which APIs, frameworks, and platform changes are worth your attention and what they signal about where Apple's developer ecosystem is heading.",
+    tag: "Industry",
+    date: "",
+    published: false,
+  },
+  {
+    slug: "thinking-in-products",
+    title: "Thinking in Products: What Engineering Taught Me About Building Things People Actually Use",
+    excerpt:
+      "Two years of shipping enterprise SaaS gave me a front-row seat to how product decisions get made — and where engineers and PMs talk past each other. Here's what I wish both sides knew.",
+    tag: "Product",
+    date: "",
+    published: false,
+  },
+];
