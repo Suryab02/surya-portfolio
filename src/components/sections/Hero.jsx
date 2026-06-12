@@ -65,14 +65,14 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-10 flex items-center justify-between gap-4"
+          className="mt-10 flex flex-wrap items-center gap-x-4 gap-y-3"
         >
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 min-w-0">
             <span className="relative flex h-2 w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sage opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-sage" />
             </span>
-            <span className="text-xs font-medium uppercase tracking-[0.15em] text-faded">
+            <span className="text-xs font-medium uppercase tracking-[0.12em] text-faded">
               {personalInfo.availability}
             </span>
           </div>
