@@ -19,6 +19,19 @@ export const personalInfo = {
   ],
 };
 
+export const home = {
+  heroComment: "// engineer",
+  heroTagline:
+    "I build software systems and like understanding how things work under the hood — then writing about it.",
+  about:
+    "Engineer based in Hyderabad. I spend my time designing backend systems, automating the boring parts, and tinkering with whatever's interesting — software, hardware, or somewhere in between. Off-screen: teardowns, long reads, and figuring out why things fail.",
+  stats: [
+    { value: "2+ yrs", label: "building" },
+    { value: "3", label: "shipped projects" },
+    { value: "1", label: "published paper" },
+  ],
+};
+
 export const skills = [
   {
     category: "Languages",
@@ -113,6 +126,10 @@ export const projects = [
   {
     name: "HuntDesk",
     subtitle: "AI-Powered Job Tracker",
+    year: "2025",
+    blurb:
+      "A job tracker that reads your resume and scores how well each job fits.",
+    accent: { label: "hackathon winner", href: "https://huntdesk.vercel.app" },
     description:
       "A full-stack job application tracker with a Gemini AI pipeline that extracts resume skills and computes job-fit scores — cutting manual screening effort by ~70%. FastAPI backend with JWT auth and PostgreSQL.",
     achievement: "Winner: Best Gemini AI Productivity Tool (Internal Hackathon)",
@@ -123,6 +140,10 @@ export const projects = [
   {
     name: "CityEatsInsight",
     subtitle: "Food Trend Analysis",
+    year: "2024",
+    blurb:
+      "Finds food trends hiding in thousands of Reddit conversations.",
+    accent: { label: "live demo", href: "https://city-eats-insight.vercel.app" },
     description:
       "An automated NLP pipeline that finds restaurant and food trends in Reddit data using Gemini AI. Caching and request batching cut external API calls by 60%.",
     tech: ["React", "FastAPI", "Gemini AI", "Reddit API"],
@@ -132,6 +153,9 @@ export const projects = [
   {
     name: "PranarakshaSeva",
     subtitle: "Real-Time Emergency Response",
+    year: "2023",
+    blurb: "Real-time emergency dispatch with live GPS tracking.",
+    accent: { label: "published research", href: null },
     description:
       "A GPS-based emergency response platform with live location tracking and real-time dispatch. The architecture was published in the Novyi Mir Research Journal (2023).",
     achievement: "1st Place: Tech Mahindra Internal Innovation Competition",

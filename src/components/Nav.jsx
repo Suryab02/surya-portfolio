@@ -1,82 +1,44 @@
-import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-const sectionLinks = [
-  { label: "About", id: "about" },
-];
-
-const pageLinks = [
-  { label: "Writing", to: "/writing" },
-  { label: "Resume", to: "/resume" },
+const links = [
+  { num: "01", label: "about", to: "/#about", match: null },
+  { num: "02", label: "writing", to: "/writing", match: "/writing" },
+  { num: "03", label: "resume", to: "/resume", match: "/resume" },
 ];
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const isHome = pathname === "/";
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const visible = isHome ? scrolled : true;
-
-  const scrollTo = (id) =>
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
-  const linkClass =
-    "text-xs font-medium tracking-[0.12em] text-faded hover:text-ink transition-colors uppercase whitespace-nowrap";
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        visible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 -translate-y-2 pointer-events-none"
-      }`}
-    >
-      <div className="bg-cream/90 backdrop-blur-sm border-b border-rule/60">
-        <div className="max-w-[680px] mx-auto px-6 sm:px-8 h-12 flex items-center justify-between">
-          {isHome ? (
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="text-xs font-medium tracking-[0.15em] text-faded hover:text-ink transition-colors uppercase"
-            >
-              SP
-            </button>
-          ) : (
-            <Link
-              to="/"
-              className="text-xs font-medium tracking-[0.15em] text-faded hover:text-ink transition-colors uppercase no-underline"
-            >
-              SP
-            </Link>
-          )}
-          <div className="hidden sm:flex items-center gap-5 sm:gap-6">
-            {isHome &&
-              sectionLinks.map(({ label, id }) => (
-                <button
-                  key={id}
-                  onClick={() => scrollTo(id)}
-                  className={linkClass}
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-base/90 backdrop-blur-sm border-b border-line">
+      <div className="max-w-[860px] mx-auto px-6 sm:px-9 h-12 flex items-center justify-between font-mono text-[11px]">
+        <Link
+          to="/"
+          className="text-bright hover:text-accent transition-colors no-underline"
+        >
+          SP — surya.dev
+        </Link>
+        <div className="flex items-center gap-1 text-faint">
+          {links.map(({ num, label, to, match }, i) => {
+            const active = match
+              ? pathname.startsWith(match)
+              : isHome;
+            return (
+              <span key={label} className="flex items-center">
+                {i > 0 && <span className="mx-2 text-ghost">/</span>}
+                <Link
+                  to={to}
+                  className={`no-underline transition-colors hover:text-bright ${
+                    active ? "text-bright" : "text-faint"
+                  }`}
                 >
+                  <span className="hidden sm:inline">{num} </span>
                   {label}
-                </button>
-              ))}
-            {pageLinks.map(({ label, to }) => (
-              <Link
-                key={to}
-                to={to}
-                className={`${linkClass} no-underline ${
-                  pathname.startsWith(to) ? "text-ink" : ""
-                }`}
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
+                </Link>
+              </span>
+            );
+          })}
         </div>
       </div>
     </nav>

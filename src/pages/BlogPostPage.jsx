@@ -1,51 +1,46 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { posts, formatDate } from "../lib/posts";
+import { posts } from "../lib/posts";
+
+function isoDate(d) {
+  const date = new Date(d);
+  if (isNaN(date)) return d;
+  return date.toISOString().slice(0, 10);
+}
 
 export default function BlogPostPage() {
   const { slug } = useParams();
   const post = posts.find((p) => p.slug === slug);
 
   return (
-    <div className="bg-cream min-h-screen text-ink">
-      <div className="max-w-[680px] mx-auto px-6 sm:px-8 pt-24 pb-16">
-        <Link
-          to="/writing"
-          className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.12em] text-faded hover:text-ink transition-colors duration-300 mb-12"
-        >
-          <ArrowLeft size={14} />
-          All writing
-        </Link>
+    <div className="max-w-[720px] mx-auto px-6 sm:px-9 pt-28 pb-16">
+      {!post ? (
+        <p className="font-mono text-xs text-faint">// post not found</p>
+      ) : (
+        <>
+          <p className="font-mono text-[11px] text-faint mb-6">
+            <Link
+              to="/writing"
+              className="no-underline text-faint hover:text-bright transition-colors"
+            >
+              ← the_log
+            </Link>{" "}
+            / <span className="text-accent">{isoDate(post.date)}</span> /{" "}
+            {post.tag.toLowerCase()}
+            {post.minutes > 1 ? ` / ${post.minutes} min` : ""}
+          </p>
 
-        {!post ? (
-          <p className="text-muted">Post not found.</p>
-        ) : (
-          <>
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-[11px] font-medium uppercase tracking-wider text-terracotta/80 border border-terracotta/20 rounded-full px-2.5 py-0.5">
-                  {post.tag}
-                </span>
-                {post.date && (
-                  <span className="text-xs text-faded">
-                    {formatDate(post.date)} · {post.minutes} min read
-                  </span>
-                )}
-              </div>
-              <h1
-                className="font-serif text-ink leading-[1.15]"
-                style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)" }}
-              >
-                {post.title}
-              </h1>
-            </div>
+          <h1
+            className="font-display font-medium text-bright leading-[1.2] tracking-[-0.01em] mb-8"
+            style={{ fontSize: "clamp(1.7rem, 4vw, 2.4rem)" }}
+          >
+            {post.title}
+          </h1>
 
-            <article className="blog-prose">
-              <post.Component />
-            </article>
-          </>
-        )}
-      </div>
+          <article className="blog-prose">
+            <post.Component />
+          </article>
+        </>
+      )}
     </div>
   );
 }

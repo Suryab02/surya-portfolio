@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
 import Nav from "./components/Nav";
+import DotGrid from "./components/DotGrid";
 import Hero from "./components/sections/Hero";
 import About from "./components/sections/About";
 import Projects from "./components/sections/Projects";
@@ -11,13 +11,7 @@ import Contact from "./components/sections/Contact";
 import BlogPostPage from "./pages/BlogPostPage";
 import WritingIndexPage from "./pages/WritingIndexPage";
 import ResumePage from "./pages/ResumePage";
-
-const sections = [
-  { id: "about", Component: About },
-  { id: "projects", Component: Projects },
-  { id: "writing", Component: Writing },
-  { id: "contact", Component: Contact },
-];
+import NotFoundPage from "./pages/NotFoundPage";
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -33,21 +27,26 @@ function ScrollManager() {
 
 function Portfolio() {
   return (
-    <main className="max-w-[680px] mx-auto px-6 sm:px-8">
+    <main className="max-w-[860px] mx-auto px-6 sm:px-9">
       <Hero />
-      {sections.map(({ id, Component }) => (
-        <motion.section
-          key={id}
-          id={id}
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="py-16 sm:py-20 border-t border-rule"
-        >
-          <Component />
-        </motion.section>
-      ))}
+      <section
+        id="about"
+        className="relative py-12 sm:py-14 border-t border-line"
+      >
+        <DotGrid />
+        <div className="relative">
+          <About />
+        </div>
+      </section>
+      <section id="projects" className="py-12 sm:py-14 border-t border-line">
+        <Projects />
+      </section>
+      <section id="writing" className="py-6 border-t border-line">
+        <Writing />
+      </section>
+      <section id="contact" className="py-6 border-t border-line">
+        <Contact />
+      </section>
     </main>
   );
 }
@@ -56,13 +55,14 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollManager />
-      <div className="bg-cream min-h-screen text-ink">
+      <div className="bg-base min-h-screen text-bright">
         <Nav />
         <Routes>
           <Route path="/" element={<Portfolio />} />
           <Route path="/writing" element={<WritingIndexPage />} />
           <Route path="/writing/:slug" element={<BlogPostPage />} />
           <Route path="/resume" element={<ResumePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Analytics />
       </div>
