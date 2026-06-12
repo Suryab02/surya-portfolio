@@ -11,6 +11,7 @@ import Contact from "./components/sections/Contact";
 import BlogPostPage from "./pages/BlogPostPage";
 import WritingIndexPage from "./pages/WritingIndexPage";
 import ResumePage from "./pages/ResumePage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -61,6 +62,7 @@ function App() {
           <Route path="/writing" element={<WritingIndexPage />} />
           <Route path="/writing/:slug" element={<BlogPostPage />} />
           <Route path="/resume" element={<ResumePage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Analytics />
       </div>
