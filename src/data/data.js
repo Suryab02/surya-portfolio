@@ -144,8 +144,8 @@ export const blogPosts = [
     excerpt:
       "Breaking down the distributed systems and algorithms behind real-time matching at scale — geospatial indexing, event-driven architecture, and how consistency is handled under pressure.",
     tag: "System Design",
-    date: "",
-    published: false,
+    date: "Jun 2026",
+    published: true,
   },
   {
     slug: "nvidia-blackwell-gpu",
