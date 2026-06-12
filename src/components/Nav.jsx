@@ -35,7 +35,7 @@ export default function Nav() {
           >
             SP
           </button>
-          <div className="flex items-center gap-5 sm:gap-6 overflow-x-auto">
+          <div className="hidden sm:flex items-center gap-5 sm:gap-6">
             {links.map(({ label, id }) => (
               <button
                 key={id}
