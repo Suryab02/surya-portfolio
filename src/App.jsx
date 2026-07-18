@@ -8,6 +8,7 @@ import Projects from "./components/sections/Projects";
 import Experience from "./components/sections/Experience";
 import Contact from "./components/sections/Contact";
 import Writing from "./components/sections/Writing";
+import PageMeta, { SITE_URL } from "./components/PageMeta";
 
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const WritingIndexPage = lazy(() => import("./pages/WritingIndexPage"));
@@ -27,6 +28,18 @@ function ScrollManager() {
 function Portfolio() {
   return (
     <main className="site-main">
+      <PageMeta
+        title="Surya Prabhas Bandaru — Backend-Focused Software Engineer"
+        description="Backend engineer building dependable .NET services, data pipelines, LLM-backed extraction workflows, and product interfaces."
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Surya Prabhas Bandaru",
+          url: SITE_URL,
+          jobTitle: "Backend-Focused Full-Stack Engineer",
+          sameAs: ["https://github.com/Suryab02", "https://www.linkedin.com/in/bsuryaprabhas/"],
+        }}
+      />
       <Hero />
       <Projects />
       <Experience />
