@@ -4,6 +4,7 @@ import { personalInfo } from "../data/data";
 const links = [
   { label: "Work", to: "/#work" },
   { label: "Experience", to: "/#experience", desktop: true },
+  { label: "Writing", to: "/writing", route: true },
   { label: "Résumé", to: "/resume", route: true },
 ];
 

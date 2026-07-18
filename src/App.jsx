@@ -7,6 +7,7 @@ import About from "./components/sections/About";
 import Projects from "./components/sections/Projects";
 import Experience from "./components/sections/Experience";
 import Contact from "./components/sections/Contact";
+import Writing from "./components/sections/Writing";
 
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const WritingIndexPage = lazy(() => import("./pages/WritingIndexPage"));
@@ -30,6 +31,7 @@ function Portfolio() {
       <Projects />
       <Experience />
       <About />
+      <Writing />
       <Contact />
     </main>
   );
