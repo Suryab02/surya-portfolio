@@ -1,6 +1,6 @@
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
+import PageMeta from "../components/PageMeta";
 import {
   personalInfo,
   skills,
@@ -20,13 +20,13 @@ function Section({ label, children }) {
 }
 
 export default function ResumePage() {
-  useEffect(() => {
-    document.title = "Resume — Surya Prabhas";
-    return () => { document.title = "Surya Prabhas Bandaru — Software Engineer"; };
-  }, []);
-
   return (
     <main className="page-shell resume-shell">
+      <PageMeta
+        title="Résumé — Surya Prabhas Bandaru"
+        description="Experience, selected projects, technical skills, education, and achievements of backend-focused software engineer Surya Prabhas Bandaru."
+        path="/resume"
+      />
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}

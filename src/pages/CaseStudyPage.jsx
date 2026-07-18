@@ -1,18 +1,13 @@
-import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { projects } from "../data/data";
+import PageMeta, { SITE_URL } from "../components/PageMeta";
 
 export default function CaseStudyPage() {
   const { slug } = useParams();
   const project = projects.find((item) => item.slug === slug);
 
-  useEffect(() => {
-    document.title = project ? `${project.name} case study — Surya Prabhas` : "Case study not found — Surya Prabhas";
-    return () => { document.title = "Surya Prabhas Bandaru — Software Engineer"; };
-  }, [project]);
-
   if (!project) {
-    return <main className="case-shell case-missing"><p>That case study does not exist.</p><Link to="/#work">Return to work →</Link></main>;
+    return <main className="case-shell case-missing"><PageMeta title="Case study not found — Surya Prabhas" description="The requested case study could not be found." path={`/work/${slug}`} noindex /><p>That case study does not exist.</p><Link to="/#work">Return to work →</Link></main>;
   }
 
   const { caseStudy } = project;
@@ -20,6 +15,21 @@ export default function CaseStudyPage() {
   const nextProject = projects[(projectIndex + 1) % projects.length];
   return (
     <main className="case-shell">
+      <PageMeta
+        title={`${project.name} case study — Surya Prabhas`}
+        description={project.description}
+        path={`/work/${project.slug}`}
+        type="article"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: `${project.name} case study`,
+          description: project.description,
+          url: `${SITE_URL}/work/${project.slug}`,
+          author: { "@type": "Person", name: "Surya Prabhas Bandaru", url: SITE_URL },
+          keywords: project.tech.join(", "),
+        }}
+      />
       <header className="case-hero">
         <Link to="/#work" className="case-back">← Selected work</Link>
         <div>

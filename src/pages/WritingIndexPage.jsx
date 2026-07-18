@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { posts, allTags } from "../lib/posts";
+import PageMeta from "../components/PageMeta";
 
 function isoDate(value) {
   const date = new Date(value);
@@ -12,13 +13,13 @@ export default function WritingIndexPage() {
   const [activeTag, setActiveTag] = useState(null);
   const shown = activeTag ? posts.filter((post) => post.tag === activeTag) : posts;
 
-  useEffect(() => {
-    document.title = "Writing — Surya Prabhas";
-    return () => { document.title = "Surya Prabhas Bandaru — Software Engineer"; };
-  }, []);
-
   return (
     <main className="page-shell">
+      <PageMeta
+        title="Writing — Surya Prabhas Bandaru"
+        description="Notes on software systems, AI, engineering practice, and the details that make products dependable."
+        path="/writing"
+      />
       <header className="page-header">
         <p>Writing / Notes</p>
         <h1>Thinking in<br /><em>public.</em></h1>
