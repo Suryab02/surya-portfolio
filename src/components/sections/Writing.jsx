@@ -1,30 +1,14 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { posts } from "../../lib/posts";
 
 export default function Writing() {
   const latest = posts[0];
   if (!latest) return null;
-
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      <Link
-        to={`/writing/${latest.slug}`}
-        className="group flex items-baseline justify-between gap-4 no-underline font-mono text-[11px]"
-      >
-        <span className="text-faint truncate">
-          LATEST_LOG →{" "}
-          <span className="text-dim group-hover:text-bright transition-colors">
-            {latest.title}
-          </span>
-        </span>
-        <span className="text-accent shrink-0">read ↗</span>
-      </Link>
-    </motion.div>
+    <section id="writing" className="writing-section section-pad">
+      <div className="section-intro"><p className="eyebrow">Writing</p><h2>Notes from the workbench.</h2></div>
+      <Link to={`/writing/${latest.slug}`} className="writing-card"><div><span>{latest.tag} · {latest.minutes || 1} min read</span><h3>{latest.title}</h3><p>{latest.excerpt}</p></div><strong>Read →</strong></Link>
+      <Link to="/writing" className="inline-link">View all writing →</Link>
+    </section>
   );
 }

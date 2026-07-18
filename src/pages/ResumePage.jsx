@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Download } from "lucide-react";
 import {
@@ -19,13 +20,18 @@ function Section({ label, children }) {
 }
 
 export default function ResumePage() {
+  useEffect(() => {
+    document.title = "Resume — Surya Prabhas";
+    return () => { document.title = "Surya Prabhas Bandaru — Software Engineer"; };
+  }, []);
+
   return (
-    <div className="max-w-[860px] mx-auto px-6 sm:px-9 pt-28 pb-16">
+    <main className="page-shell resume-shell">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="flex flex-wrap items-start justify-between gap-4 mb-10"
+        className="resume-header flex flex-wrap items-start justify-between gap-4 mb-10"
       >
         <div>
           <h1 className="font-display font-medium uppercase text-bright text-3xl sm:text-4xl tracking-[-0.02em]">
@@ -135,7 +141,7 @@ export default function ResumePage() {
         </div>
       </Section>
 
-      <Section label="STACK">
+      <Section label="TECHNICAL SKILLS">
         <div className="space-y-2.5">
           {skills.map((group) => (
             <div
@@ -181,6 +187,6 @@ export default function ResumePage() {
           ))}
         </ul>
       </Section>
-    </div>
+    </main>
   );
 }

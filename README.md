@@ -1,49 +1,56 @@
-# Surya Prabhas | Portfolio
+# Surya Prabhas — Portfolio
 
-A minimalist, editorial-style personal portfolio showcasing my experience as a Full-Stack Software Engineer building enterprise-grade backend services and AI-powered workflows.
+A product-focused portfolio for a backend-focused full-stack engineer working across enterprise services, data processing, LLM integrations, and product interfaces. The site combines direct editorial typography, a user-controlled pipeline explainer, evidence-led project case studies, and an MDX writing section.
 
-## 🎨 Design Philosophy
+## Stack
 
-This portfolio is designed with a **warm, calm, and editorial aesthetic** inspired by Claude and Anthropic's design language:
-- **Warm Canvas:** Replaced stark whites with a comfortable cream background (`#faf9f5`) to reduce eye strain and feel more like physical paper.
-- **Typography-First:** Pairs the elegant **Instrument Serif** for headings with the highly readable **Inter** for body text. 
-- **Purposeful Simplicity:** No navbar, no heavy card shadows, and no flashy elements. Just a single-column flow with generous whitespace and subtle fade-in animations that let the content speak for itself.
-- **Restrained Color:** Primarily monochrome ink/cream with intentional terracotta accents for interactive elements.
+- React 19 + Vite
+- Tailwind CSS v4
+- Framer Motion
+- React Router
+- MDX with frontmatter
+- Vercel Analytics
 
-## 🚀 Tech Stack
+## Structure
 
-- **Framework:** React + Vite
-- **Styling:** Tailwind CSS v4 (Custom theme configuration)
-- **Animations:** Framer Motion (Subtle scroll reveals)
-- **Deployment:** Vercel / Netlify ready
+```text
+src/
+├── components/
+│   ├── sections/        # Homepage sections
+│   ├── Nav.jsx
+│   └── SystemCore.jsx   # Interactive bulk-ingestion pipeline trace
+├── data/data.js         # Portfolio content
+├── lib/posts.js         # MDX post discovery and metadata
+├── pages/               # Case studies, writing, resume, and error routes
+├── posts/               # One MDX file per published article
+├── App.jsx
+└── index.css            # Tokens, global styles, and 3D treatments
+```
 
-## 📂 Project Structure
+Update biography, experience, projects, and skills in `src/data/data.js`. Each project includes a structured `caseStudy` object that powers `/work/:slug`. Publish writing by adding an `.mdx` file with frontmatter to `src/posts/`.
 
-The project is structured to make updating content as easy as possible without touching React components:
+## Routes
 
-- `src/data/data.js` - **Edit this file to update all portfolio content!** (Skills, experience, projects, etc.)
-- `src/components/sections/` - Individual UI sections (Hero, About, Projects, etc.)
-- `src/index.css` - Global design tokens and base styles
+- `/` — portfolio overview and selected work
+- `/work/:slug` — data-driven engineering case study
+- `/writing` and `/writing/:slug` — MDX writing index and article
+- `/resume` — web résumé with PDF download
 
-## 🛠️ Local Development
+The interaction and content decisions behind the current build are documented in [ARCHITECTURE.md](./ARCHITECTURE.md).
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+## Development
 
-2. **Start the development server:**
-   ```bash
-   npm run dev
-   ```
+```bash
+npm install
+npm run dev
+```
 
-3. **Build for production:**
-   ```bash
-   npm run build
-   ```
+Before shipping:
 
-## 📬 Connect
+```bash
+npm run validate:content
+npm run lint
+npm run build
+```
 
-- [LinkedIn](https://linkedin.com/in/suryaprabhas)
-- [GitHub](https://github.com/Suryab02)
-- bsprabhas2002@gmail.com
+Content validation checks project slugs, required case-study fields, evidence artifacts, public URLs, and route uniqueness before every production build.

@@ -5,22 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "validate:content": "node scripts/validate-content.mjs",
+    "build": "npm run validate:content && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fontsource/dm-sans": "^5.2.8",
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/cli": "^4.1.10",
     "@tailwindcss/vite": "^4.1.10",
     "@vercel/analytics": "^2.0.1",
-    "clsx": "^2.1.1",
     "framer-motion": "^12.36.0",
     "lucide-react": "^0.552.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "react-icons": "^5.5.0",
     "react-router-dom": "^7.17.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
@@ -40,9 +38,9 @@
     "tailwindcss": "^4.1.10",
     "vite": "^6.3.5"
   },
-  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "description": "Personal portfolio and technical writing by Surya Prabhas Bandaru.",
   "main": "eslint.config.js",
-  "keywords": [],
-  "author": "",
+  "keywords": ["portfolio", "software-engineer", "systems", "react"],
+  "author": "Surya Prabhas Bandaru",
   "license": "ISC"
 }

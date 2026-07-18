@@ -1,99 +1,20 @@
-import { useRef } from "react";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { projects } from "../../data/data";
 
-function useTilt() {
-  const ref = useRef(null);
-
-  const onMouseMove = (e) => {
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width - 0.5;
-    const py = (e.clientY - rect.top) / rect.height - 0.5;
-    el.style.transform = `perspective(600px) rotateX(${-py * 5}deg) rotateY(${px * 5}deg)`;
-  };
-
-  const onMouseLeave = () => {
-    const el = ref.current;
-    if (el) el.style.transform = "perspective(600px) rotateX(0deg) rotateY(0deg)";
-  };
-
-  return { ref, onMouseMove, onMouseLeave };
-}
-
-function Card({ project, index }) {
-  const num = String(index + 1).padStart(3, "0");
-  const accentHref = project.accent?.href ?? project.repo;
-  const tilt = useTilt();
-
-  const body = (
-    <>
-      <div className="flex items-baseline justify-between font-mono text-[11px]">
-        <span className="text-accent">{num}</span>
-        <span className="text-ghost">{project.year}</span>
-      </div>
-      <p className="mt-3 text-[15px] font-medium text-bright">
-        {project.name}
-      </p>
-      <p className="mt-1.5 text-xs text-dim leading-[1.6]">{project.blurb}</p>
-      {project.accent?.label && (
-        <p className="mt-3 font-mono text-[10px] text-accent">
-          {project.accent.label}
-          {accentHref ? " ↗" : ""}
-        </p>
-      )}
-    </>
-  );
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.55, delay: index * 0.08 }}
-      className="border-line border-b last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"
-    >
-      <div
-        ref={tilt.ref}
-        onMouseMove={tilt.onMouseMove}
-        onMouseLeave={tilt.onMouseLeave}
-        className="h-full transition-transform duration-200 ease-out will-change-transform"
-      >
-        {accentHref ? (
-          <a
-            href={accentHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block p-6 sm:p-7 no-underline hover:bg-card transition-colors duration-300 h-full"
-          >
-            {body}
-          </a>
-        ) : (
-          <div className="p-6 sm:p-7 h-full">{body}</div>
-        )}
-      </div>
-    </motion.div>
-  );
+function ProjectLinks({ project }) {
+  return <div className="project-actions"><Link to={`/work/${project.slug}`}>Read case study →</Link>{project.link && <a href={project.link} target="_blank" rel="noopener noreferrer">Live product ↗</a>}{project.repo && <a href={project.repo} target="_blank" rel="noopener noreferrer">Source ↗</a>}</div>;
 }
 
 export default function Projects() {
+  const [featured, ...rest] = projects;
   return (
-    <div>
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="font-mono text-[11px] text-faint mb-5"
-      >
-        THINGS_I_BUILT ({projects.length})
-      </motion.p>
-      <div className="grid sm:grid-cols-3 border border-line">
-        {projects.map((p, i) => (
-          <Card key={p.name} project={p} index={i} />
-        ))}
-      </div>
-    </div>
+    <section id="work" className="work-section section-pad">
+      <header className="section-intro"><p className="eyebrow">Selected work</p><h2>Products built around a measurable problem.</h2></header>
+      <article className="featured-project">
+        <div className="feature-flow"><span>Résumé</span><i>→</i><span>AI extraction</span><i>→</i><span>Fit score</span></div>
+        <div className="feature-copy"><p>{featured.subtitle} · {featured.year}</p><h3>{featured.name}</h3><strong>{featured.metrics[0]}</strong><p>{featured.description}</p><div className="project-tech">{featured.tech.slice(0,3).map((tech) => <span key={tech}>{tech}</span>)}</div><ProjectLinks project={featured} /></div>
+      </article>
+      <div className="project-list">{rest.map((project) => <article key={project.name}><div><p>{project.subtitle} · {project.year}</p><h3>{project.name}</h3></div><p>{project.description}</p><strong>{project.metrics[0]}</strong><ProjectLinks project={project} /></article>)}</div>
+    </section>
   );
 }

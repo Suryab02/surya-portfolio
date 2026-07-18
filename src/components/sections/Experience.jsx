@@ -1,73 +1,14 @@
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { experience } from "../../data/data";
-import { MapPin, Calendar } from "lucide-react";
+import SystemCore from "../SystemCore";
 
 export default function Experience() {
   return (
-    <div>
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-xs font-medium uppercase tracking-[0.2em] text-faded mb-10"
-      >
-        Experience
-      </motion.p>
-
-      <div className="space-y-12">
-        {experience.map((job, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.08 }}
-            className="relative"
-          >
-            {/* Header: Role and Company */}
-            <div className="flex flex-col md:flex-row md:justify-between md:items-baseline gap-2 mb-4">
-              <div>
-                <h3 className="font-serif text-2xl text-ink">{job.role}</h3>
-                <div className="flex items-center gap-2 mt-1 text-terracotta font-medium">
-                  {job.company}
-                  {job.project && (
-                    <span className="text-muted font-normal flex items-center gap-2">
-                      <span className="text-rule/80 text-xs">•</span> {job.project}
-                    </span>
-                  )}
-                </div>
-              </div>
-              
-              {/* Meta information */}
-              <div className="flex flex-row md:flex-col gap-4 md:gap-1 text-xs text-faded md:text-right mt-2 md:mt-0 font-medium tracking-wide uppercase">
-                <div className="flex items-center md:justify-end gap-1.5">
-                  <Calendar size={13} className="text-rule" />
-                  {job.period}
-                </div>
-                {job.location && (
-                  <div className="flex items-center md:justify-end gap-1.5">
-                    <MapPin size={13} className="text-rule" />
-                    {job.location}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Highlights */}
-            <ul className="space-y-3 mt-5">
-              {job.highlights.map((h, j) => (
-                <li
-                  key={j}
-                  className="text-sm text-muted leading-[1.7] pl-5 relative before:content-[''] before:absolute before:left-0 before:top-2.5 before:w-1.5 before:h-1.5 before:rounded-full before:bg-terracotta/40"
-                >
-                  {h}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
-      </div>
-    </div>
+    <section id="experience" className="experience-section section-pad">
+      <header className="section-intro"><p className="eyebrow">Experience</p><h2>Production work, not just portfolio work.</h2></header>
+      <div className="experience-feature"><div><span>{experience[0].period}</span><h3>{experience[0].role}</h3><p>{experience[0].company} · {experience[0].project}</p><ul>{[experience[0].highlights[0],experience[0].highlights[2],experience[0].highlights[4]].map((item) => <li key={item}>{item}</li>)}</ul></div><SystemCore /></div>
+      <div className="experience-list">{experience.slice(1).map((job) => <article key={`${job.company}-${job.period}`}><time>{job.period}</time><div><h3>{job.role}</h3><p>{job.company}</p></div><p>{job.highlights[0]}</p></article>)}</div>
+      <Link to="/resume" className="inline-link">View complete experience →</Link>
+    </section>
   );
 }
