@@ -2,13 +2,60 @@ import { Link } from "react-router-dom";
 import { experience } from "../../data/data";
 import SystemCore from "../SystemCore";
 
+// the current role earns more detail; earlier roles stay to one line
+const DETAIL = [0, 2, 4, 6];
+
 export default function Experience() {
+  const [current, ...earlier] = experience;
   return (
-    <section id="experience" className="experience-section section-pad">
-      <header className="section-intro"><p className="eyebrow">Experience</p><h2>Production work, not just portfolio work.</h2></header>
-      <div className="experience-feature"><div><span>{experience[0].period}</span><h3>{experience[0].role}</h3><p>{experience[0].company} · {experience[0].project}</p><ul>{[experience[0].highlights[0],experience[0].highlights[2],experience[0].highlights[4]].map((item) => <li key={item}>{item}</li>)}</ul></div><SystemCore /></div>
-      <div className="experience-list">{experience.slice(1).map((job) => <article key={`${job.company}-${job.period}`}><time>{job.period}</time><div><h3>{job.role}</h3><p>{job.company}</p></div><p>{job.highlights[0]}</p></article>)}</div>
-      <Link to="/resume" className="inline-link">View complete experience →</Link>
+    <section id="experience" className="timeline-section">
+      <header className="index-head">
+        <p className="eyebrow">Experience</p>
+        <h2>Production work, not just portfolio work.</h2>
+      </header>
+
+      <article className="timeline-row">
+        <div className="timeline-when">
+          <time>{current.period}</time>
+          <span>{current.location}</span>
+          {current.project && <span>{current.project}</span>}
+        </div>
+        <div>
+          <h3>{current.role}</h3>
+          <p className="timeline-org">{current.company}</p>
+          <ul>
+            {DETAIL.map((i) => current.highlights[i])
+              .filter(Boolean)
+              .map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+          </ul>
+        </div>
+      </article>
+
+      {earlier.map((job) => (
+        <article className="timeline-row" key={`${job.company}-${job.period}`}>
+          <div className="timeline-when">
+            <time>{job.period}</time>
+            <span>{job.location}</span>
+          </div>
+          <div>
+            <h3>{job.role}</h3>
+            <p className="timeline-org">{job.company}</p>
+            <ul>
+              <li>{job.highlights[0]}</li>
+            </ul>
+          </div>
+        </article>
+      ))}
+
+      <div className="system-band">
+        <SystemCore />
+      </div>
+
+      <Link to="/resume" className="inline-link">
+        View complete experience →
+      </Link>
     </section>
   );
 }

@@ -9,9 +9,29 @@ const capabilities = [
 
 export default function About() {
   return (
-    <section id="profile" className="profile-section section-pad">
-      <header className="section-intro"><p className="eyebrow">How I work</p><h2>Clear boundaries. Useful systems. Fewer surprises.</h2></header>
-      <div className="profile-grid"><div className="profile-copy"><p>{home.about}</p><small>Earlier professional work: Java and Spring Boot. Independent projects: React, TypeScript, FastAPI, PostgreSQL, MongoDB, and the Gemini API.</small></div><div className="capability-grid">{capabilities.map(([title,items]) => <div key={title}><h3>{title}</h3><p>{items}</p></div>)}</div></div>
+    <section id="profile" className="approach-section">
+      <header className="index-head">
+        <p className="eyebrow">How I work</p>
+        <h2>Clear boundaries. Useful systems. Fewer surprises.</h2>
+      </header>
+      <div className="approach-grid">
+        <div>
+          <p>{home.about}</p>
+          <small>
+            Earlier professional work: Java and Spring Boot. Independent
+            projects: React, TypeScript, FastAPI, PostgreSQL, MongoDB, and the
+            Gemini API.
+          </small>
+        </div>
+        <div className="capability-rows">
+          {capabilities.map(([title, items]) => (
+            <div key={title}>
+              <h3>{title}</h3>
+              <p>{items}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
