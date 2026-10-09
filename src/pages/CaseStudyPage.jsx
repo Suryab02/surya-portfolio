@@ -7,7 +7,7 @@ export default function CaseStudyPage() {
   const project = projects.find((item) => item.slug === slug);
 
   if (!project) {
-    return <main className="case-shell case-missing"><PageMeta title="Case study not found — Surya Prabhas" description="The requested case study could not be found." path={`/work/${slug}`} noindex /><p>That case study does not exist.</p><Link to="/#work">Return to work →</Link></main>;
+    return <main className="case-shell case-missing"><PageMeta title="Case study not found — Surya Prabhas" description="The requested case study could not be found." path={`/work/${slug}`} noindex /><h1>That case study does not exist.</h1><Link to="/#work">Return to work →</Link></main>;
   }
 
   const { caseStudy } = project;

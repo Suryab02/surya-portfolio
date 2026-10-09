@@ -12,7 +12,7 @@ const PATHS = [
 
 // newest role first → innermost, fastest
 const SATS = [
-  { path: PATHS[2], dur: 96, r: 11, fill: "var(--accent)" },
+  { path: PATHS[2], dur: 96, r: 11, fill: "var(--accent-vivid)" },
   { path: PATHS[1], dur: 148, r: 12, fill: "var(--ochre)" },
   { path: PATHS[0], dur: 210, r: 10, fill: "var(--sage)" },
 ];
@@ -32,7 +32,7 @@ export default function Orbit() {
         <path d={PATHS[2]} opacity=".5" />
       </g>
 
-      <circle cx="238" cy="178" r="104" fill="var(--accent)" />
+      <circle cx="238" cy="178" r="104" fill="var(--accent-vivid)" />
       <circle cx="238" cy="178" r="104" fill="url(#orbit-grain)" opacity=".3" />
 
       {experience.map((role, i) => {

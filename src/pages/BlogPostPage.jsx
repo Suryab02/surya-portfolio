@@ -22,7 +22,7 @@ export default function BlogPostPage() {
   const { slug } = useParams();
   const post = posts.find((item) => item.slug === slug);
 
-  if (!post) return <main className="article-shell"><PageMeta title="Post not found — Surya Prabhas" description="The requested article could not be found." path={`/writing/${slug}`} noindex /><p>Post not found.</p></main>;
+  if (!post) return <main className="article-shell"><PageMeta title="Post not found — Surya Prabhas" description="The requested article could not be found." path={`/writing/${slug}`} noindex /><h1>Post not found.</h1></main>;
 
   return (
     <main className="article-shell">
