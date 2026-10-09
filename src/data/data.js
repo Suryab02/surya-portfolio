@@ -2,7 +2,9 @@ export const personalInfo = {
   name: "Surya Prabhas Bandaru",
   firstName: "Surya Prabhas",
   lastName: "Bandaru",
-  title: "Backend-Focused Full-Stack Engineer",
+  title: "Software Engineer II",
+  company: "Verisk",
+  team: "Catastrophe & Risk Solutions",
   location: "Hyderabad, India",
   availability: "Open to full-time roles · Hyderabad / Remote",
   resumeUrl: "/resume.pdf",
@@ -13,8 +15,8 @@ export const personalInfo = {
   tagline:
     "Building dependable backend systems, data-heavy workflows, and practical LLM integrations.",
   summary: [
-    "I'm a full-stack engineer with 2+ years of experience, currently at Infor, where I build backend microservices and APIs for a multi-tenant SaaS ERP platform used by thousands of enterprise users.",
-    "My day-to-day is C#, ASP.NET Core, Angular, and SQL Server, with additional work in prompt design, LLM integration, and structured extraction from PDF, Excel, and XML. I use Amazon Q and Kiro as development tools, not as substitutes for engineering judgment.",
+    "I'm a software engineer with 3+ years of experience, currently at Verisk on Catastrophe & Risk Solutions, building backend services in C# and .NET Core and integrating cloud features on AWS.",
+    "Before that I spent over two years at Infor building microservices and APIs for a multi-tenant SaaS platform, where I shipped a bulk ingestion pipeline, GenAI document-processing workflows, and a 40% improvement in critical reporting performance.",
     "I care about measurable results — faster queries, fewer errors, less manual work — and I like writing about how systems actually work.",
   ],
 };
@@ -26,12 +28,12 @@ export const home = {
   about:
     "I'm a software engineer in Hyderabad who gravitates toward the machinery behind the screen: APIs, data flows, failure modes, and the small decisions that make systems dependable. I enjoy taking ambiguous operations, finding the real constraint, and building a path people can trust.",
   now: [
-    { label: "building", value: "enterprise services + document extraction" },
-    { label: "exploring", value: "distributed systems and local LLM tooling" },
+    { label: "building", value: "catastrophe & risk services on AWS" },
+    { label: "exploring", value: "distributed systems and LLM integration" },
     { label: "off-screen", value: "teardowns, long reads, hardware" },
   ],
   stats: [
-    { value: "2+ yrs", label: "in production" },
+    { value: "3+ yrs", label: "in production" },
     { value: "10k+", label: "records per pipeline run" },
     { value: "40%", label: "faster reporting" },
   ],
@@ -66,24 +68,27 @@ export const skills = [
     items: ["SQL Server", "Oracle", "MySQL", "ETL", "Query Optimization"],
   },
   {
-    category: "AI Engineering Capabilities",
+    category: "AI & LLM",
     icon: "sparkles",
     items: [
-      "Prompt Engineering",
+      "Claude",
+      "ChatGPT",
+      "Gemini",
+      "Amazon Bedrock",
       "LLM Integration",
+      "Prompt Engineering",
       "Document Extraction",
-      "Structured Output Pipelines",
     ],
   },
   {
-    category: "Cloud & Delivery",
+    category: "Cloud & DevOps",
     icon: "terminal",
-    items: ["AWS", "Docker", "CI/CD", "Git"],
+    items: ["AWS EC2", "Lambda", "S3", "IAM", "RDS", "Docker", "CI/CD", "Git"],
   },
   {
     category: "Engineering Tools",
     icon: "shield-check",
-    items: ["Postman", "GitHub", "Jira", "Amazon Q", "Kiro"],
+    items: ["Postman", "GitHub", "Jira", "ETL"],
   },
   {
     category: "Security & Reliability Practices",
@@ -94,20 +99,34 @@ export const skills = [
 
 export const experience = [
   {
-    role: "Software Engineer",
+    role: "Software Engineer II",
+    company: "Verisk",
+    location: "Hyderabad",
+    project: "Catastrophe & Risk Solutions",
+    period: "Jul 2026 – Present",
+    highlights: [
+      "Developing and enhancing backend services in C# and .NET Core for the Catastrophe & Risk Solutions platform, implementing new features across microservices and RESTful APIs.",
+      "Building and integrating cloud features on AWS — EC2, Lambda, S3, IAM, and RDS.",
+      "Researching and evaluating technical approaches (R&D) for new features before implementation.",
+      "Contributing to Angular frontend modules and SQL-backed data layers in Agile sprints.",
+    ],
+  },
+  {
+    role: "Associate Software Engineer",
     company: "Infor",
     location: "Hyderabad",
     project: "Infor Optiva",
-    period: "Mar 2024 – Present",
+    period: "Mar 2024 – Jul 2026",
     highlights: [
       "Built 10+ backend microservices in C# and .NET Core for a multi-tenant SaaS platform serving thousands of concurrent users.",
-      "Designed RESTful APIs with pagination, filtering, and schema validation — cutting invalid request errors by ~30%.",
+      "Designed and shipped RESTful APIs with pagination, filtering, schema validation, and structured error handling — cutting invalid request errors by ~30% and accelerating frontend integration cycles.",
       "Built a bulk data ingestion pipeline that processes 10,000+ records per run from Excel/XML with row-level validation and failure recovery, reducing manual data entry by ~65%.",
-      "Built LLM-backed document-processing pipelines for structured extraction from PDF, Excel, and XML inputs.",
+      "Built GenAI-powered document-processing workflows for PDF, Excel, and XML extraction using prompt-based pipelines, enabling intelligent data extraction and automated response generation.",
       "Made critical reporting modules 40% faster through SQL and Oracle execution-plan analysis, indexing, and query restructuring.",
       "Implemented JWT authentication and role-based access control across backend services.",
       "Resolved 20+ critical production incidents across backend services, login flows, and data inconsistencies.",
-      "Migrated a legacy ASPX QA regression tool to Angular, halving setup time for 15+ engineers.",
+      "Migrated a legacy ASP.NET (ASPX) QA regression testing tool to a modern Angular frontend, reducing QA setup time by ~50% for 15+ engineers.",
+      "Partnered with QA, frontend, and product teams in an Agile environment; maintained CI/CD pipelines for build, test, and deployment of microservices.",
     ],
   },
   {
@@ -116,18 +135,8 @@ export const experience = [
     location: "Hyderabad",
     period: "Sept 2023 – Feb 2024",
     highlights: [
-      "Developed and maintained Java Spring Boot APIs for notification and booking modules serving production users.",
-      "Resolved production bugs and performance bottlenecks across Agile sprint cycles, with unit testing and code reviews.",
-    ],
-  },
-  {
-    role: "Software Engineering Apprentice",
-    company: "Tech Mahindra",
-    location: "Hyderabad",
-    period: "Feb 2023 – Aug 2023",
-    highlights: [
-      "Built and tested RESTful APIs with Java, Spring Boot, and MySQL in enterprise-scale training projects.",
-      "Learned microservices architecture and backend best practices through mentored work with senior engineers.",
+      "Developed and maintained backend APIs using Java Spring Boot for notification and booking management modules serving production users.",
+      "Resolved production bugs and performance bottlenecks, and contributed to unit testing, code reviews, and deployments across Agile sprints, reducing regression defects.",
     ],
   },
 ];
@@ -257,6 +266,7 @@ export const projects = [
 export const education = {
   degree: "B.Tech – Computer Science and Engineering",
   school: "Presidency University",
+  location: "Bengaluru, India",
   period: "Aug 2019 – Jun 2023",
   gpa: "8.5 / 10",
 };

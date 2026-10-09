@@ -1,4 +1,5 @@
 import { personalInfo } from "../../data/data";
+import Orbit from "../Orbit";
 
 const proof = [
   ["10+", "production services"],
@@ -10,15 +11,18 @@ const proof = [
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
+      <Orbit />
       <div className="hero-inner">
         <p className="hero-status">
           <i /> {personalInfo.availability}
         </p>
         <h1 id="hero-title">{personalInfo.name}</h1>
         <p className="hero-role">
-          <em>Backend-focused software engineer at Infor.</em>
+          <em>
+            {personalInfo.title} at {personalInfo.company}.
+          </em>
           <br />
-          {personalInfo.location} / Remote.
+          {personalInfo.team} · {personalInfo.location} / Remote.
         </p>
         <div className="hero-cta">
           <a href="#work" className="button button-primary">
@@ -30,7 +34,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="metrics" aria-label="Production impact at Infor">
+      <div className="metrics" aria-label="Production impact">
         {proof.map(([value, label]) => (
           <div className="metric" key={label}>
             <strong>{value}</strong>
@@ -39,7 +43,8 @@ export default function Hero() {
         ))}
       </div>
       <p className="metrics-note">
-        At Infor · Mar 2024—Now · Multi-tenant SaaS · ASP.NET Core · SQL Server
+        3+ yrs shipping production software · C# · .NET Core · AWS · SQL Server
+        · Angular
       </p>
     </section>
   );
