@@ -1,4 +1,5 @@
 import { personalInfo } from "../../data/data";
+import Orbit from "../Orbit";
 
 const proof = [
   ["10+", "production services"],
@@ -10,6 +11,7 @@ const proof = [
 export default function Hero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
+      <Orbit />
       <div className="hero-inner">
         <p className="hero-status">
           <i /> {personalInfo.availability}
