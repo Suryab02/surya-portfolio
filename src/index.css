@@ -233,6 +233,19 @@ button{cursor:pointer;font-family:inherit}
 .article-header span{display:block;margin-top:18px;color:var(--body);font-size:15px;line-height:1.7}
 .blog-prose{padding-top:38px;color:var(--body);font:400 17px/1.9 var(--serif)}
 .blog-prose h2,.blog-prose h3{margin:2em 0 .7em;color:var(--bright);font-family:var(--serif)}
+.blog-prose p{margin:0 0 1.35em}
+.blog-prose>:first-child{margin-top:0}
+.blog-prose h4{margin:1.8em 0 .6em;color:var(--bright);font-family:var(--sans);font-size:1.05rem}
+.blog-prose ul,.blog-prose ol{margin:0 0 1.35em;padding-left:1.5em}
+.blog-prose li{margin-bottom:.5em}
+.blog-prose li::marker{color:var(--accent)}
+.blog-prose strong{color:var(--bright);font-weight:600}
+.blog-prose em{font-style:italic}
+.blog-prose hr{height:0;margin:2.4em 0;border:0;border-top:1px solid var(--line)}
+.blog-prose img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:11px}
+.blog-prose pre{margin:0 0 1.5em}
+.blog-prose blockquote p:last-child{margin-bottom:0}
+.blog-prose a:hover{text-decoration:underline;text-underline-offset:3px}
 .blog-prose h2{font-size:1.9rem}
 .blog-prose h3{font-size:1.4rem}
 .blog-prose pre{overflow:auto;padding:20px;border:1px solid var(--line);border-radius:11px;background:var(--panel);color:var(--bright);font:400 13px/1.75 var(--mono)}

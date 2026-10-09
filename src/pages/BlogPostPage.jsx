@@ -2,6 +2,17 @@ import { useParams, Link } from "react-router-dom";
 import { posts } from "../lib/posts";
 import PageMeta, { SITE_URL } from "../components/PageMeta";
 
+// readable for people; the machine-readable form stays on <time dateTime>
+function readableDate(value) {
+  const date = new Date(value);
+  if (isNaN(date)) return value;
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
 function isoDate(value) {
   const date = new Date(value);
   return isNaN(date) ? value : date.toISOString().slice(0, 10);
@@ -32,7 +43,10 @@ export default function BlogPostPage() {
       />
       <Link to="/writing" className="article-back">← All writing</Link>
       <header className="article-header">
-        <p>{isoDate(post.date)} · {post.tag} · {post.minutes || 1} min read</p>
+        <p>
+          <time dateTime={isoDate(post.date)}>{readableDate(post.date)}</time>
+          {" · "}{post.tag} · {post.minutes || 1} min read
+        </p>
         <h1>{post.title}</h1>
         {post.excerpt && <span>{post.excerpt}</span>}
       </header>

@@ -4,6 +4,17 @@ import { motion } from "framer-motion";
 import { posts, allTags } from "../lib/posts";
 import PageMeta from "../components/PageMeta";
 
+// readable for people; the machine-readable form stays on <time dateTime>
+function readableDate(value) {
+  const date = new Date(value);
+  if (isNaN(date)) return value;
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+}
+
 function isoDate(value) {
   const date = new Date(value);
   return isNaN(date) ? value : date.toISOString().slice(0, 10);
@@ -37,9 +48,9 @@ export default function WritingIndexPage() {
         {shown.map((post, index) => (
           <motion.article key={post.slug} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .45, delay: index * .05 }}>
             <Link to={`/writing/${post.slug}`}>
-              <time>{isoDate(post.date)}</time>
+              <time dateTime={isoDate(post.date)}>{readableDate(post.date)}</time>
               <div><h2>{post.title}</h2><p>{post.excerpt}</p></div>
-              <span>{post.tag} ↗</span>
+              <span>{post.tag} · {post.minutes || 1} min</span>
             </Link>
           </motion.article>
         ))}
