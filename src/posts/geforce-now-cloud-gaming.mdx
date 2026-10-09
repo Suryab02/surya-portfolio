@@ -7,6 +7,9 @@ published: true
 minutes: 5
 ---
 
+import PlaytimeMeter from "../components/PlaytimeMeter";
+
+
 So after a long time, I'm back to gaming — but not the way I expected.
 
 Quick context: I used to play a lot. Like genuinely a lot. Then work came in the middle and everything else piled up, and I just stopped. It went the other way completely. Back then it was mostly two games on my gaming laptop — Valorant, which is a crazy game, and Rust, which is a *super* crazy game. That was it. Those two.
@@ -49,9 +52,23 @@ I'm also running HDMI out to my monitor, which goes up to 200Hz, so that side is
 
 ## The limits
 
-You get around 100 hours per month. I mostly play on weekends, so this works fine for me.
+You get around 100 hours per month. I mostly play on weekends, so I figured this would be fine for me.
 
-But if you play regularly — like daily — I don't think it's worth it. 100 hours works out to roughly three hours a day, so if you're a four-hours-a-night person you'll run out before the month does. Once you burn through it you're buying extra time in 15-hour blocks on top of what you already pay. That math stops making sense pretty fast. Be honest with yourself about how much you actually play before signing up.
+Then I actually checked.
+
+<PlaytimeMeter
+  totalHours={100}
+  remainingHours={30}
+  remainingMinutes={35}
+  resetsOn="19 October 2026"
+  daysLeft={10}
+/>
+
+Nearly 70% gone, and there's still a week and a half to go before it resets. So much for "I only play weekends."
+
+This is the part I'd genuinely underestimated. The hours don't disappear in some marathon session you'd notice — they go in two-hour evenings you forget about. Rust especially: you log in to do one thing, and then you're repairing walls for ninety minutes.
+
+So if you play regularly — like daily — I don't think it's worth it. 100 hours works out to roughly three hours a day, and once you burn through it you're buying extra time in 15-hour blocks on top of what you already pay. That math stops making sense pretty fast. Be honest with yourself about how much you actually play before signing up — and know that you're probably going to be wrong about it, like I was.
 
 There's also a session limit each time you launch a game. On Ultimate it's 8 hours, which is more than enough — I've never come close to hitting it. Performance is 6, and the free tier cuts you off at 1.
 
