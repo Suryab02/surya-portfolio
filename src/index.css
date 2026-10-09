@@ -52,7 +52,10 @@ button{cursor:pointer;font-family:inherit}
 
 /* ── hero ────────────────────────────────────────────── */
 .hero{position:relative;padding:132px 0 0;overflow:hidden}
-.orbit{position:absolute;z-index:0;top:84px;right:-70px;width:min(42vw,470px);height:auto;pointer-events:none;opacity:.92}
+.orbit{position:absolute;z-index:0;top:84px;right:-70px;width:min(42vw,470px);height:auto;opacity:.92}
+.orbit-sat{cursor:help}
+.orbit-halo{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.6);transition:opacity .22s ease,transform .22s ease}
+.orbit-sat:hover .orbit-halo{opacity:.24;transform:scale(1)}
 .hero-inner{position:relative;z-index:1;max-width:900px}
 .hero-status{display:inline-flex;align-items:center;gap:9px;padding:6px 13px 6px 10px;border:1px solid var(--line-2);border-radius:999px;background:var(--panel);color:var(--body);font:400 12px/1 var(--mono)}
 .hero-status i{width:7px;height:7px;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(127,148,120,.18)}

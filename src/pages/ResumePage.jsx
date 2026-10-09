@@ -166,7 +166,9 @@ export default function ResumePage() {
               {education.degree}
             </p>
             <p className="text-xs text-dim mt-1">
-              {education.school} · CGPA {education.gpa}
+              {education.school}
+              {education.location ? ` · ${education.location}` : ""} · CGPA{" "}
+              {education.gpa}
             </p>
           </div>
           <span className="font-mono text-[10px] text-ghost whitespace-nowrap">
