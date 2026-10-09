@@ -156,7 +156,6 @@ button{cursor:pointer;font-family:inherit}
 .contact-bottom nav{display:flex;flex-wrap:wrap;gap:22px}
 .contact-bottom a{text-decoration:none}
 .contact-bottom a:hover{color:var(--accent)}
-.site-foot{height:72px}
 
 /* ── case studies ────────────────────────────────────── */
 .case-shell{width:min(1140px,100%);margin:0 auto;padding:66px 24px 0}
