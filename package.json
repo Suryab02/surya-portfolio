@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "validate:content": "node scripts/validate-content.mjs",
-    "build": "npm run validate:content && vite build",
+    "build": "npm run validate:content && npm run generate:sitemap && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
@@ -40,7 +41,12 @@
   },
   "description": "Personal portfolio and technical writing by Surya Prabhas Bandaru.",
   "main": "eslint.config.js",
-  "keywords": ["portfolio", "software-engineer", "systems", "react"],
+  "keywords": [
+    "portfolio",
+    "software-engineer",
+    "systems",
+    "react"
+  ],
   "author": "Surya Prabhas Bandaru",
   "license": "ISC"
 }
