@@ -1,5 +1,6 @@
 import { personalInfo } from "../../data/data";
 import Orbit from "../Orbit";
+import CountUp from "../CountUp";
 
 const proof = [
   ["10+", "production services"],
@@ -37,7 +38,7 @@ export default function Hero() {
       <div className="metrics" aria-label="Production impact">
         {proof.map(([value, label]) => (
           <div className="metric" key={label}>
-            <strong>{value}</strong>
+            <strong><CountUp value={value} /></strong>
             <span>{label}</span>
           </div>
         ))}
