@@ -20,6 +20,7 @@ export default function CaseStudyPage() {
         description={project.description}
         path={`/work/${project.slug}`}
         type="article"
+        image={`${SITE_URL}/og/work/${project.slug}.png`}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "CreativeWork",

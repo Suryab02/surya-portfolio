@@ -355,3 +355,4 @@ a.metric{display:block;color:inherit;text-decoration:none}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 .article-loading{min-height:60vh;color:var(--faint);font:400 12px/1 var(--mono)}
+.spa-pending #root{visibility:hidden}

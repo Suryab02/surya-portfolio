@@ -1,5 +1,6 @@
 // Renders the link-preview images: public/og.png for the site and
-// public/og/<slug>.png for each published post. Run `npm run og` after adding
+// public/og/<slug>.png for each published post, public/og/work/<slug>.png for
+// each case study. Run `npm run og` after adding
 // or retitling a post and commit the PNGs. The build checks they exist, so a
 // post can't ship with the generic image by accident.
 //
@@ -7,7 +8,7 @@
 // local authoring step, not part of the Vercel build.
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
-import { personalInfo } from "../src/data/data.js";
+import { personalInfo, projects } from "../src/data/data.js";
 import { readPosts, readableDate, root } from "./read-posts.mjs";
 
 let chromium;
@@ -76,24 +77,41 @@ h1{max-width:10ch;margin-top:22px;font:500 100px/.95 Newsreader,serif;letter-spa
 </body></html>`;
 }
 
-function postHtml(post) {
+// shared layout for posts and case studies
+function cardHtml({ eyebrow, title, excerpt, meta }) {
   // long titles step down so they never run into the footer
-  const size = post.title.length > 52 ? 64 : post.title.length > 34 ? 76 : 88;
+  const size = title.length > 52 ? 64 : title.length > 34 ? 76 : 88;
   return `<!doctype html><html><head><link rel="stylesheet" href="${FONTS}"><style>${BASE_CSS}
 .orbit{right:-230px;top:-60px;width:470px;opacity:.55}
 .eyebrow{color:#ba3a10;font-size:18px;letter-spacing:.14em;text-transform:uppercase}
 h1{max-width:900px;margin-top:30px;font:500 ${size}px/1.02 Newsreader,serif;letter-spacing:-.035em}
 .excerpt{max-width:860px;margin-top:26px;color:#4a463d;font-size:24px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 </style></head><body>${ORBIT}
-<p class="eyebrow mono">Writing · ${esc(post.tag)}</p>
-<h1>${esc(post.title)}</h1>
-<p class="excerpt">${esc(post.excerpt)}</p>
+<p class="eyebrow mono">${esc(eyebrow)}</p>
+<h1>${esc(title)}</h1>
+<p class="excerpt">${esc(excerpt)}</p>
 <div class="foot">
   <span class="brand"><i>SP</i>${esc(personalInfo.name)}</span>
-  <span class="meta mono">${esc(readableDate(post.date))}${post.minutes ? ` · ${esc(post.minutes)} min read` : ""}</span>
+  <span class="meta mono">${esc(meta)}</span>
 </div>
 </body></html>`;
 }
+
+const postHtml = (post) =>
+  cardHtml({
+    eyebrow: `Writing · ${post.tag}`,
+    title: post.title,
+    excerpt: post.excerpt,
+    meta: `${readableDate(post.date)}${post.minutes ? ` · ${post.minutes} min read` : ""}`,
+  });
+
+const projectHtml = (project) =>
+  cardHtml({
+    eyebrow: `Case study · ${project.subtitle}`,
+    title: project.name,
+    excerpt: project.blurb,
+    meta: `${project.year} · ${project.tech.slice(0, 3).join(" · ")}`,
+  });
 
 const browser = await chromium.launch(
   process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {},
@@ -110,5 +128,7 @@ async function render(html, out) {
 await render(homeHtml(), join(root, "public/og.png"));
 mkdirSync(join(root, "public/og"), { recursive: true });
 for (const post of readPosts()) await render(postHtml(post), join(root, "public/og", `${post.slug}.png`));
+mkdirSync(join(root, "public/og/work"), { recursive: true });
+for (const project of projects) await render(projectHtml(project), join(root, "public/og/work", `${project.slug}.png`));
 
 await browser.close();

@@ -106,9 +106,11 @@ function Portfolio() {
   );
 }
 
-function App() {
+// The routes without a router, so the browser (BrowserRouter, below) and the
+// build-time prerender (StaticRouter, src/entry-server.jsx) share one tree.
+export function AppShell() {
   return (
-    <BrowserRouter>
+    <>
       <ScrollManager />
       <div className="site-frame">
         <Nav />
@@ -126,6 +128,14 @@ function App() {
         </ErrorBoundary>
         <Analytics />
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
     </BrowserRouter>
   );
 }

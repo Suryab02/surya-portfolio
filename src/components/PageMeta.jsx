@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+import { createContext, useContext, useEffect } from "react";
 
 export const SITE_URL = "https://surya-portfolio-mu.vercel.app";
-const DEFAULT_IMAGE = `${SITE_URL}/og.png`;
+export const DEFAULT_IMAGE = `${SITE_URL}/og.png`;
+
+// Set only during the build-time prerender (src/entry-server.jsx). PageMeta
+// writes its props here while rendering, so the static HTML gets the same
+// <head> the browser would build: one source of truth for both.
+export const HeadContext = createContext(null);
 
 function setMeta(selector, attributes) {
   let element = document.head.querySelector(selector);
@@ -21,6 +26,9 @@ export default function PageMeta({
   noindex = false,
   structuredData,
 }) {
+  const head = useContext(HeadContext);
+  if (head) head.current = { title, description, path, type, image, noindex, structuredData };
+
   useEffect(() => {
     const url = new URL(path, SITE_URL).toString();
     document.title = title;

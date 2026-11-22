@@ -71,6 +71,10 @@ if (!Array.isArray(projects)) {
     validateTextArray(project.metrics, `${base}.metrics`);
     validateTextArray(project.tech, `${base}.tech`, 2);
 
+    if (typeof project.slug === "string" && !existsSync(new URL(`../public/og/work/${project.slug}.png`, import.meta.url))) {
+      failures.push(`${base} has no link-preview image; run \`npm run og\` and commit public/og/work/${project.slug}.png`);
+    }
+
     const studyPath = `${base}.caseStudy`;
     if (!requireRecord(project.caseStudy, studyPath)) return;
     const study = project.caseStudy;
