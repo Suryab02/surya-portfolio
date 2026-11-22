@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Surya Prabhas — Writing</title>
+    <link>https://surya-portfolio-mu.vercel.app/writing</link>
+    <atom:link href="https://surya-portfolio-mu.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
+    <description>Notes on backend engineering, AI tools, and whatever else I'm figuring out.</description>
+    <language>en</language>
+    <lastBuildDate>Fri, 09 Oct 2026 00:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Getting Back Into Gaming Without Buying a PC</title>
+      <link>https://surya-portfolio-mu.vercel.app/writing/geforce-now-cloud-gaming</link>
+      <guid isPermaLink="true">https://surya-portfolio-mu.vercel.app/writing/geforce-now-cloud-gaming</guid>
+      <pubDate>Fri, 09 Oct 2026 00:00:00 GMT</pubDate>
+      <category>Gaming</category>
+      <description>I almost spent a small fortune on a rig. Instead I rented someone else&apos;s GPU and streamed it to a MacBook Air. Here&apos;s how GeForce NOW actually went.</description>
+    </item>
+    <item>
+      <title>My Experience with LLMs and the Fable 5 Situation</title>
+      <link>https://surya-portfolio-mu.vercel.app/writing/my-experience-with-llms</link>
+      <guid isPermaLink="true">https://surya-portfolio-mu.vercel.app/writing/my-experience-with-llms</guid>
+      <pubDate>Sun, 21 Jun 2026 00:00:00 GMT</pubDate>
+      <category>AI</category>
+      <description>Every other day there&apos;s a new model, new benchmarks, new companies — and then the one you actually liked disappears overnight. Just the energy of LLMs right now.</description>
+    </item>
+  </channel>
+</rss>

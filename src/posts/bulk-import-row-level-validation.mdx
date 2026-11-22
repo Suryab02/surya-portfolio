@@ -1,0 +1,56 @@
+---
+title: "One Bad Row Shouldn't Sink Ten Thousand Good Ones"
+date: 2026-11-22
+tag: Engineering
+excerpt: What building a bulk Excel/XML import pipeline taught me about row-level validation, partial failure, and telling users exactly what went wrong.
+published: false
+minutes: 5
+---
+
+{/* DRAFT: written from the CV bullet about the Infor ingestion pipeline. Check
+    every claim against what you actually built, add a real example or two, then
+    set published: true, update the date and run `npm run og`. */}
+
+At Infor I built a bulk ingestion pipeline: people uploaded Excel or XML files, and the system turned them into records in a multi-tenant SaaS platform. A typical run was ten thousand rows or more. Before it existed, a lot of that data was typed in by hand.
+
+The interesting part wasn't parsing the files. It was deciding what happens when row 4,812 is wrong.
+
+## All-or-nothing feels safe, and isn't
+
+The first instinct is to wrap the whole import in one transaction. Either everything lands or nothing does. Clean, simple, easy to reason about.
+
+In practice it's miserable for the person uploading. One malformed date in a 10,000-row sheet, and the entire file bounces. They fix it, upload again, and hit the next bad row. A file with twenty problems becomes twenty round trips.
+
+So the pipeline validated every row on its own and kept going.
+
+## Validate rows, not files
+
+Each row went through the same checks independently:
+
+- **Shape** — required columns present, types parse, dates are dates.
+- **Rules** — values inside allowed ranges, references that point at things that exist.
+- **Context** — duplicates within the file, and conflicts with data already in the tenant.
+
+A row that failed didn't stop the run. It was set aside with a reason attached, and the good rows carried on.
+
+## Make failures specific
+
+"Import failed" is useless. "Row 4,812, column *StartDate*: '31/02/2025' is not a valid date" is something a person can fix in ten seconds.
+
+Every rejected row carried its row number, the field, the value it saw and what it expected. The user got that back as a list they could work through, instead of a mystery.
+
+## Recover without redoing everything
+
+Large runs fail halfway for boring reasons: a timeout, a deploy, a database hiccup. If the only way to recover is starting from row one, people stop trusting the tool.
+
+So the pipeline tracked progress as it went. A rerun could pick up where the last one stopped, and rows already written weren't written twice.
+
+## What it bought
+
+Manual data entry dropped by roughly 65%.
+
+{/* TODO: one or two sentences, in your words, on what changed for the people using it. */}
+
+## The takeaway
+
+Batch jobs are user interfaces too. The person on the other end doesn't care that your transaction boundaries are tidy. They care about how many times they have to upload the same file.

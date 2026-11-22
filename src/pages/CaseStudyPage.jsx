@@ -66,6 +66,16 @@ export default function CaseStudyPage() {
         <p className="case-label">03 / Proof</p>
         <div>
           <h2>What you can inspect.</h2>
+          {caseStudy.screens?.length > 0 && (
+            <div className={`case-screens${caseStudy.screens.length > 1 ? " is-pair" : ""}`}>
+              {caseStudy.screens.map((screen) => (
+                <figure key={screen.src}>
+                  <img src={screen.src} alt={screen.alt} loading="lazy" decoding="async" />
+                  <figcaption>{screen.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          )}
           <div className="artifact-list">
             {caseStudy.artifacts.map((artifact) => {
               const content = <><span>{artifact.type}</span><div><h3>{artifact.label}</h3><p>{artifact.note}</p></div><strong>{artifact.href ? "Open ↗" : "Not public"}</strong></>;

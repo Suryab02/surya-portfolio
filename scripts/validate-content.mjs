@@ -78,6 +78,18 @@ if (!Array.isArray(projects)) {
     validateTextArray(study.decisions, `${studyPath}.decisions`, 2);
     validateTextArray(study.flow, `${studyPath}.flow`, 3);
 
+    if (study.screens != null) {
+      if (!Array.isArray(study.screens)) failures.push(`${studyPath}.screens must be an array`);
+      else study.screens.forEach((screen, screenIndex) => {
+        const screenPath = `${studyPath}.screens[${screenIndex}]`;
+        if (!requireRecord(screen, screenPath)) return;
+        ["alt", "caption"].forEach((field) => requireText(screen[field], `${screenPath}.${field}`));
+        if (requireText(screen.src, `${screenPath}.src`) && !existsSync(new URL(`../public${screen.src}`, import.meta.url))) {
+          failures.push(`${screenPath}.src points at a missing file: public${screen.src}`);
+        }
+      });
+    }
+
     if (!Array.isArray(study.artifacts)) {
       failures.push(`${studyPath}.artifacts must be an array`);
     } else if (!study.artifacts.length) {

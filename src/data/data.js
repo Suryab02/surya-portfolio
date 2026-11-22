@@ -163,6 +163,9 @@ export const projects = [
       constraint: "Resume and job descriptions are unstructured, while the product still needs a predictable score users can understand.",
       reflection: "The next step would be a labeled evaluation set, confidence reporting, and clearer explanations for why each skill affected the score.",
       evidenceNote: "The public repository uses the product's current name, Loomo. The hackathon recognition is recorded in the project history, but no public award artifact is currently linked.",
+      screens: [
+        { src: "/work/huntdesk/sign-in.jpg", alt: "Loomo sign-in screen with email and password fields", caption: "Workspace sign-in. Captured from the public repository's frontend, run locally (Nov 2026); the signed-in views need the FastAPI backend and an account." },
+      ],
       artifacts: [
         { type: "Live", label: "Working product", href: "https://huntdesk.vercel.app", note: "Inspect the application flow from job tracking to résumé-assisted matching." },
         { type: "Source", label: "Loomo repository", href: "https://github.com/Suryab02/Loomo", note: "Review the current React/TypeScript, FastAPI, PostgreSQL, AI, and browser-extension implementation." },
@@ -203,6 +206,9 @@ export const projects = [
       constraint: "External API and model calls are expensive and noisy, so repeated analysis cannot happen on every interface action.",
       reflection: "I would wire cache reads into the main execution path, then add dataset versioning, source-level traceability, and request-count benchmarks.",
       evidenceNote: "The repository contains a six-hour cache helper and writes results, but the current main execution path does not load cached data. No API-reduction benchmark is claimed.",
+      screens: [
+        { src: "/work/city-eats-insight/search.jpg", alt: "CityEats Insight search page with a city field, location detection and trending-city chips", caption: "City search with trending cities. Captured from the public repository's frontend, run locally (Nov 2026)." },
+      ],
       artifacts: [
         { type: "Live", label: "Working product", href: "https://city-eats-insight.vercel.app", note: "Inspect the city-level trend exploration experience." },
         { type: "Source", label: "Public repository", href: "https://github.com/Suryab02/CityEatsInsight", note: "Review the Reddit collection, cache-write helper, Gemini analysis, fallback path, and React implementation." },
@@ -242,6 +248,10 @@ export const projects = [
       constraint: "Guests need fast access to service information, while blood-bank inventory and administrative actions must remain protected and attributable.",
       reflection: "A production version would need stronger audit trails, verified provider data, operational monitoring, and field testing with participating healthcare teams.",
       evidenceNote: "The award and publication are internal/project-record claims; a public verification artifact is not currently linked on this site.",
+      screens: [
+        { src: "/work/pranaraksha-seva/home.jpg", alt: "PranarakshaSeva home screen with Find Help Now, Admin Portal and SOS buttons", caption: "Entry point: guest help, admin portal, donor sign-up and SOS. Captured from the public repository's frontend, run locally (Nov 2026)." },
+        { src: "/work/pranaraksha-seva/guest.jpg", alt: "Guest flow asking for city and optional blood group before finding services", caption: "Guest flow: pick a city and blood group to find blood banks, doctors and ambulances." },
+      ],
       artifacts: [
         { type: "Source", label: "Public repository", href: "https://github.com/Suryab02/PranarakshaSeva", note: "Review the React, FastAPI, MongoDB, mapping, authentication, and operator-onboarding implementation." },
         { type: "Status", label: "Award and paper not public", href: null, note: "The competition result and research paper are recorded in the project history, but no public verification URL is currently available." },

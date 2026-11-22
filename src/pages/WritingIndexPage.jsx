@@ -19,6 +19,8 @@ export default function WritingIndexPage() {
         <p>Writing / Notes</p>
         <h1>Thinking in<br /><em>public.</em></h1>
         <span>Systems, software, AI, and the details that make them work.</span>
+        {/* a static file, not a route, so a plain anchor rather than <Link> */}
+        <a className="feed-link" href="/rss.xml">Follow via RSS ↗</a>
       </header>
 
       <div className="filter-row" aria-label="Filter posts by topic">
