@@ -17,6 +17,25 @@ const SATS = [
   { path: PATHS[0], dur: 210, r: 10, fill: "var(--sage)" },
 ];
 
+// Visible key for the satellites, so touch and keyboard users can tell the
+// dots apart without hovering. Shares SATS so colours can't drift.
+export function OrbitLegend() {
+  return (
+    <ul className="orbit-legend" aria-label="Career map key">
+      {experience.map((role, i) => {
+        const s = SATS[i];
+        if (!s) return null;
+        return (
+          <li key={role.company + role.period}>
+            <i style={{ background: s.fill }} aria-hidden="true" />
+            {role.company} <span>{role.period}</span>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export default function Orbit() {
   return (
     <svg

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { personalInfo } from "../../data/data";
-import Orbit from "../Orbit";
+import Orbit, { OrbitLegend } from "../Orbit";
 import CountUp from "../CountUp";
 
 const proof = [
@@ -34,6 +34,7 @@ export default function Hero() {
             Open résumé →
           </Link>
         </div>
+        <OrbitLegend />
       </div>
 
       <div className="metrics" aria-label="Production impact">

@@ -59,6 +59,10 @@ button{cursor:pointer;font-family:inherit}
 .orbit-halo{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.6);transition:opacity .22s ease,transform .22s ease}
 .orbit-sat:hover .orbit-halo{opacity:.26;transform:scale(1)}
 .hero-inner{position:relative;z-index:1;max-width:900px}
+.orbit-legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:26px 0 0;padding:0;list-style:none;color:var(--body);font:400 12px/1.4 var(--mono)}
+.orbit-legend li{display:inline-flex;align-items:center;gap:8px}
+.orbit-legend i{width:9px;height:9px;flex:none;border-radius:50%}
+.orbit-legend span{color:var(--faint)}
 .hero-status{display:inline-flex;align-items:center;gap:9px;padding:6px 13px 6px 10px;border:1px solid var(--line-2);border-radius:999px;background:var(--panel);color:var(--body);font:400 12px/1 var(--mono)}
 .hero-status i{width:7px;height:7px;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(74,158,63,.20)}
 .hero h1{max-width:13ch;margin:24px 0 0;font:500 clamp(3rem,7.4vw,5.6rem)/.98 var(--serif);letter-spacing:-.045em}
@@ -293,7 +297,7 @@ button{cursor:pointer;font-family:inherit}
   .case-scope-grid{grid-template-columns:1fr}
 }
 @media(max-width:760px){
-  .orbit{display:none}
+  .orbit,.orbit-legend{display:none}
   .site-main,.case-shell{padding-left:18px;padding-right:18px}
   .nav-bar{height:60px;padding:0 16px}
   .nav-brand>span:last-child{display:none}
