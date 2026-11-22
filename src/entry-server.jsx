@@ -4,7 +4,7 @@
 import { prerenderToNodeStream } from "react-dom/static";
 import { StaticRouter } from "react-router-dom";
 import { AppShell } from "./App.jsx";
-import { HeadContext } from "./components/PageMeta.jsx";
+import { HeadContext } from "./components/head-context.js";
 import { posts } from "./lib/posts.js";
 import { projects } from "./data/data.js";
 
