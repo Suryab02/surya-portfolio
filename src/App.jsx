@@ -32,7 +32,17 @@ function ScrollManager() {
     } catch {
       // malformed escape sequence; fall back to the raw fragment
     }
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // lazy routes (e.g. /resume#infor) mount after this effect runs, so keep
+    // looking for the target for about a second before giving up
+    let frame = 0;
+    let tries = 0;
+    const seek = () => {
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      else if (tries++ < 60) frame = requestAnimationFrame(seek);
+    };
+    seek();
+    return () => cancelAnimationFrame(frame);
   }, [pathname, hash]);
   return null;
 }

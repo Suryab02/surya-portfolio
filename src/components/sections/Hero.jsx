@@ -3,12 +3,15 @@ import { personalInfo } from "../../data/data";
 import Orbit, { OrbitLegend } from "../Orbit";
 import CountUp from "../CountUp";
 
+// every figure names where it came from and links to the résumé entry that
+// states it in full, so the numbers can be checked rather than taken on faith
 const proof = [
-  ["10+", "production services"],
-  ["10k+", "records per pipeline run"],
-  ["40%", "faster reporting"],
-  ["20+", "critical incidents resolved"],
+  ["10+", "production services", "C# / .NET microservices"],
+  ["10k+", "records per pipeline run", "Excel/XML bulk ingestion"],
+  ["40%", "faster reporting", "SQL & Oracle query tuning"],
+  ["20+", "critical incidents resolved", "backend & login flows"],
 ];
+const PROOF_SOURCE = { company: "Infor", anchor: "/resume#infor" };
 
 export default function Hero() {
   return (
@@ -38,11 +41,14 @@ export default function Hero() {
       </div>
 
       <div className="metrics" aria-label="Production impact">
-        {proof.map(([value, label]) => (
-          <div className="metric" key={label}>
+        {proof.map(([value, label, how]) => (
+          <Link className="metric" to={PROOF_SOURCE.anchor} key={label}>
             <strong><CountUp value={value} /></strong>
             <span>{label}</span>
-          </div>
+            <small>
+              {PROOF_SOURCE.company} · {how} <b aria-hidden="true">→</b>
+            </small>
+          </Link>
         ))}
       </div>
       <p className="metrics-note">

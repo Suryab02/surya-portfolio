@@ -6,7 +6,7 @@ export const personalInfo = {
   company: "Verisk",
   team: "Catastrophe & Risk Solutions",
   location: "Hyderabad, India",
-  availability: "Open to full-time roles · Hyderabad / Remote",
+  availability: "Open to good conversations · Hyderabad / Remote",
   resumeUrl: "/resume.pdf",
   email: "bsprabhas2002@gmail.com",
   phone: "+91 8317647595",

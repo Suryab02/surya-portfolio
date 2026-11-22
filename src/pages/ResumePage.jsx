@@ -56,7 +56,11 @@ export default function ResumePage() {
       <Section label="EXPERIENCE">
         <div className="space-y-9">
           {experience.map((job) => (
-            <div key={`${job.company}-${job.period}`}>
+            <div
+              key={`${job.company}-${job.period}`}
+              id={job.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+              className="scroll-mt-28"
+            >
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <p className="text-[15px] font-medium text-bright">
                   {job.role} — {job.company}

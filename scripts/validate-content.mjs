@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { experience, personalInfo, projects, skills } from "../src/data/data.js";
 
 const failures = [];
@@ -153,6 +153,10 @@ postFiles.forEach((file) => {
     failures.push(`${postPath} frontmatter.date must be YYYY-MM-DD`);
   } else if (fields.date && isNaN(new Date(fields.date))) {
     failures.push(`${postPath} frontmatter.date is not a real date`);
+  }
+  const slug = file.replace(/\.mdx$/, "");
+  if (!existsSync(new URL(`../public/og/${slug}.png`, import.meta.url))) {
+    failures.push(`${postPath} has no link-preview image; run \`npm run og\` and commit public/og/${slug}.png`);
   }
 });
 

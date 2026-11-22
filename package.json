@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "vite",
     "validate:content": "node scripts/validate-content.mjs",
-    "build": "npm run validate:content && npm run generate:sitemap && vite build",
+    "build": "npm run validate:content && npm run generate:sitemap && vite build && node scripts/prerender-meta.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
-    "generate:sitemap": "node scripts/generate-sitemap.mjs"
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
+    "og": "node scripts/generate-og.mjs"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",

@@ -15,6 +15,7 @@ export default function BlogPostPage() {
         description={post.excerpt || `A note by Surya Prabhas about ${post.tag}.`}
         path={`/writing/${post.slug}`}
         type="article"
+        image={`${SITE_URL}/og/${post.slug}.png`}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "BlogPosting",
