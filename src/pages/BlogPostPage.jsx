@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { useParams, Link } from "react-router-dom";
 import { posts, readableDate, isoDate } from "../lib/posts";
 import PageMeta, { SITE_URL } from "../components/PageMeta";
@@ -35,7 +36,12 @@ export default function BlogPostPage() {
         <h1>{post.title}</h1>
         {post.excerpt && <span>{post.excerpt}</span>}
       </header>
-      <article className="blog-prose"><post.Component /></article>
+      <article className="blog-prose">
+        {/* the body is a separate chunk; keep the header on screen while it loads */}
+        <Suspense fallback={<p className="article-loading">Loading…</p>}>
+          <post.Component />
+        </Suspense>
+      </article>
     </main>
   );
 }

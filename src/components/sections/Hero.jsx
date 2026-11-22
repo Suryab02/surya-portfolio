@@ -14,12 +14,15 @@ const proof = [
 const PROOF_SOURCE = { company: "Infor", anchor: "/resume#infor" };
 
 export default function Hero() {
+  // the location half drops on phones, where the role line already says it
+  const [status, where] = personalInfo.availability.split(" · ");
   return (
     <section className="hero" aria-labelledby="hero-title">
       <Orbit />
       <div className="hero-inner">
         <p className="hero-status">
-          <i /> {personalInfo.availability}
+          <i /> {status}
+          {where && <span className="hero-status-where"> · {where}</span>}
         </p>
         <h1 id="hero-title">{personalInfo.name}</h1>
         <p className="hero-role">
@@ -37,7 +40,10 @@ export default function Hero() {
             Open résumé →
           </Link>
         </div>
-        <OrbitLegend />
+        <div className="orbit-key">
+          <Orbit mini />
+          <OrbitLegend />
+        </div>
       </div>
 
       <div className="metrics" aria-label="Production impact">

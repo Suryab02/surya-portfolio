@@ -1,4 +1,10 @@
-const mdxModules = import.meta.glob("../posts/*.mdx", { eager: true });
+import { lazy } from "react";
+import postIndex from "virtual:post-index";
+
+// Listings only need frontmatter, which comes from a small build-time index
+// (see vite.config.js). Each post body is its own chunk, fetched when someone
+// opens the post, which keeps every article out of the homepage bundle.
+const bodies = import.meta.glob("../posts/*.mdx");
 
 // Post dates are date-only strings ("2026-10-09"), which parse as UTC
 // midnight. Format in UTC too, or readers west of UTC see the day before.
@@ -26,23 +32,10 @@ export function isoDate(value) {
   return isNaN(date) ? value : date.toISOString().slice(0, 10);
 }
 
-export const posts = Object.keys(mdxModules)
-  .map((path) => {
-    const mod = mdxModules[path];
-    const fm = mod.frontmatter ?? {};
-    const slug = path.split("/").pop().replace(/\.mdx$/, "");
-    return {
-      slug,
-      title: fm.title ?? slug,
-      date: fm.date ?? "",
-      tag: fm.tag ?? "Notes",
-      excerpt: fm.excerpt ?? "",
-      published: fm.published !== false,
-      minutes: fm.minutes ?? 1,
-      Component: mod.default,
-    };
-  })
-  .filter((p) => p.published)
+// the index already leaves out unpublished drafts
+export const posts = postIndex
+  .filter((post) => bodies[`../posts/${post.slug}.mdx`])
+  .map((post) => ({ ...post, Component: lazy(bodies[`../posts/${post.slug}.mdx`]) }))
   .sort((a, b) => new Date(b.date) - new Date(a.date));
 
 export const allTags = [...new Set(posts.map((p) => p.tag))];

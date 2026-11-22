@@ -1,3 +1,4 @@
+import { useId } from "react";
 import { experience } from "../data/data";
 
 // Orbital mark doubling as a career map: one satellite per role, newest on
@@ -36,15 +37,17 @@ export function OrbitLegend() {
   );
 }
 
-export default function Orbit() {
+// `mini` is the phone-sized copy that sits beside the legend. The legend
+// already names every role, so that copy is hidden from assistive tech.
+export default function Orbit({ mini = false }) {
+  // each instance needs its own pattern id: a duplicate id would resolve to
+  // whichever copy comes first, even when that copy is display:none
+  const grainId = `orbit-grain-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
+  const a11y = mini
+    ? { "aria-hidden": true }
+    : { role: "img", "aria-label": `Career map: ${experience.map((e) => e.company).join(", ")}` };
   return (
-    <svg
-      className="orbit"
-      viewBox="0 0 440 400"
-      fill="none"
-      role="img"
-      aria-label={`Career map: ${experience.map((e) => e.company).join(", ")}`}
-    >
+    <svg className={mini ? "orbit-mini" : "orbit"} viewBox="0 0 440 400" fill="none" {...a11y}>
       <g stroke="var(--line-2)" strokeWidth="1.1" fill="none">
         <path d={PATHS[0]} />
         <path d={PATHS[1]} />
@@ -52,7 +55,7 @@ export default function Orbit() {
       </g>
 
       <circle cx="238" cy="178" r="104" fill="var(--accent-vivid)" />
-      <circle cx="238" cy="178" r="104" fill="url(#orbit-grain)" opacity=".3" />
+      <circle cx="238" cy="178" r="104" fill={`url(#${grainId})`} opacity=".3" />
 
       {experience.map((role, i) => {
         const s = SATS[i];
@@ -63,7 +66,7 @@ export default function Orbit() {
             className="orbit-sat"
             style={{ offsetPath: `path("${s.path}")`, animationDuration: `${s.dur}s` }}
           >
-            <title>{`${role.company} — ${role.period}`}</title>
+            {!mini && <title>{`${role.company} — ${role.period}`}</title>}
             <circle r={s.r + 12} fill="transparent" />
             <circle className="orbit-halo" r={s.r + 8} fill={s.fill} />
             <circle r={s.r} fill={s.fill} />
@@ -72,7 +75,7 @@ export default function Orbit() {
       })}
 
       <defs>
-        <pattern id="orbit-grain" width="3" height="3" patternUnits="userSpaceOnUse">
+        <pattern id={grainId} width="3" height="3" patternUnits="userSpaceOnUse">
           <rect width="3" height="3" fill="transparent" />
           <circle cx="1" cy="1" r=".55" fill="#000" opacity=".16" />
         </pattern>
