@@ -1,3 +1,4 @@
+import { readFileSync, readdirSync } from "node:fs";
 import { experience, personalInfo, projects, skills } from "../src/data/data.js";
 
 const failures = [];
@@ -130,10 +131,35 @@ if (!Array.isArray(skills)) {
   });
 }
 
+// Blog posts: a missing or malformed date sorts as NaN and renders blank, so
+// fail the build instead of shipping it.
+const postsDir = new URL("../src/posts/", import.meta.url);
+const postFiles = readdirSync(postsDir).filter((file) => file.endsWith(".mdx"));
+postFiles.forEach((file) => {
+  const postPath = `src/posts/${file}`;
+  const match = readFileSync(new URL(file, postsDir), "utf8").match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  if (!match) {
+    failures.push(`${postPath} must start with a --- frontmatter block`);
+    return;
+  }
+  const fields = {};
+  for (const line of match[1].split(/\r?\n/)) {
+    const pair = line.match(/^([A-Za-z]+):\s*(.*)$/);
+    if (pair) fields[pair[1]] = pair[2].replace(/^["']|["']$/g, "").trim();
+  }
+  if (fields.published === "false") return;
+  ["title", "date", "tag", "excerpt"].forEach((field) => requireText(fields[field], `${postPath} frontmatter.${field}`));
+  if (fields.date && !/^\d{4}-\d{2}-\d{2}$/.test(fields.date)) {
+    failures.push(`${postPath} frontmatter.date must be YYYY-MM-DD`);
+  } else if (fields.date && isNaN(new Date(fields.date))) {
+    failures.push(`${postPath} frontmatter.date is not a real date`);
+  }
+});
+
 if (failures.length) {
   console.error(`Content validation failed with ${failures.length} issue${failures.length === 1 ? "" : "s"}:`);
   failures.forEach((failure) => console.error(`- ${failure}`));
   process.exitCode = 1;
 } else {
-  console.log(`Content validation passed: ${projects.length} projects, ${experience.length} roles, ${skills.length} skill groups, ${slugs.size} unique case-study routes.`);
+  console.log(`Content validation passed: ${projects.length} projects, ${experience.length} roles, ${skills.length} skill groups, ${slugs.size} unique case-study routes, ${postFiles.length} posts.`);
 }

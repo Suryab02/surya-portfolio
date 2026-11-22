@@ -1,22 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { posts } from "../lib/posts";
+import { posts, readableDate, isoDate } from "../lib/posts";
 import PageMeta, { SITE_URL } from "../components/PageMeta";
-
-// readable for people; the machine-readable form stays on <time dateTime>
-function readableDate(value) {
-  const date = new Date(value);
-  if (isNaN(date)) return value;
-  return date.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
-function isoDate(value) {
-  const date = new Date(value);
-  return isNaN(date) ? value : date.toISOString().slice(0, 10);
-}
 
 export default function BlogPostPage() {
   const { slug } = useParams();

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { personalInfo } from "../../data/data";
 import Orbit from "../Orbit";
 import CountUp from "../CountUp";
@@ -29,9 +30,9 @@ export default function Hero() {
           <a href="#work" className="button button-primary">
             View selected work
           </a>
-          <a href="/resume" className="button button-quiet">
+          <Link to="/resume" className="button button-quiet">
             Open résumé →
-          </a>
+          </Link>
         </div>
       </div>
 

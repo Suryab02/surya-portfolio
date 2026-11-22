@@ -9,6 +9,7 @@ export default function PlaytimeMeter({
   remainingMinutes = 35,
   resetsOn = "19 October 2026",
   daysLeft,
+  asOf,
 }) {
   const { usedLabel, remainingLabel, usedPct } = useMemo(() => {
     const total = totalHours * 60;
@@ -25,7 +26,7 @@ export default function PlaytimeMeter({
   return (
     <figure className="meter">
       <div className="meter-head">
-        <span>Playtime remaining</span>
+        <span>Playtime remaining{asOf ? ` · as of ${asOf}` : ""}</span>
         <span>Resets {resetsOn}</span>
       </div>
 

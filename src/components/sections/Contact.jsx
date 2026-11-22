@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { personalInfo } from "../../data/data";
 
 export default function Contact() {
@@ -19,8 +20,8 @@ export default function Contact() {
           <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer">
             LinkedIn
           </a>
-          <a href="/writing">Writing</a>
-          <a href="/resume">Résumé</a>
+          <Link to="/writing">Writing</Link>
+          <Link to="/resume">Résumé</Link>
         </nav>
       </div>
     </footer>

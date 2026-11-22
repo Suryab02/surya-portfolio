@@ -1,24 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { posts, allTags } from "../lib/posts";
+import { posts, allTags, readableDate, isoDate } from "../lib/posts";
 import PageMeta from "../components/PageMeta";
-
-// readable for people; the machine-readable form stays on <time dateTime>
-function readableDate(value) {
-  const date = new Date(value);
-  if (isNaN(date)) return value;
-  return date.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
-function isoDate(value) {
-  const date = new Date(value);
-  return isNaN(date) ? value : date.toISOString().slice(0, 10);
-}
 
 export default function WritingIndexPage() {
   const [activeTag, setActiveTag] = useState(null);

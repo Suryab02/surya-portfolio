@@ -3,7 +3,7 @@ import { experience } from "../../data/data";
 import SystemCore from "../SystemCore";
 
 // the current role earns more detail; earlier roles stay to one line
-const DETAIL = [0, 2, 4, 6];
+const DETAIL_COUNT = 4;
 
 export default function Experience() {
   const [current, ...earlier] = experience;
@@ -26,11 +26,9 @@ export default function Experience() {
             {current.project ? ` · ${current.project}` : ""}
           </p>
           <ul>
-            {DETAIL.map((i) => current.highlights[i])
-              .filter(Boolean)
-              .map((item) => (
-                <li key={item}>{item}</li>
-              ))}
+            {current.highlights.slice(0, DETAIL_COUNT).map((item) => (
+              <li key={item}>{item}</li>
+            ))}
           </ul>
         </article>
 

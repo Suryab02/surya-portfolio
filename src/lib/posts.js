@@ -1,10 +1,29 @@
 const mdxModules = import.meta.glob("../posts/*.mdx", { eager: true });
 
+// Post dates are date-only strings ("2026-10-09"), which parse as UTC
+// midnight. Format in UTC too, or readers west of UTC see the day before.
 export function formatDate(iso) {
   if (!iso) return "";
   const d = new Date(iso);
   if (isNaN(d)) return iso;
-  return d.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+  return d.toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" });
+}
+
+// readable for people; the machine-readable form goes on <time dateTime>
+export function readableDate(value) {
+  const date = new Date(value);
+  if (isNaN(date)) return value;
+  return date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+export function isoDate(value) {
+  const date = new Date(value);
+  return isNaN(date) ? value : date.toISOString().slice(0, 10);
 }
 
 export const posts = Object.keys(mdxModules)

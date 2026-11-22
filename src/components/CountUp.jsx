@@ -65,11 +65,16 @@ export default function CountUp({ value, duration = 1100 }) {
 
   if (!parsed) return <>{value}</>;
 
+  // assistive tech and crawlers get the final figure; only the moving
+  // number is hidden from them, so nobody hears "0+" mid-animation
   return (
     <span ref={ref}>
-      {parsed.prefix}
-      {shown}
-      {parsed.suffix}
+      <span className="sr-only">{value}</span>
+      <span aria-hidden="true">
+        {parsed.prefix}
+        {shown}
+        {parsed.suffix}
+      </span>
     </span>
   );
 }
